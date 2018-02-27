@@ -32,7 +32,7 @@ passport.use(
         if (existingUser) {
           done(null, existingUser);
         } else {
-          new User({ githubId: profile.id })
+          new User({ githubId: profile.id, userName: profile.username })
             .save()
             .then(user => done(null, user));
         }
