@@ -1,6 +1,7 @@
 require('./config/config');
 
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
@@ -12,6 +13,8 @@ require('./services/passport');
 mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 /** Middleware in the next 4 here, before a request from the browser goes to route handlers **/
 
