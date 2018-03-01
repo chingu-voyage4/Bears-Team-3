@@ -35,6 +35,6 @@ app.use(passport.session());
 // Send request to route handlers
 require('./routes/authRoutes')(app);
 
-// Start the server on process.env.PORT
-const PORT = process.env.PORT;
+// Start the server on process.env.PORT or 5000 if .env is missing
+const PORT = process.env.PORT || 5000;
 app.listen(PORT);
