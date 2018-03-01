@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 // redux deps
-import { createStore, applyMiddleware } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
@@ -25,27 +25,32 @@ import './style.scss';
 const middleware = [thunk];
 if (process.env.NODE_ENV !== 'production') middleware.push(logger);
 
-const store = createStore(
-  reducer,
-  applyMiddleware(...middleware),
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const enhancer = composeEnhancers(applyMiddleware(...middleware));
+
+const store = createStore(reducer, {}, enhancer);
 
 const root = document.getElementById('root');
 
-const render = (Component) => {
+const render = Component => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
         <Component />
       </Provider>
     </AppContainer>,
-    root,
+    root
   );
 };
 
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./App', () => { render(App); });
-  module.hot.accept('./reducers', () => { store.replaceReducer(reducer); });
+  module.hot.accept('./App', () => {
+    render(App);
+  });
+  module.hot.accept('./reducers', () => {
+    store.replaceReducer(reducer);
+  });
 }
