@@ -5,12 +5,11 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
-const keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
 
 // connect to mongo on mlab
-mongoose.connect(keys.mongoURI);
+mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
 
@@ -23,7 +22,7 @@ app.use(bodyParser.json());
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
-    keys: [keys.cookieKey],
+    keys: [process.env.COOKIE_KEY],
   })
 );
 
@@ -36,6 +35,6 @@ app.use(passport.session());
 // Send request to route handlers
 require('./routes/authRoutes')(app);
 
-// Start the server on a dynamic port or 5000 if local
-const PORT = process.env.PORT || 5000;
+// Start the server on process.env.PORT
+const PORT = process.env.PORT;
 app.listen(PORT);
