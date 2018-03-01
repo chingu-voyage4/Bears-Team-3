@@ -3,3 +3,4 @@ dev.js
 *.log
 .DS_Store
 config.json
+build
