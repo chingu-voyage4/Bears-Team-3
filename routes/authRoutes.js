@@ -1,6 +1,17 @@
 const passport = require('passport');
+const path = require('path');
 
 module.exports = app => {
+  app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'path/to/your/index.html'), function(
+      err
+    ) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
+  });
+
   app.get('/auth/github', passport.authenticate('github'));
 
   app.get('/auth/github/callback', passport.authenticate('github'));
