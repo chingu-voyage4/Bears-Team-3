@@ -3,9 +3,7 @@ const path = require('path');
 
 module.exports = app => {
   app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'path/to/your/index.html'), function(
-      err
-    ) {
+    res.sendFile(path.join(__dirname, 'client/build'), function(err) {
       if (err) {
         res.status(500).send(err);
       }
