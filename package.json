@@ -1,0 +1,30 @@
+{
+  "name": "github-oauth",
+  "version": "0.0.1",
+  "main": "index.js",
+  "engines": {
+    "node": "8.9.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon --verbose index.js",
+    "client": "cd ./client && yarn start",
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "client-install": "(cd ./client && yarn install)",
+    "client-build": "(cd ./client && yarn run build)",
+    "heroku-postbuild": "yarn run client-install && yarn run client-build"
+  },
+  "author": "",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.7",
+    "nodemon": "^1.15.1",
+    "passport": "^0.4.0",
+    "passport-github": "^1.1.0"
+  }
+}
