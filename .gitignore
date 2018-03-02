@@ -1,5 +1,4 @@
 node_modules
-dev.js
 *.log
 .DS_Store
 config.json
