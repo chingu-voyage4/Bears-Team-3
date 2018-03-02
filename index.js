@@ -14,8 +14,6 @@ mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-
 /** Middleware in the next 4 here, before a request from the browser goes to route handlers **/
 
 // Parse application/json
@@ -37,6 +35,14 @@ app.use(passport.session());
 
 // Send request to route handlers
 require('./routes/authRoutes')(app);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 // Start the server on process.env.PORT or 5000 if .env is missing
 const PORT = process.env.PORT || 5000;
