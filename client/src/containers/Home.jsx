@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import * as actions from '../actions';
 
 const Home = ({ counterValue, handleIncreaseValue, handleDecreaseValue }) => (
   <div>
     <h2>Home Page</h2>
-    <RaisedButton label="Default" />
-    <p>The counter value is {counterValue}</p>
+    <p>The counter value is {counterValue }</p>
     <button onClick={handleIncreaseValue}>Add</button>
     <button onClick={handleDecreaseValue}>Remove</button>
   </div>
