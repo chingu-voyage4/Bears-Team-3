@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import MockProvider from '../mockProvider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Routes from './../../Routes';
 import { Home, About } from './../../containers';
 
@@ -10,9 +11,11 @@ describe('Routes', () => {
     const wrapper = mount(
       <MockProvider>
         <MemoryRouter initialEntries={['/']} initialIndex={0}>
-          <Routes />
+          <MuiThemeProvider>
+            <Routes />
+          </MuiThemeProvider>
         </MemoryRouter>
-      </MockProvider>,
+      </MockProvider>
     );
     expect(wrapper.find(Home)).toHaveLength(1);
   });
@@ -21,7 +24,7 @@ describe('Routes', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/about']} initialIndex={0}>
         <Routes />
-      </MemoryRouter>,
+      </MemoryRouter>
     );
     expect(wrapper.find(About)).toHaveLength(1);
   });
