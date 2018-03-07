@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Reboot from 'material-ui/Reboot';
 import Button from 'material-ui/Button';
 
 import * as actions from '../actions';
 
 const Home = ({ counterValue, handleIncreaseValue, handleDecreaseValue }) => (
   <div>
+    <Reboot />
     <h2>Home Page</h2>
     <Button variant="raised" color="primary">
       Hello World
