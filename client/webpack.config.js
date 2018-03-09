@@ -36,7 +36,7 @@ module.exports = {
     },
     proxy: {
       '/api/**': 'http://localhost:5000',
-      '/auth/google': 'http://localhost:5000',
+      '/auth/github': 'http://localhost:5000',
     },
     historyApiFallback: true,
     disableHostCheck: true,
