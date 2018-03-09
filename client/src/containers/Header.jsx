@@ -11,7 +11,7 @@ class Header extends Component {
       case false:
         return (
           <div className="nav__login">
-            <a href="/auth/google">Login With Google</a>
+            <a href="/auth/github">Login With Github</a>
           </div>
         );
       default:

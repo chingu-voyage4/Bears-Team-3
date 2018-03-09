@@ -3,6 +3,8 @@ import { BrowserRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import * as actions from './actions';
+
+import Header from './containers/Header';
 import Routes from './Routes';
 
 import reactLogo from './assets/React-icon.png';
@@ -20,6 +22,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <main className="container">
+          <Header />
           <div>
             <h1>hello world!</h1>
             <img
