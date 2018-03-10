@@ -17,7 +17,7 @@ class Header extends Component {
       default:
         return (
           <div className="nav__logout">
-            <a href="api/logout">Logout</a>
+            <a href="/api/logout">Logout</a>
           </div>
         );
     }
