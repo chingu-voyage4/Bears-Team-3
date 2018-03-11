@@ -4,15 +4,29 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin() {
+    this.props.login();
+  }
+
   renderContent() {
     switch (this.props.auth) {
       case null:
         return;
       case false:
         return (
-          <div className="nav__login">
-            <a href="/auth/github">Login With Github</a>
-          </div>
+          <button
+            type="button"
+            className="nav__login"
+            onClick={this.handleLogin}
+          >
+            Log In With Github
+          </button>
         );
       default:
         return (
