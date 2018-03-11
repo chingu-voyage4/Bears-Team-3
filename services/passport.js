@@ -2,7 +2,7 @@ const passport = require('passport');
 const GitHubStrategy = require('passport-github').Strategy;
 const mongoose = require('mongoose');
 
-//const User = mongoose.model('users');
+const User = mongoose.model('users');
 
 // Turn user into user id in the cookie
 passport.serializeUser((user, done) => {
