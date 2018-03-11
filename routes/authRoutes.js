@@ -7,7 +7,7 @@ module.exports = app => {
     '/auth/github/callback',
     passport.authenticate('github'),
     (req, res) => {
-      res.redirect('/');
+      res.send(req.user);
     }
   );
 

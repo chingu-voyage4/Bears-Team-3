@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { FETCH_USER } from './types';
+import { LOGIN, FETCH_USER } from './types';
+
+export const login = () => async dispatch => {
+  const res = axios.get('/auth/github');
+  const resData = res.data;
+  dispatch({ type: LOGIN, resData });
+};
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
