@@ -1,5 +1,3 @@
-// login
-export const LOGIN = 'LOGIN';
 // fetch user
 export const FETCH_USER = 'FETCH_USER';
 // incremement counter
