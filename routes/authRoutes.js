@@ -8,6 +8,7 @@ module.exports = app => {
     '/auth/github/callback',
     passport.authenticate('github'),
     (req, res) => {
+      // Workaround to avoid re-rendering & CORS issues Credit @jenovs https://github.com/jenovs & https://stackoverflow.com/questions/28392393/passport-js-after-authentication-in-popup-window-close-it-and-redirect-the-pa/29314111#29314111
       res.sendFile(path.join(__dirname, 'after-auth.html'));
     }
   );

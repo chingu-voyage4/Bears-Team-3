@@ -21,6 +21,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // Workaround to avoid re-rendering & CORS issues Credit @jenovs https://github.com/jenovs & https://stackoverflow.com/questions/28392393/passport-js-after-authentication-in-popup-window-close-it-and-redirect-the-pa/29314111#29314111
     window.addEventListener('focus', this.getCurrentUser);
     this.props.fetchUser();
   }
