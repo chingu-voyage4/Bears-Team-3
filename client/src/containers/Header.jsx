@@ -11,7 +11,7 @@ class Header extends Component {
   }
 
   handleLogin() {
-    window.open('/auth/github', '_blank', 'width=300,height=200');
+    window.open('/auth/github', '_blank', 'width=300,height=400');
   }
 
   renderContent() {
