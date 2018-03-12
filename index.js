@@ -15,7 +15,14 @@ mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 
 /** Middleware in the next 4 here, before a request from the browser goes to route handlers **/
 
