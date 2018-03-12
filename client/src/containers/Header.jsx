@@ -11,7 +11,7 @@ class Header extends Component {
   }
 
   handleLogin() {
-    this.props.login();
+    window.open('/auth/github', '_blank', 'width=300,height=200');
   }
 
   renderContent() {

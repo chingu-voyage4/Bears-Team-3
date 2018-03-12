@@ -14,7 +14,21 @@ import reactLogo from './assets/React-icon.png';
  * @return {Component} react base component
  */
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.getCurrentUser = this.getCurrentUser.bind(this);
+  }
+
   componentDidMount() {
+    window.addEventListener('focus', this.getCurrentUser);
+    // loginCallBack = function() {
+    //   this.props.fetchUser();
+    //};
+    this.props.fetchUser();
+  }
+
+  getCurrentUser() {
     this.props.fetchUser();
   }
 
