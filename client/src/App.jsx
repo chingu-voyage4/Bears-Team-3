@@ -22,9 +22,6 @@ class App extends Component {
 
   componentDidMount() {
     window.addEventListener('focus', this.getCurrentUser);
-    // loginCallBack = function() {
-    //   this.props.fetchUser();
-    //};
     this.props.fetchUser();
   }
 
