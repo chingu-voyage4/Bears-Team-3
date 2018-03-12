@@ -1,7 +1,6 @@
 require('./config/config');
 
 const express = require('express');
-const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
@@ -14,15 +13,6 @@ require('./services/passport');
 mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
-
-// const corsOptions = {
-//   origin: true,
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   preflightContinue: false,
-//   optionsSuccessStatus: 204,
-// };
-
-//app.use(cors(corsOptions));
 
 /** Middleware in the next 4 here, before a request from the browser goes to route handlers **/
 
@@ -42,17 +32,6 @@ app.use(passport.initialize());
 
 // Pull user id from cookie data
 app.use(passport.session());
-
-// app.all('/*', function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header(
-//     'Access-Control-Allow-Methods',
-//     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-//   );
-//   res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
-
-//   next();
-// });
 
 // Send request to route handlers
 require('./routes/authRoutes')(app);
