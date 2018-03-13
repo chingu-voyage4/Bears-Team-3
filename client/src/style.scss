@@ -2,12 +2,12 @@
 
 body {
   font-family: Roboto, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 .container {
-  margin: auto;
   text-align: center;
-  max-width: 600px;
 
   &__image {
     width: 100px;
