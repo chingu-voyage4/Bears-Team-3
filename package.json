@@ -19,7 +19,6 @@
   "private": false,
   "dependencies": {
     "axios": "^0.18.0",
-    "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
