@@ -64,7 +64,7 @@ class Header extends Component {
             <IconButton
               className={classes.menuButton}
               color="inherit"
-              aria-label="Menu"
+              aria-label="Book"
             >
               <BookIcon />
             </IconButton>
