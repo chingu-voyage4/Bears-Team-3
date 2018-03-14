@@ -49,6 +49,8 @@
 
 // export default connect(mapStateToProps, actions)(Header);
 import React, { Component } from 'react';
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
@@ -60,6 +62,8 @@ import AccountCircle from 'material-ui-icons/AccountCircle';
 import Switch from 'material-ui/Switch';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
+
+import * as actions from '../actions';
 
 const styles = {
   root: {
@@ -167,4 +171,12 @@ MenuAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+const mapStateToProps = state => ({
+  auth: state.authReducer,
+});
+
+export default compose(withStyles(styles), connect(mapStateToProps, actions))(
+  MenuAppBar
+);
+
+//export default withStyles(styles)(MenuAppBar);
