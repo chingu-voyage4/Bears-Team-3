@@ -84,20 +84,22 @@ class Header extends Component {
     super(props);
 
     this.handleLogin = this.handleLogin.bind(this);
-  }
-
-  handleLogin() {
-    // Workaround to avoid re-rendering & CORS issues Credit @jenovs https://github.com/jenovs & https://stackoverflow.com/questions/28392393/passport-js-after-authentication-in-popup-window-close-it-and-redirect-the-pa/29314111#29314111
-    window.open('/auth/github', '_blank', 'width=300,height=400');
+    //this.hangleLogout = this.hangleLogout.bind(this);
   }
 
   state = {
     anchorEl: null,
   };
 
-  handleChange = (event, checked) => {
-    this.setState({ auth: checked });
-  };
+  handleLogin() {
+    // Workaround to avoid re-rendering & CORS issues Credit @jenovs https://github.com/jenovs & https://stackoverflow.com/questions/28392393/passport-js-after-authentication-in-popup-window-close-it-and-redirect-the-pa/29314111#29314111
+    window.open('/auth/github', '_blank', 'width=300,height=400');
+    this.setState({ anchorEl: null });
+  }
+
+  // hangleLogout() {
+  //   this.props.logout();
+  // }
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -161,8 +163,7 @@ class Header extends Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.props.logout}>Logout</MenuItem>
                 </Menu>
               </div>
             )}
@@ -184,5 +185,3 @@ const mapStateToProps = state => ({
 export default compose(withStyles(styles), connect(mapStateToProps, actions))(
   Header
 );
-
-//export default withStyles(styles)(MenuAppBar);
