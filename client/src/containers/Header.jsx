@@ -74,10 +74,6 @@ const styles = {
   avatar: {
     margin: 10,
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
 };
 
 class Header extends Component {
