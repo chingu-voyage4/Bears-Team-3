@@ -58,10 +58,7 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
-import AccountCircle from 'material-ui-icons/AccountCircle';
-//import Switch from 'material-ui/Switch';
-//import { FormControlLabel, FormGroup } from 'material-ui/Form';
+import Avatar from 'material-ui/Avatar';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
 import * as actions from '../actions';
@@ -72,6 +69,9 @@ const styles = {
   },
   flex: {
     flex: 1,
+  },
+  avatar: {
+    margin: 10,
   },
   menuButton: {
     marginLeft: -12,
@@ -84,7 +84,6 @@ class Header extends Component {
     super(props);
 
     this.handleLogin = this.handleLogin.bind(this);
-    //this.hangleLogout = this.hangleLogout.bind(this);
   }
 
   state = {
@@ -96,10 +95,6 @@ class Header extends Component {
     window.open('/auth/github', '_blank', 'width=300,height=400');
     this.setState({ anchorEl: null });
   }
-
-  // hangleLogout() {
-  //   this.props.logout();
-  // }
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -118,19 +113,12 @@ class Header extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
-            >
-              <MenuIcon />
-            </IconButton>
             <Typography
               variant="title"
               color="inherit"
               className={classes.flex}
             >
-              Title
+              Speedstudy
             </Typography>
             {!this.props.auth && (
               <div>
@@ -147,7 +135,10 @@ class Header extends Component {
                   onClick={this.handleMenu}
                   color="inherit"
                 >
-                  <AccountCircle />
+                  <Avatar
+                    alt="User Avatar"
+                    src={this.props.avatarURL.avatarURL}
+                  />
                 </IconButton>
                 <Menu
                   id="menu-appbar"
@@ -180,6 +171,7 @@ Header.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.authReducer,
+  avatarURL: state.authReducer,
 });
 
 export default compose(withStyles(styles), connect(mapStateToProps, actions))(
