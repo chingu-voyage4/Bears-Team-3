@@ -66,6 +66,7 @@ import * as actions from '../actions';
 const styles = {
   root: {
     flexGrow: 1,
+    textAlign: 'left',
   },
   flex: {
     flex: 1,
