@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -62,6 +63,8 @@ class Header extends Component {
         <AppBar position="static">
           <Toolbar>
             <IconButton
+              component={Link}
+              to="/"
               className={classes.menuButton}
               color="inherit"
               aria-label="Book"
