@@ -135,10 +135,7 @@ class Header extends Component {
                   onClick={this.handleMenu}
                   color="inherit"
                 >
-                  <Avatar
-                    alt="User Avatar"
-                    src={this.props.avatarURL.avatarURL}
-                  />
+                  <Avatar alt="User Avatar" src={this.props.auth.avatarURL} />
                 </IconButton>
                 <Menu
                   id="menu-appbar"
@@ -171,7 +168,6 @@ Header.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.authReducer,
-  avatarURL: state.authReducer,
 });
 
 export default compose(withStyles(styles), connect(mapStateToProps, actions))(
