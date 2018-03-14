@@ -56,11 +56,12 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
-import Switch from 'material-ui/Switch';
-import { FormControlLabel, FormGroup } from 'material-ui/Form';
+//import Switch from 'material-ui/Switch';
+//import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
 import * as actions from '../actions';
@@ -78,9 +79,19 @@ const styles = {
   },
 };
 
-class MenuAppBar extends Component {
+class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin() {
+    // Workaround to avoid re-rendering & CORS issues Credit @jenovs https://github.com/jenovs & https://stackoverflow.com/questions/28392393/passport-js-after-authentication-in-popup-window-close-it-and-redirect-the-pa/29314111#29314111
+    window.open('/auth/github', '_blank', 'width=300,height=400');
+  }
+
   state = {
-    auth: true,
     anchorEl: null,
   };
 
@@ -98,23 +109,11 @@ class MenuAppBar extends Component {
 
   render() {
     const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
+    const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
     return (
       <div className={classes.root}>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={auth}
-                onChange={this.handleChange}
-                aria-label="LoginSwitch"
-              />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup>
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -131,7 +130,14 @@ class MenuAppBar extends Component {
             >
               Title
             </Typography>
-            {auth && (
+            {!this.props.auth && (
+              <div>
+                <Button color="inherit" onClick={this.handleLogin}>
+                  Login With Github
+                </Button>
+              </div>
+            )}
+            {this.props.auth && (
               <div>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
@@ -167,7 +173,7 @@ class MenuAppBar extends Component {
   }
 }
 
-MenuAppBar.propTypes = {
+Header.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -176,7 +182,7 @@ const mapStateToProps = state => ({
 });
 
 export default compose(withStyles(styles), connect(mapStateToProps, actions))(
-  MenuAppBar
+  Header
 );
 
 //export default withStyles(styles)(MenuAppBar);
