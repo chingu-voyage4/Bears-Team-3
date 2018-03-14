@@ -48,7 +48,7 @@
 // });
 
 // export default connect(mapStateToProps, actions)(Header);
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
@@ -74,7 +74,7 @@ const styles = {
   },
 };
 
-class MenuAppBar extends React.Component {
+class MenuAppBar extends Component {
   state = {
     auth: true,
     anchorEl: null,
