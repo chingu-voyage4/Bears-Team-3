@@ -1,3 +1,5 @@
+// logout user
+export const LOGOUT = 'LOGOUT';
 // fetch user
 export const FETCH_USER = 'FETCH_USER';
 // incremement counter

@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { FETCH_USER } from './types';
+import { LOGOUT, FETCH_USER } from './types';
+
+export const logout = () => async dispatch => {
+  const res = await axios.get('/api/logout');
+  const resData = res.data;
+  dispatch({ type: LOGOUT, resData });
+};
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
