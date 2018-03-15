@@ -4,16 +4,7 @@ import { Header } from './../../containers/Header';
 
 it('renders without crashing', () => {
   const classes = {
-    root: {
-      flexGrow: 1,
-      textAlign: 'left',
-    },
-    flex: {
-      flex: 1,
-    },
-    avatar: {
-      margin: 10,
-    },
+    test: test,
   };
 
   const snap = shallow(<Header classes={classes} />);

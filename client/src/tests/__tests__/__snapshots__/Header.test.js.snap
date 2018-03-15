@@ -7,16 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Header
     classes={
       Object {
-        "avatar": Object {
-          "margin": 10,
-        },
-        "flex": Object {
-          "flex": 1,
-        },
-        "root": Object {
-          "flexGrow": 1,
-          "textAlign": "left",
-        },
+        "test": [Function],
       }
     }
   />,
@@ -46,11 +37,7 @@ ShallowWrapper {
             <pure(ImportContacts) />
           </WithStyles(IconButton)>
           <WithStyles(Typography)
-            className={
-              Object {
-                "flex": 1,
-              }
-            }
+            className={undefined}
             color="inherit"
             variant="title"
           >
@@ -66,10 +53,7 @@ ShallowWrapper {
           </div>
         </WithStyles(Toolbar)>
       </WithStyles(AppBar)>,
-      "className": Object {
-        "flexGrow": 1,
-        "textAlign": "left",
-      },
+      "className": undefined,
     },
     "ref": null,
     "rendered": Object {
@@ -88,11 +72,7 @@ ShallowWrapper {
             <pure(ImportContacts) />
           </WithStyles(IconButton)>
           <WithStyles(Typography)
-            className={
-              Object {
-                "flex": 1,
-              }
-            }
+            className={undefined}
             color="inherit"
             variant="title"
           >
@@ -126,11 +106,7 @@ ShallowWrapper {
               <pure(ImportContacts) />
             </WithStyles(IconButton)>,
             <WithStyles(Typography)
-              className={
-                Object {
-                  "flex": 1,
-                }
-              }
+              className={undefined}
               color="inherit"
               variant="title"
             >
@@ -179,9 +155,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": "Speedstudy",
-              "className": Object {
-                "flex": 1,
-              },
+              "className": undefined,
               "color": "inherit",
               "variant": "title",
             },
@@ -245,11 +219,7 @@ ShallowWrapper {
               <pure(ImportContacts) />
             </WithStyles(IconButton)>
             <WithStyles(Typography)
-              className={
-                Object {
-                  "flex": 1,
-                }
-              }
+              className={undefined}
               color="inherit"
               variant="title"
             >
@@ -265,10 +235,7 @@ ShallowWrapper {
             </div>
           </WithStyles(Toolbar)>
         </WithStyles(AppBar)>,
-        "className": Object {
-          "flexGrow": 1,
-          "textAlign": "left",
-        },
+        "className": undefined,
       },
       "ref": null,
       "rendered": Object {
@@ -287,11 +254,7 @@ ShallowWrapper {
               <pure(ImportContacts) />
             </WithStyles(IconButton)>
             <WithStyles(Typography)
-              className={
-                Object {
-                  "flex": 1,
-                }
-              }
+              className={undefined}
               color="inherit"
               variant="title"
             >
@@ -325,11 +288,7 @@ ShallowWrapper {
                 <pure(ImportContacts) />
               </WithStyles(IconButton)>,
               <WithStyles(Typography)
-                className={
-                  Object {
-                    "flex": 1,
-                  }
-                }
+                className={undefined}
                 color="inherit"
                 variant="title"
               >
@@ -378,9 +337,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": "Speedstudy",
-                "className": Object {
-                  "flex": 1,
-                },
+                "className": undefined,
                 "color": "inherit",
                 "variant": "title",
               },
