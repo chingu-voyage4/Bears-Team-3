@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Header } from './../../containers/Header';
-import MockProvider from '../mockProvider';
 
 it('renders without crashing', () => {
   const classes = {
@@ -17,10 +16,6 @@ it('renders without crashing', () => {
     },
   };
 
-  const snap = shallow(
-    <MockProvider>
-      <Header classes={classes} />
-    </MockProvider>
-  );
+  const snap = shallow(<Header classes={classes} />);
   expect(snap).toMatchSnapshot();
 });
