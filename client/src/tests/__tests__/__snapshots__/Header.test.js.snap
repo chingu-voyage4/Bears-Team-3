@@ -5,7 +5,9 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MockProvider>
-    <UNDEFINED />
+    <Header
+      classes={true}
+    />
   </MockProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -19,7 +21,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <UNDEFINED />,
+      "children": <Header
+        classes={true}
+      />,
       "store": Object {
         "dispatch": [Function],
         "getState": [Function],
@@ -32,11 +36,13 @@ ShallowWrapper {
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
-      "props": Object {},
+      "nodeType": "class",
+      "props": Object {
+        "classes": true,
+      },
       "ref": null,
       "rendered": null,
-      "type": undefined,
+      "type": [Function],
     },
     "type": [Function],
   },
@@ -46,7 +52,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <UNDEFINED />,
+        "children": <Header
+          classes={true}
+        />,
         "store": Object {
           "dispatch": [Function],
           "getState": [Function],
@@ -59,11 +67,13 @@ ShallowWrapper {
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
-        "props": Object {},
+        "nodeType": "class",
+        "props": Object {
+          "classes": true,
+        },
         "ref": null,
         "rendered": null,
-        "type": undefined,
+        "type": [Function],
       },
       "type": [Function],
     },
