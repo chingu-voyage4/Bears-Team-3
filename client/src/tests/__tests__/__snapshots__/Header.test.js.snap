@@ -6,7 +6,20 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <MockProvider>
     <Header
-      classes={true}
+      classes={
+        Object {
+          "avatar": Object {
+            "margin": 10,
+          },
+          "flex": Object {
+            "flex": 1,
+          },
+          "root": Object {
+            "flexGrow": 1,
+            "textAlign": "left",
+          },
+        }
+      }
     />
   </MockProvider>,
   Symbol(enzyme.__renderer__): Object {
@@ -22,7 +35,20 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <Header
-        classes={true}
+        classes={
+          Object {
+            "avatar": Object {
+              "margin": 10,
+            },
+            "flex": Object {
+              "flex": 1,
+            },
+            "root": Object {
+              "flexGrow": 1,
+              "textAlign": "left",
+            },
+          }
+        }
       />,
       "store": Object {
         "dispatch": [Function],
@@ -38,7 +64,18 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "classes": true,
+        "classes": Object {
+          "avatar": Object {
+            "margin": 10,
+          },
+          "flex": Object {
+            "flex": 1,
+          },
+          "root": Object {
+            "flexGrow": 1,
+            "textAlign": "left",
+          },
+        },
       },
       "ref": null,
       "rendered": null,
@@ -53,7 +90,20 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <Header
-          classes={true}
+          classes={
+            Object {
+              "avatar": Object {
+                "margin": 10,
+              },
+              "flex": Object {
+                "flex": 1,
+              },
+              "root": Object {
+                "flexGrow": 1,
+                "textAlign": "left",
+              },
+            }
+          }
         />,
         "store": Object {
           "dispatch": [Function],
@@ -69,7 +119,18 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "classes": true,
+          "classes": Object {
+            "avatar": Object {
+              "margin": 10,
+            },
+            "flex": Object {
+              "flex": 1,
+            },
+            "root": Object {
+              "flexGrow": 1,
+              "textAlign": "left",
+            },
+          },
         },
         "ref": null,
         "rendered": null,
