@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import compose from 'recompose/compose';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -13,7 +14,7 @@ import Avatar from 'material-ui/Avatar';
 import BookIcon from 'material-ui-icons/ImportContacts';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
-import * as actions from '../actions';
+import { logout } from '../actions';
 
 const styles = {
   root: {
@@ -29,12 +30,6 @@ const styles = {
 };
 
 class Header extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.handleLogin = this.handleLogin.bind(this);
-  // }
-
   state = {
     anchorEl: null,
   };
@@ -128,6 +123,11 @@ const mapStateToProps = state => ({
   auth: state.authReducer,
 });
 
-export default compose(withStyles(styles), connect(mapStateToProps, actions))(
-  Header
-);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ logout }, dispatch);
+};
+
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps)
+)(Header);
