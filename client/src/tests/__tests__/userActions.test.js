@@ -14,12 +14,10 @@ describe('User actions', () => {
   });
 
   it('should handle LOGOUT action', () => {
-    // const func = actions.logout();
-    // expect(typeof func).toBe('function');
-    fetchMock.get('/api/logout', { body: { req: null } });
+    fetchMock.get('/api/logout', { body: {} });
     const expectedAction = {
       type: LOGOUT,
-      body: { req: null },
+      body: {},
     };
     const store = mockStore({});
 
@@ -27,6 +25,7 @@ describe('User actions', () => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });
+
   it('should handle FETCH_USER action', () => {
     const func = actions.fetchUser();
     expect(typeof func).toBe('function');
