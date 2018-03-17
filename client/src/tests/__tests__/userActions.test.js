@@ -17,12 +17,11 @@ describe('User actions', () => {
     fetchMock.get('/api/logout', { body: {} });
     const expectedAction = {
       type: LOGOUT,
-      body: {},
     };
     const store = mockStore({});
 
-    return store.dispatch(actions.logout()).then(() => {
-      expect(store.getActions()).toEqual(expectedAction);
+    return store.dispatch(actions.logout()).then(result => {
+      expect(result).toEqual(expectedAction);
     });
   });
 
