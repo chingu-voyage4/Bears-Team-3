@@ -4,11 +4,11 @@ import * as actions from '../../actions/userActions';
 import { LOGOUT, FETCH_USER } from '../../actions/types';
 
 process.on('unhandledRejection', reason => {
-  console.log('reason:', reason);
+  console.log('Unhandled Promise Rejection Reason:', reason);
   // application specific logging, throwing an error, or other logic here
 });
 
-console.log(actions.logout);
+console.log('actions.logout: ', actions.logout);
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
@@ -16,10 +16,13 @@ describe('User actions', () => {
   it('should handle LOGOUT action', () => {
     const store = mockStore({});
 
-    console.log(actions.logout());
-    console.log(store);
+    console.log('actions.logout() ', actions.logout());
+    console.log('store ', store);
 
-    console.log(store.dispatch(actions.logout()));
+    console.log(
+      'store.dispatch(actions.logout()) ',
+      store.dispatch(actions.logout())
+    );
 
     return store.dispatch(actions.logout()).then(() => {
       const actions = store.getActions();
