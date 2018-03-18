@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import { logout, fetchUser } from '../../actions/userActions';
 import { LOGOUT, FETCH_USER } from '../../actions/types';
 
-process.on('unhandledRejection', reason => {
-  console.log('Unhandled Promise Rejection Reason:', reason);
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at:', p, 'reason:', reason);
 });
 
 console.log('actions.logout: ', logout);
