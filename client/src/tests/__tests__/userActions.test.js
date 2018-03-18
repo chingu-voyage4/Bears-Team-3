@@ -20,7 +20,7 @@ describe('User actions', () => {
 
     console.log('store.dispatch(actions.logout()) ', store.dispatch(logout()));
 
-    return store.dispatch(logout({})).then(() => {
+    return store.dispatch(logout()).then(() => {
       const actions = store.getActions();
       console.log(store.getActions());
       expect(actions[0]).toEqual({ type: LOGOUT });
