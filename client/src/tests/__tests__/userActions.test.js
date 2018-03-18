@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as actions from '../../actions/userActions';
-import { LOGOUT } from '../../actions/types';
+import { LOGOUT, FETCH_USER } from '../../actions/types';
 
 process.on('unhandledRejection', reason => {
   console.log('reason:', reason);
@@ -23,6 +23,16 @@ describe('User actions', () => {
       const actions = store.getActions();
       console.log(store.getActions());
       expect(actions[0]).toEqual({ type: LOGOUT });
+    });
+  });
+
+  it('should handle FETCH_USER action', () => {
+    const store = mockStore({});
+
+    return store.dispatch(actions.fetchUser()).then(() => {
+      const actions = store.getActions();
+      console.log(store.getActions());
+      expect(actions[0]).toEqual({ type: FETCH_USER });
     });
   });
 });
