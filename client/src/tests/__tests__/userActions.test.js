@@ -12,7 +12,7 @@ const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 describe('User actions', () => {
-  it('should handle LOGOUT action', done => {
+  it('should handle LOGOUT action', () => {
     const store = mockStore({});
 
     console.log('actions.logout() ', logout());
@@ -24,11 +24,10 @@ describe('User actions', () => {
       const actions = store.getActions();
       console.log(store.getActions());
       expect(actions[0]).toEqual({ type: LOGOUT });
-      done();
     });
   });
 
-  it('should handle FETCH_USER action', done => {
+  it('should handle FETCH_USER action', () => {
     const store = mockStore({});
 
     console.log(
@@ -40,7 +39,6 @@ describe('User actions', () => {
       const actions = store.getActions();
       console.log(store.getActions());
       expect(actions[0]).toEqual({ type: FETCH_USER });
-      done();
     });
   });
 });
