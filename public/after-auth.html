@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    if (window.opener) {
+      window.opener.focus()
+
+      if (window.opener.getCurrentUser) {
+        window.opener.getCurrentUser();
+      }
+    }
+    window.close()
+  </script>
+</body>
+
+</html>
