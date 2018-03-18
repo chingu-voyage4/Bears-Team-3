@@ -1,32 +1,36 @@
-import configureMockStore from 'redux-mock-store';
+import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as actions from '../../actions/userActions';
-import fetchMock from 'fetch-mock';
-import { LOGOUT, FETCH_USER } from '../../actions/types';
+import { LOGOUT } from '../../actions/types';
 
+process.on('unhandledRejection', reason => {
+  console.log('reason:', reason);
+  // application specific logging, throwing an error, or other logic here
+});
+
+// process.on('warning', warning => {
+//   console.warn(warning.name); // Print the warning name
+//   console.warn(warning.message); // Print the warning message
+//   console.warn(warning.stack); // Print the stack trace
+// });
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+const mockStore = configureStore(middlewares);
 
 describe('User actions', () => {
-  afterEach(() => {
-    fetchMock.reset();
-    fetchMock.restore();
-  });
-
   it('should handle LOGOUT action', () => {
-    fetchMock.get('/api/logout', { body: {} });
-    const expectedAction = {
-      type: LOGOUT,
-    };
     const store = mockStore({});
 
-    return store.dispatch(actions.logout()).then(result => {
-      expect(result).toEqual(expectedAction);
+    console.log(store);
+    console.log(actions.logout());
+
+    return store.dispatch(actions.logout()).then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual(LOGOUT);
     });
   });
 
-  it('should handle FETCH_USER action', () => {
-    const func = actions.fetchUser();
-    expect(typeof func).toBe('function');
-  });
+  // it('should handle FETCH_USER action', () => {
+  //   const func = actions.fetchUser();
+  //   expect(typeof func).toBe('function');
+  // });
 });
