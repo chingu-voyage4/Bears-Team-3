@@ -19,6 +19,8 @@ describe('User actions', () => {
     console.log(actions.logout());
     console.log(store);
 
+    console.log(store.dispatch(actions.logout()));
+
     return store.dispatch(actions.logout()).then(() => {
       const actions = store.getActions();
       console.log(store.getActions());
