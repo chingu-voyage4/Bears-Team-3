@@ -4,7 +4,9 @@ import { Header } from './../../containers/Header';
 
 it('renders without crashing', () => {
   const classes = {
-    test: test,
+    root: test,
+    menuButton: test,
+    flex: test,
   };
 
   const snap = shallow(<Header classes={classes} />);

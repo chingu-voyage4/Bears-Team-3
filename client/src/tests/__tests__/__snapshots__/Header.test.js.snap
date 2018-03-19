@@ -7,7 +7,9 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Header
     classes={
       Object {
-        "test": [Function],
+        "flex": [Function],
+        "menuButton": [Function],
+        "root": [Function],
       }
     }
   />,
@@ -29,7 +31,7 @@ ShallowWrapper {
         <WithStyles(Toolbar)>
           <WithStyles(IconButton)
             aria-label="Book"
-            className={undefined}
+            className={[Function]}
             color="inherit"
             component={[Function]}
             to="/"
@@ -37,7 +39,7 @@ ShallowWrapper {
             <pure(ImportContacts) />
           </WithStyles(IconButton)>
           <WithStyles(Typography)
-            className={undefined}
+            className={[Function]}
             color="inherit"
             variant="title"
           >
@@ -53,7 +55,7 @@ ShallowWrapper {
           </div>
         </WithStyles(Toolbar)>
       </WithStyles(AppBar)>,
-      "className": undefined,
+      "className": [Function],
     },
     "ref": null,
     "rendered": Object {
@@ -64,7 +66,7 @@ ShallowWrapper {
         "children": <WithStyles(Toolbar)>
           <WithStyles(IconButton)
             aria-label="Book"
-            className={undefined}
+            className={[Function]}
             color="inherit"
             component={[Function]}
             to="/"
@@ -72,7 +74,7 @@ ShallowWrapper {
             <pure(ImportContacts) />
           </WithStyles(IconButton)>
           <WithStyles(Typography)
-            className={undefined}
+            className={[Function]}
             color="inherit"
             variant="title"
           >
@@ -98,7 +100,7 @@ ShallowWrapper {
           "children": Array [
             <WithStyles(IconButton)
               aria-label="Book"
-              className={undefined}
+              className={[Function]}
               color="inherit"
               component={[Function]}
               to="/"
@@ -106,7 +108,7 @@ ShallowWrapper {
               <pure(ImportContacts) />
             </WithStyles(IconButton)>,
             <WithStyles(Typography)
-              className={undefined}
+              className={[Function]}
               color="inherit"
               variant="title"
             >
@@ -132,7 +134,7 @@ ShallowWrapper {
             "props": Object {
               "aria-label": "Book",
               "children": <pure(ImportContacts) />,
-              "className": undefined,
+              "className": [Function],
               "color": "inherit",
               "component": [Function],
               "to": "/",
@@ -155,7 +157,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": "Speedstudy",
-              "className": undefined,
+              "className": [Function],
               "color": "inherit",
               "variant": "title",
             },
@@ -211,7 +213,7 @@ ShallowWrapper {
           <WithStyles(Toolbar)>
             <WithStyles(IconButton)
               aria-label="Book"
-              className={undefined}
+              className={[Function]}
               color="inherit"
               component={[Function]}
               to="/"
@@ -219,7 +221,7 @@ ShallowWrapper {
               <pure(ImportContacts) />
             </WithStyles(IconButton)>
             <WithStyles(Typography)
-              className={undefined}
+              className={[Function]}
               color="inherit"
               variant="title"
             >
@@ -235,7 +237,7 @@ ShallowWrapper {
             </div>
           </WithStyles(Toolbar)>
         </WithStyles(AppBar)>,
-        "className": undefined,
+        "className": [Function],
       },
       "ref": null,
       "rendered": Object {
@@ -246,7 +248,7 @@ ShallowWrapper {
           "children": <WithStyles(Toolbar)>
             <WithStyles(IconButton)
               aria-label="Book"
-              className={undefined}
+              className={[Function]}
               color="inherit"
               component={[Function]}
               to="/"
@@ -254,7 +256,7 @@ ShallowWrapper {
               <pure(ImportContacts) />
             </WithStyles(IconButton)>
             <WithStyles(Typography)
-              className={undefined}
+              className={[Function]}
               color="inherit"
               variant="title"
             >
@@ -280,7 +282,7 @@ ShallowWrapper {
             "children": Array [
               <WithStyles(IconButton)
                 aria-label="Book"
-                className={undefined}
+                className={[Function]}
                 color="inherit"
                 component={[Function]}
                 to="/"
@@ -288,7 +290,7 @@ ShallowWrapper {
                 <pure(ImportContacts) />
               </WithStyles(IconButton)>,
               <WithStyles(Typography)
-                className={undefined}
+                className={[Function]}
                 color="inherit"
                 variant="title"
               >
@@ -314,7 +316,7 @@ ShallowWrapper {
               "props": Object {
                 "aria-label": "Book",
                 "children": <pure(ImportContacts) />,
-                "className": undefined,
+                "className": [Function],
                 "color": "inherit",
                 "component": [Function],
                 "to": "/",
@@ -337,7 +339,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": "Speedstudy",
-                "className": undefined,
+                "className": [Function],
                 "color": "inherit",
                 "variant": "title",
               },
