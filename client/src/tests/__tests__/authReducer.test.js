@@ -13,5 +13,10 @@ describe('Authentication reducer', () => {
     };
     expect(authReducer({}, fetchUserAction)).toEqual(fetchUserMock);
   });
-  //it('should handle LOGOUT');
+  it('should handle LOGOUT', () => {
+    const logoutAction = {
+      type: LOGOUT,
+    };
+    expect(authReducer({}, logoutAction)).toEqual(false);
+  });
 });
