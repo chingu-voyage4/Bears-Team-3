@@ -1,5 +1,7 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import moxios from 'moxios';
+
 import { logout, fetchUser } from '../../actions/userActions';
 import { LOGOUT, FETCH_USER } from '../../actions/types';
 
@@ -7,7 +9,22 @@ const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 describe('User actions', () => {
+  beforeEach(function() {
+    moxios.install();
+  });
+
+  afterEach(function() {
+    moxios.uninstall();
+  });
+
   it('should handle LOGOUT action', () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+      });
+    });
+
     const store = mockStore({});
 
     return store.dispatch(logout()).then(() => {
