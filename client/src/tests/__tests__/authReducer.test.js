@@ -6,6 +6,12 @@ describe('Authentication reducer', () => {
   it('should return initial state', () => {
     expect(authReducer(undefined, {})).toEqual({});
   });
-  it('should handle FETCH_USER');
-  it('should handle LOGOUT');
+  it('should handle FETCH_USER', () => {
+    const fetchUserAction = {
+      type: FETCH_USER,
+      resData: fetchUserMock,
+    };
+    expect(authReducer({}, fetchUserAction)).toEqual(fetchUserMock);
+  });
+  //it('should handle LOGOUT');
 });
