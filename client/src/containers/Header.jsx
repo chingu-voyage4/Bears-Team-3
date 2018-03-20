@@ -41,6 +41,7 @@ export class Header extends Component {
   };
 
   handleMenu = event => {
+    console.log(event.currentTarget);
     this.setState({ anchorEl: event.currentTarget });
   };
 
