@@ -16,6 +16,8 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 
 import { logout } from '../actions';
 
+IconButton.displayName = 'IconButton';
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -41,7 +43,6 @@ export class Header extends Component {
   };
 
   handleMenu = event => {
-    console.log(event.currentTarget);
     this.setState({ anchorEl: event.currentTarget });
   };
 
