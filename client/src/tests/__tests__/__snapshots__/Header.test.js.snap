@@ -1,5 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Header MenuItem logout should log the user out 1`] = `
+<div
+  className={[Function]}
+>
+  <WithStyles(AppBar)
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <IconButton
+        aria-label="Book"
+        className={[Function]}
+        color="inherit"
+        component={[Function]}
+        to="/"
+      >
+        <pure(ImportContacts) />
+      </IconButton>
+      <WithStyles(Typography)
+        className={[Function]}
+        color="inherit"
+        variant="title"
+      >
+        Speedstudy
+      </WithStyles(Typography)>
+      <div>
+        <IconButton
+          aria-haspopup="true"
+          aria-owns={null}
+          color="inherit"
+          onClick={[Function]}
+        >
+          <WithStyles(Avatar)
+            alt="User Avatar"
+          />
+        </IconButton>
+        <WithStyles(Menu)
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "top",
+            }
+          }
+          id="menu-appbar"
+          onClose={[Function]}
+          open={false}
+          transformOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "top",
+            }
+          }
+        >
+          <MenuItem>
+            Logout
+          </MenuItem>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;
+
 exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
 <div
   className={[Function]}
@@ -52,9 +114,9 @@ exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
             }
           }
         >
-          <WithStyles(MenuItem)>
+          <MenuItem>
             Logout
-          </WithStyles(MenuItem)>
+          </MenuItem>
         </WithStyles(Menu)>
       </div>
     </WithStyles(Toolbar)>

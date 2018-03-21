@@ -17,6 +17,7 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 import { logout } from '../actions';
 
 IconButton.displayName = 'IconButton';
+MenuItem.displayName = 'MenuItem';
 
 const styles = {
   root: {
