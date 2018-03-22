@@ -16,8 +16,10 @@ import Menu, { MenuItem } from 'material-ui/Menu';
 
 import { logout } from '../actions';
 
+//Set displayNames so simulation tests work
 IconButton.displayName = 'IconButton';
 MenuItem.displayName = 'MenuItem';
+Typography.displayName = 'Typography';
 
 const styles = {
   root: {

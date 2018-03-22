@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header MenuItem logout should log the user out 1`] = `
+exports[`Header Clicking outside the menu should call handleClose 1`] = `
 <div
   className={[Function]}
 >
@@ -17,13 +17,13 @@ exports[`Header MenuItem logout should log the user out 1`] = `
       >
         <pure(ImportContacts) />
       </IconButton>
-      <WithStyles(Typography)
+      <Typography
         className={[Function]}
         color="inherit"
         variant="title"
       >
         Speedstudy
-      </WithStyles(Typography)>
+      </Typography>
       <div>
         <IconButton
           aria-haspopup="true"
@@ -79,13 +79,13 @@ exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
       >
         <pure(ImportContacts) />
       </IconButton>
-      <WithStyles(Typography)
+      <Typography
         className={[Function]}
         color="inherit"
         variant="title"
       >
         Speedstudy
-      </WithStyles(Typography)>
+      </Typography>
       <div>
         <IconButton
           aria-haspopup="true"
@@ -162,13 +162,13 @@ ShallowWrapper {
           >
             <pure(ImportContacts) />
           </IconButton>
-          <WithStyles(Typography)
+          <Typography
             className={[Function]}
             color="inherit"
             variant="title"
           >
             Speedstudy
-          </WithStyles(Typography)>
+          </Typography>
           <div>
             <WithStyles(Button)
               color="inherit"
@@ -197,13 +197,13 @@ ShallowWrapper {
           >
             <pure(ImportContacts) />
           </IconButton>
-          <WithStyles(Typography)
+          <Typography
             className={[Function]}
             color="inherit"
             variant="title"
           >
             Speedstudy
-          </WithStyles(Typography)>
+          </Typography>
           <div>
             <WithStyles(Button)
               color="inherit"
@@ -231,13 +231,13 @@ ShallowWrapper {
             >
               <pure(ImportContacts) />
             </IconButton>,
-            <WithStyles(Typography)
+            <Typography
               className={[Function]}
               color="inherit"
               variant="title"
             >
               Speedstudy
-            </WithStyles(Typography)>,
+            </Typography>,
             <div>
               <WithStyles(Button)
                 color="inherit"
@@ -344,13 +344,13 @@ ShallowWrapper {
             >
               <pure(ImportContacts) />
             </IconButton>
-            <WithStyles(Typography)
+            <Typography
               className={[Function]}
               color="inherit"
               variant="title"
             >
               Speedstudy
-            </WithStyles(Typography)>
+            </Typography>
             <div>
               <WithStyles(Button)
                 color="inherit"
@@ -379,13 +379,13 @@ ShallowWrapper {
             >
               <pure(ImportContacts) />
             </IconButton>
-            <WithStyles(Typography)
+            <Typography
               className={[Function]}
               color="inherit"
               variant="title"
             >
               Speedstudy
-            </WithStyles(Typography)>
+            </Typography>
             <div>
               <WithStyles(Button)
                 color="inherit"
@@ -413,13 +413,13 @@ ShallowWrapper {
               >
                 <pure(ImportContacts) />
               </IconButton>,
-              <WithStyles(Typography)
+              <Typography
                 className={[Function]}
                 color="inherit"
                 variant="title"
               >
                 Speedstudy
-              </WithStyles(Typography)>,
+              </Typography>,
               <div>
                 <WithStyles(Button)
                   color="inherit"
