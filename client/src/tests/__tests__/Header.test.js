@@ -25,54 +25,43 @@ describe('Header', () => {
     const wrapper = shallow(<Header classes={classes} auth={true} />);
     const iconButton = wrapper.find('IconButton').at(1);
     iconButton.simulate('click', {
-      target: {
+      currentTarget: {
         value:
           '<button tabindex="0" class="MuiButtonBase-root-47 MuiIconButton-root-41 MuiIconButton-colorInherit-42" type="button" id="avatar" aria-haspopup="true" aria-owns="menu-appbar"><span class="MuiIconButton-label-46"><div class="MuiAvatar-root-87"><img alt="User Avatar" src="https://avatars2.githubusercontent.com/u/14152877?v=4" class="MuiAvatar-img-89"></div></span><span class="MuiTouchRipple-root-56"></span></button>',
       },
     });
-
+    expect(wrapper.state('anchorEl')).toEqual({
+      value:
+        '<button tabindex="0" class="MuiButtonBase-root-47 MuiIconButton-root-41 MuiIconButton-colorInherit-42" type="button" id="avatar" aria-haspopup="true" aria-owns="menu-appbar"><span class="MuiIconButton-label-46"><div class="MuiAvatar-root-87"><img alt="User Avatar" src="https://avatars2.githubusercontent.com/u/14152877?v=4" class="MuiAvatar-img-89"></div></span><span class="MuiTouchRipple-root-56"></span></button>',
+    });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('MenuItem logout should log the user out', () => {
-  //   const classes = {
-  //     root: test,
-  //     menuButton: test,
-  //     flex: test,
-  //   };
-  //   const wrapper = shallow(
-  //     <Header classes={classes} auth={true} logout={actions.logout} />
-  //   );
-  //   const iconButton = wrapper.find('IconButton').at(1);
-  //   iconButton.simulate('click', {
-  //     target: {
-  //       value:
-  //         '<button tabindex="0" class="MuiButtonBase-root-47 MuiIconButton-root-41 MuiIconButton-colorInherit-42" type="button" id="avatar" aria-haspopup="true" aria-owns="menu-appbar"><span class="MuiIconButton-label-46"><div class="MuiAvatar-root-87"><img alt="User Avatar" src="https://avatars2.githubusercontent.com/u/14152877?v=4" class="MuiAvatar-img-89"></div></span><span class="MuiTouchRipple-root-56"></span></button>',
-  //     },
-  //   });
-  //   const menuItem = wrapper.find('MenuItem');
-  //   menuItem.simulate('click');
-
-  //   expect(toJson(wrapper)).toMatchSnapshot();
-  // });
-
-  it('Clicking outside the menu should call handleClose', () => {
+  it('handleClose should set anchorEl state to null', () => {
     const classes = {
       root: test,
       menuButton: test,
       flex: test,
     };
     const wrapper = shallow(<Header classes={classes} auth={true} />);
-    const iconButton = wrapper.find('IconButton').at(1);
-    iconButton.simulate('click', {
-      target: {
+    wrapper.instance().handleMenu({
+      currentTarget: {
         value:
           '<button tabindex="0" class="MuiButtonBase-root-47 MuiIconButton-root-41 MuiIconButton-colorInherit-42" type="button" id="avatar" aria-haspopup="true" aria-owns="menu-appbar"><span class="MuiIconButton-label-46"><div class="MuiAvatar-root-87"><img alt="User Avatar" src="https://avatars2.githubusercontent.com/u/14152877?v=4" class="MuiAvatar-img-89"></div></span><span class="MuiTouchRipple-root-56"></span></button>',
       },
     });
-    const book = wrapper.find('IconButton').at(0);
-    book.simulate('click');
+    wrapper.instance().handleClose();
+    expect(wrapper.state('anchorEl')).toEqual(null);
+  });
 
-    expect(toJson(wrapper)).toMatchSnapshot();
+  it('handleLogin should set anchorEl state to null', () => {
+    const classes = {
+      root: test,
+      menuButton: test,
+      flex: test,
+    };
+    const wrapper = shallow(<Header classes={classes} />);
+    wrapper.instance().handleLogin();
+    expect(wrapper.state('anchorEl')).toEqual(null);
   });
 });

@@ -1,67 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header Clicking outside the menu should call handleClose 1`] = `
-<div
-  className={[Function]}
->
-  <WithStyles(AppBar)
-    position="static"
-  >
-    <WithStyles(Toolbar)>
-      <IconButton
-        aria-label="Book"
-        className={[Function]}
-        color="inherit"
-        component={[Function]}
-        to="/"
-      >
-        <pure(ImportContacts) />
-      </IconButton>
-      <Typography
-        className={[Function]}
-        color="inherit"
-        variant="title"
-      >
-        Speedstudy
-      </Typography>
-      <div>
-        <IconButton
-          aria-haspopup="true"
-          aria-owns={null}
-          color="inherit"
-          onClick={[Function]}
-        >
-          <WithStyles(Avatar)
-            alt="User Avatar"
-          />
-        </IconButton>
-        <WithStyles(Menu)
-          anchorOrigin={
-            Object {
-              "horizontal": "right",
-              "vertical": "top",
-            }
-          }
-          id="menu-appbar"
-          onClose={[Function]}
-          open={false}
-          transformOrigin={
-            Object {
-              "horizontal": "right",
-              "vertical": "top",
-            }
-          }
-        >
-          <MenuItem>
-            Logout
-          </MenuItem>
-        </WithStyles(Menu)>
-      </div>
-    </WithStyles(Toolbar)>
-  </WithStyles(AppBar)>
-</div>
-`;
-
 exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
 <div
   className={[Function]}
@@ -89,7 +27,7 @@ exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
       <div>
         <IconButton
           aria-haspopup="true"
-          aria-owns={null}
+          aria-owns="menu-appbar"
           color="inherit"
           onClick={[Function]}
         >
@@ -98,6 +36,11 @@ exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
           />
         </IconButton>
         <WithStyles(Menu)
+          anchorEl={
+            Object {
+              "value": "<button tabindex=\\"0\\" class=\\"MuiButtonBase-root-47 MuiIconButton-root-41 MuiIconButton-colorInherit-42\\" type=\\"button\\" id=\\"avatar\\" aria-haspopup=\\"true\\" aria-owns=\\"menu-appbar\\"><span class=\\"MuiIconButton-label-46\\"><div class=\\"MuiAvatar-root-87\\"><img alt=\\"User Avatar\\" src=\\"https://avatars2.githubusercontent.com/u/14152877?v=4\\" class=\\"MuiAvatar-img-89\\"></div></span><span class=\\"MuiTouchRipple-root-56\\"></span></button>",
+            }
+          }
           anchorOrigin={
             Object {
               "horizontal": "right",
@@ -106,7 +49,7 @@ exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
           }
           id="menu-appbar"
           onClose={[Function]}
-          open={false}
+          open={true}
           transformOrigin={
             Object {
               "horizontal": "right",
