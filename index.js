@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 require('./models/User');
+require('./models/Activity');
 require('./services/passport');
 
 // connect to mongo on mlab
