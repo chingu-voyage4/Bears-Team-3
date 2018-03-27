@@ -1,0 +1,395 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Header
+    classes={
+      Object {
+        "flex": [Function],
+        "menuButton": [Function],
+        "root": [Function],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <WithStyles(AppBar)
+        position="static"
+      >
+        <WithStyles(Toolbar)>
+          <WithStyles(IconButton)
+            aria-label="Book"
+            className={[Function]}
+            color="inherit"
+            component={[Function]}
+            to="/"
+          >
+            <pure(ImportContacts) />
+          </WithStyles(IconButton)>
+          <WithStyles(Typography)
+            className={[Function]}
+            color="inherit"
+            variant="title"
+          >
+            Speedstudy
+          </WithStyles(Typography)>
+          <div>
+            <WithStyles(Button)
+              color="inherit"
+              onClick={[Function]}
+            >
+              Login With Github
+            </WithStyles(Button)>
+          </div>
+        </WithStyles(Toolbar)>
+      </WithStyles(AppBar)>,
+      "className": [Function],
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <WithStyles(Toolbar)>
+          <WithStyles(IconButton)
+            aria-label="Book"
+            className={[Function]}
+            color="inherit"
+            component={[Function]}
+            to="/"
+          >
+            <pure(ImportContacts) />
+          </WithStyles(IconButton)>
+          <WithStyles(Typography)
+            className={[Function]}
+            color="inherit"
+            variant="title"
+          >
+            Speedstudy
+          </WithStyles(Typography)>
+          <div>
+            <WithStyles(Button)
+              color="inherit"
+              onClick={[Function]}
+            >
+              Login With Github
+            </WithStyles(Button)>
+          </div>
+        </WithStyles(Toolbar)>,
+        "position": "static",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <WithStyles(IconButton)
+              aria-label="Book"
+              className={[Function]}
+              color="inherit"
+              component={[Function]}
+              to="/"
+            >
+              <pure(ImportContacts) />
+            </WithStyles(IconButton)>,
+            <WithStyles(Typography)
+              className={[Function]}
+              color="inherit"
+              variant="title"
+            >
+              Speedstudy
+            </WithStyles(Typography)>,
+            <div>
+              <WithStyles(Button)
+                color="inherit"
+                onClick={[Function]}
+              >
+                Login With Github
+              </WithStyles(Button)>
+            </div>,
+            undefined,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "aria-label": "Book",
+              "children": <pure(ImportContacts) />,
+              "className": [Function],
+              "color": "inherit",
+              "component": [Function],
+              "to": "/",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Speedstudy",
+              "className": [Function],
+              "color": "inherit",
+              "variant": "title",
+            },
+            "ref": null,
+            "rendered": "Speedstudy",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <WithStyles(Button)
+                color="inherit"
+                onClick={[Function]}
+              >
+                Login With Github
+              </WithStyles(Button)>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Login With Github",
+                "color": "inherit",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Login With Github",
+              "type": [Function],
+            },
+            "type": "div",
+          },
+          undefined,
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <WithStyles(AppBar)
+          position="static"
+        >
+          <WithStyles(Toolbar)>
+            <WithStyles(IconButton)
+              aria-label="Book"
+              className={[Function]}
+              color="inherit"
+              component={[Function]}
+              to="/"
+            >
+              <pure(ImportContacts) />
+            </WithStyles(IconButton)>
+            <WithStyles(Typography)
+              className={[Function]}
+              color="inherit"
+              variant="title"
+            >
+              Speedstudy
+            </WithStyles(Typography)>
+            <div>
+              <WithStyles(Button)
+                color="inherit"
+                onClick={[Function]}
+              >
+                Login With Github
+              </WithStyles(Button)>
+            </div>
+          </WithStyles(Toolbar)>
+        </WithStyles(AppBar)>,
+        "className": [Function],
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <WithStyles(Toolbar)>
+            <WithStyles(IconButton)
+              aria-label="Book"
+              className={[Function]}
+              color="inherit"
+              component={[Function]}
+              to="/"
+            >
+              <pure(ImportContacts) />
+            </WithStyles(IconButton)>
+            <WithStyles(Typography)
+              className={[Function]}
+              color="inherit"
+              variant="title"
+            >
+              Speedstudy
+            </WithStyles(Typography)>
+            <div>
+              <WithStyles(Button)
+                color="inherit"
+                onClick={[Function]}
+              >
+                Login With Github
+              </WithStyles(Button)>
+            </div>
+          </WithStyles(Toolbar)>,
+          "position": "static",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <WithStyles(IconButton)
+                aria-label="Book"
+                className={[Function]}
+                color="inherit"
+                component={[Function]}
+                to="/"
+              >
+                <pure(ImportContacts) />
+              </WithStyles(IconButton)>,
+              <WithStyles(Typography)
+                className={[Function]}
+                color="inherit"
+                variant="title"
+              >
+                Speedstudy
+              </WithStyles(Typography)>,
+              <div>
+                <WithStyles(Button)
+                  color="inherit"
+                  onClick={[Function]}
+                >
+                  Login With Github
+                </WithStyles(Button)>
+              </div>,
+              undefined,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "aria-label": "Book",
+                "children": <pure(ImportContacts) />,
+                "className": [Function],
+                "color": "inherit",
+                "component": [Function],
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Speedstudy",
+                "className": [Function],
+                "color": "inherit",
+                "variant": "title",
+              },
+              "ref": null,
+              "rendered": "Speedstudy",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <WithStyles(Button)
+                  color="inherit"
+                  onClick={[Function]}
+                >
+                  Login With Github
+                </WithStyles(Button)>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Login With Github",
+                  "color": "inherit",
+                  "onClick": [Function],
+                },
+                "ref": null,
+                "rendered": "Login With Github",
+                "type": [Function],
+              },
+              "type": "div",
+            },
+            undefined,
+          ],
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
