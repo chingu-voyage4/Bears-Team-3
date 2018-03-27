@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
+const checkAuthentication = require('../middleware/checkAuthentication');
 
 const User = mongoose.model('users');
 const Activity = mongoose.model('activity');
@@ -16,13 +17,27 @@ module.exports = app => {
 		res.send(leaderboard);
 	});
 
-	app.post('/api/activity/new', async (req, res) => {
-		const body = _.pick(req.body, ['activity', 'user']);
+	//adds activity and updates users totalPoints
+	app.post('/api/activity/new', checkAuthentication, async (req, res) => {
+		const body = _.pick(req.body, ['activity']);
 		const activity = new Activity({
 			activity: body.activity,
-			_user: body.user,
+			_user: req.user.id,
 		});
-		await activity.save();
-		res.send('Saved activity');
+
+		try {
+			await activity.save();
+
+			const user = await User.findOneAndUpdate(
+				{ _id: req.user.id },
+				{
+					$inc: { totalPoints: activity.points },
+				},
+				{ new: true }
+			);
+			res.send(user);
+		} catch (err) {
+			res.status(400).send(err);
+		}
 	});
 };
