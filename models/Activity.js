@@ -102,7 +102,7 @@ ActivitySchema.pre('save', function(next) {
 			action.activityType = 'algorithms';
 			break;
 		default:
-			next();
+			break;
 	}
 
 	switch (action.activity) {
@@ -112,12 +112,12 @@ ActivitySchema.pre('save', function(next) {
 		case 'Tutorial Course':
 		case 'Basic Project':
 			action.points = 100;
-			next();
+			break;
 		case 'Substantial Project':
 		case 'Book':
 		case 'Module to npm':
 			action.points = 200;
-			next();
+			break;
 		case 'HackerRank':
 		case 'CodeWars':
 		case 'Open Source PR':
@@ -128,34 +128,35 @@ ActivitySchema.pre('save', function(next) {
 		case 'Kaggle Competition':
 		case 'Driven Data Competition':
 			action.points = 50;
-			next();
+			break;
 		case 'Physical Activity':
 		case 'Musical Instrument Practice':
 		case 'Khan Academy':
 		case 'Practice Writing Skills':
 			action.points = 10;
-			next();
+			break;
 		case 'Large Project':
 			action.points = 300;
-			next();
+			break;
 		case 'Gigantic Project':
 			action.points = 400;
-			next();
+			break;
 		case 'Blog Post':
 			action.points = 15;
-			next();
+			break;
 		case 'Blog Post Tutorial':
 			action.points = 40;
-			next();
+			break;
 		case 'Diary entry':
 			action.points = 5;
-			next();
+			break;
 		case 'CodinGame Bot Competition':
 			action.points = 20;
-			next();
+			break;
 		default:
-			next();
+			break;
 	}
+	next();
 });
 
 mongoose.model('activity', ActivitySchema);
