@@ -1,6 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
+<div
+  className={[Function]}
+>
+  <WithStyles(AppBar)
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <IconButton
+        aria-label="Book"
+        className={[Function]}
+        color="inherit"
+        component={[Function]}
+        to="/"
+      >
+        <pure(ImportContacts) />
+      </IconButton>
+      <Typography
+        className={[Function]}
+        color="inherit"
+        variant="title"
+      >
+        Speedstudy
+      </Typography>
+      <div>
+        <IconButton
+          aria-haspopup="true"
+          aria-owns="menu-appbar"
+          color="inherit"
+          onClick={[Function]}
+        >
+          <WithStyles(Avatar)
+            alt="User Avatar"
+          />
+        </IconButton>
+        <WithStyles(Menu)
+          anchorEl={
+            Object {
+              "value": "<button tabindex=\\"0\\" class=\\"MuiButtonBase-root-47 MuiIconButton-root-41 MuiIconButton-colorInherit-42\\" type=\\"button\\" id=\\"avatar\\" aria-haspopup=\\"true\\" aria-owns=\\"menu-appbar\\"><span class=\\"MuiIconButton-label-46\\"><div class=\\"MuiAvatar-root-87\\"><img alt=\\"User Avatar\\" src=\\"https://avatars2.githubusercontent.com/u/14152877?v=4\\" class=\\"MuiAvatar-img-89\\"></div></span><span class=\\"MuiTouchRipple-root-56\\"></span></button>",
+            }
+          }
+          anchorOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "top",
+            }
+          }
+          id="menu-appbar"
+          onClose={[Function]}
+          open={true}
+          transformOrigin={
+            Object {
+              "horizontal": "right",
+              "vertical": "top",
+            }
+          }
+        >
+          <MenuItem>
+            Logout
+          </MenuItem>
+        </WithStyles(Menu)>
+      </div>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;
+
+exports[`Header renders without crashing 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -29,7 +96,7 @@ ShallowWrapper {
         position="static"
       >
         <WithStyles(Toolbar)>
-          <WithStyles(IconButton)
+          <IconButton
             aria-label="Book"
             className={[Function]}
             color="inherit"
@@ -37,14 +104,14 @@ ShallowWrapper {
             to="/"
           >
             <pure(ImportContacts) />
-          </WithStyles(IconButton)>
-          <WithStyles(Typography)
+          </IconButton>
+          <Typography
             className={[Function]}
             color="inherit"
             variant="title"
           >
             Speedstudy
-          </WithStyles(Typography)>
+          </Typography>
           <div>
             <WithStyles(Button)
               color="inherit"
@@ -64,7 +131,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <WithStyles(Toolbar)>
-          <WithStyles(IconButton)
+          <IconButton
             aria-label="Book"
             className={[Function]}
             color="inherit"
@@ -72,14 +139,14 @@ ShallowWrapper {
             to="/"
           >
             <pure(ImportContacts) />
-          </WithStyles(IconButton)>
-          <WithStyles(Typography)
+          </IconButton>
+          <Typography
             className={[Function]}
             color="inherit"
             variant="title"
           >
             Speedstudy
-          </WithStyles(Typography)>
+          </Typography>
           <div>
             <WithStyles(Button)
               color="inherit"
@@ -98,7 +165,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <WithStyles(IconButton)
+            <IconButton
               aria-label="Book"
               className={[Function]}
               color="inherit"
@@ -106,14 +173,14 @@ ShallowWrapper {
               to="/"
             >
               <pure(ImportContacts) />
-            </WithStyles(IconButton)>,
-            <WithStyles(Typography)
+            </IconButton>,
+            <Typography
               className={[Function]}
               color="inherit"
               variant="title"
             >
               Speedstudy
-            </WithStyles(Typography)>,
+            </Typography>,
             <div>
               <WithStyles(Button)
                 color="inherit"
@@ -211,7 +278,7 @@ ShallowWrapper {
           position="static"
         >
           <WithStyles(Toolbar)>
-            <WithStyles(IconButton)
+            <IconButton
               aria-label="Book"
               className={[Function]}
               color="inherit"
@@ -219,14 +286,14 @@ ShallowWrapper {
               to="/"
             >
               <pure(ImportContacts) />
-            </WithStyles(IconButton)>
-            <WithStyles(Typography)
+            </IconButton>
+            <Typography
               className={[Function]}
               color="inherit"
               variant="title"
             >
               Speedstudy
-            </WithStyles(Typography)>
+            </Typography>
             <div>
               <WithStyles(Button)
                 color="inherit"
@@ -246,7 +313,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": <WithStyles(Toolbar)>
-            <WithStyles(IconButton)
+            <IconButton
               aria-label="Book"
               className={[Function]}
               color="inherit"
@@ -254,14 +321,14 @@ ShallowWrapper {
               to="/"
             >
               <pure(ImportContacts) />
-            </WithStyles(IconButton)>
-            <WithStyles(Typography)
+            </IconButton>
+            <Typography
               className={[Function]}
               color="inherit"
               variant="title"
             >
               Speedstudy
-            </WithStyles(Typography)>
+            </Typography>
             <div>
               <WithStyles(Button)
                 color="inherit"
@@ -280,7 +347,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <WithStyles(IconButton)
+              <IconButton
                 aria-label="Book"
                 className={[Function]}
                 color="inherit"
@@ -288,14 +355,14 @@ ShallowWrapper {
                 to="/"
               >
                 <pure(ImportContacts) />
-              </WithStyles(IconButton)>,
-              <WithStyles(Typography)
+              </IconButton>,
+              <Typography
                 className={[Function]}
                 color="inherit"
                 variant="title"
               >
                 Speedstudy
-              </WithStyles(Typography)>,
+              </Typography>,
               <div>
                 <WithStyles(Button)
                   color="inherit"
