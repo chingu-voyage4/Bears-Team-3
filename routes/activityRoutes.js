@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
 const checkAuthentication = require('../middleware/checkAuthentication');
+const isValidId = require('../utils/isValidId');
 
 const User = mongoose.model('users');
 const Activity = mongoose.model('activity');
@@ -28,13 +29,63 @@ module.exports = app => {
 		try {
 			await activity.save();
 
-			const user = await User.findOneAndUpdate(
-				{ _id: req.user.id },
-				{
-					$inc: { totalPoints: activity.points },
-				},
-				{ new: true }
-			);
+			req.user.totalPoints += activity.points;
+			const user = await req.user.save();
+
+			res.send(user);
+		} catch (err) {
+			res.status(400).send(err);
+		}
+	});
+
+	//deletes activity and updates users totalPoints
+	app.delete('/api/activity/:id', checkAuthentication, async (req, res) => {
+		const { id } = req.params;
+		if (!isValidId(id)) return res.status(404).send('Invalid Id');
+
+		try {
+			const activity = await Activity.findOneAndRemove({
+				_id: id,
+				_user: req.user.id,
+			});
+			if (!activity)
+				return res
+					.status(404)
+					.send('Could not find an activity belonging to you');
+
+			const newTotal =
+				req.user.totalPoints - activity.points > 0
+					? req.user.totalPoints - activity.points
+					: 0;
+
+			req.user.totalPoints = newTotal;
+			const user = await req.user.save();
+			res.send(user);
+		} catch (err) {
+			res.status(400).send({ err });
+		}
+	});
+
+	//Updates activity name and users points
+	app.patch('/api/activity/:id', checkAuthentication, async (req, res) => {
+		const { id } = req.params;
+		const body = _.pick(req.body, ['activity']);
+
+		if (!isValidId(id)) return res.status(404).send('Invalid Id');
+
+		try {
+			const oldActivity = await Activity.findOne({
+				_id: id,
+				_user: req.user.id,
+			});
+
+			req.user.totalPoints -= oldActivity.points;
+
+			oldActivity.activity = body.activity;
+			const newActivity = await oldActivity.save();
+
+			req.user.totalPoints += newActivity.points;
+			const user = await req.user.save();
 			res.send(user);
 		} catch (err) {
 			res.status(400).send(err);
