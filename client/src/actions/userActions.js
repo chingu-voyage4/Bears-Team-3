@@ -1,9 +1,15 @@
 import axios from 'axios';
 import { LOGOUT, FETCH_USER } from './types';
 
+// export const logout = () => {
+//   return dispatch => {
+//     axios.get('/api/logout').then(() => dispatch({ type: LOGOUT }));
+//   };
+// };
+
 export const logout = () => async dispatch => {
   await axios.get('/api/logout');
-  dispatch({ type: LOGOUT });
+  return dispatch({ type: LOGOUT });
 };
 
 export const fetchUser = () => async dispatch => {
