@@ -1,4 +1,8 @@
 module.exports = id => {
 	const ObjectId = require('mongoose').Types.ObjectId;
-	return ObjectId(id) == id;
+	try {
+		return ObjectId(id) == id;
+	} catch (err) {
+		return false;
+	}
 };
