@@ -39,19 +39,19 @@ export class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
-          <TableCell padding="checkbox">
+          {/* <TableCell padding="checkbox">
             <Checkbox
               indeterminate={numSelected > 0 && numSelected < rowCount}
               checked={numSelected === rowCount}
               onChange={onSelectAllClick}
             />
-          </TableCell>
+          </TableCell> */}
           {columnData.map(column => {
             return (
               <TableCell
                 key={column.id}
                 numeric={column.numeric}
-                padding={column.disablePadding ? 'none' : 'default'}
+                padding={'default'}
                 sortDirection={orderBy === column.id ? order : false}
               >
                 <Tooltip

@@ -124,7 +124,7 @@ class EnhancedTable extends React.Component {
     return (
       <div className="table">
         <Paper className={classes.root}>
-          <EnhancedTableToolbar numSelected={selected.length} />
+          {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
           <div className={classes.tableWrapper}>
             <Table className={classes.table}>
               <EnhancedTableHead
@@ -150,10 +150,11 @@ class EnhancedTable extends React.Component {
                         key={n.id}
                         selected={isSelected}
                       >
-                        <TableCell padding="checkbox">
+                        {/* <TableCell padding="checkbox">
                           <Checkbox checked={isSelected} />
-                        </TableCell>
-                        <TableCell padding="none">{n.name}</TableCell>
+                        </TableCell> */}
+                        {/* <TableCell padding="none">{n.name}</TableCell> */}
+                        <TableCell>{n.name}</TableCell>
                         <TableCell numeric>{n.calories}</TableCell>
                         <TableCell numeric>{n.fat}</TableCell>
                         <TableCell numeric>{n.carbs}</TableCell>
@@ -167,7 +168,7 @@ class EnhancedTable extends React.Component {
                   </TableRow>
                 )}
               </TableBody>
-              <TableFooter>
+              {/* <TableFooter>
                 <TableRow>
                   <TablePagination
                     colSpan={6}
@@ -184,7 +185,7 @@ class EnhancedTable extends React.Component {
                     onChangeRowsPerPage={this.handleChangeRowsPerPage}
                   />
                 </TableRow>
-              </TableFooter>
+              </TableFooter> */}
             </Table>
           </div>
         </Paper>
