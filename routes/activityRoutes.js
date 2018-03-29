@@ -18,6 +18,18 @@ module.exports = app => {
 		res.send(leaderboard);
 	});
 
+	app.get('/api/activities/:userName', async (req, res) => {
+		const { userName } = req.params;
+
+		try {
+			const user = await User.findOne({ userName });
+			const activities = await Activity.find({ _user: user._id });
+			res.send(activities);
+		} catch (err) {
+			res.status(400).send(err);
+		}
+	});
+
 	//adds activity and updates users totalPoints
 	app.post('/api/activity/new', checkAuthentication, async (req, res) => {
 		const body = _.pick(req.body, ['activity', 'url', 'title']);
