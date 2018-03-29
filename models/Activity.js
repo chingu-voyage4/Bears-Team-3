@@ -41,17 +41,6 @@ const ActivitySchema = new Schema({
 	points: {
 		type: Number,
 	},
-	activityType: {
-		type: String,
-		enum: [
-			'project',
-			'foundation',
-			'data-science',
-			'design',
-			'communication',
-			'algorithms',
-		],
-	},
 	title: {
 		type: String,
 		required: true,
@@ -76,51 +65,6 @@ const ActivitySchema = new Schema({
 
 ActivitySchema.pre('save', function(next) {
 	let action = this;
-
-	switch (action.activity) {
-		case 'Basic Project':
-		case 'Substantial Project':
-		case 'Large Project':
-		case 'Gigantic Project':
-			action.activityType = 'project';
-			break;
-		case 'Book':
-		case 'Tutorial Course':
-		case 'University Level Course':
-		case 'Physical Activity':
-		case 'Musical Instrument Practice':
-		case 'Khan Academy':
-			action.activityType = 'foundation';
-			break;
-		case 'Analytics Vidhya Competition':
-		case 'Crowd Analytix Competition':
-		case 'Kaggle Competition':
-		case 'Driven Data Competition':
-			action.activityType = 'data-science';
-			break;
-		case 'Design Competition':
-			action.activityType = 'design';
-			break;
-		case 'Blog Post':
-		case 'Blog Post Tutorial':
-		case 'Practice Writing Skills':
-		case 'Video Tutorial':
-		case 'Open Source PR':
-		case 'Module to npm':
-		case 'Team Up for a project':
-		case 'Diary entry':
-			action.activityType = 'communication';
-			break;
-		case 'CodeWars':
-		case 'CodinGame Tier':
-		case 'CodinGame Bot Competition':
-		case 'HackerRank':
-		case 'Google Code Jam':
-			action.activityType = 'algorithms';
-			break;
-		default:
-			break;
-	}
 
 	switch (action.activity) {
 		case 'Google Code Jam':
