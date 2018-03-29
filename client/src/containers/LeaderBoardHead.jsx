@@ -6,7 +6,7 @@ import {
   TableRow,
   TableSortLabel,
 } from 'material-ui/Table';
-import Checkbox from 'material-ui/Checkbox';
+//import Checkbox from 'material-ui/Checkbox';
 import Tooltip from 'material-ui/Tooltip';
 
 const columnData = [
@@ -29,11 +29,11 @@ export class EnhancedTableHead extends React.Component {
 
   render() {
     const {
-      onSelectAllClick,
+      //onSelectAllClick,
       order,
       orderBy,
-      numSelected,
-      rowCount,
+      //numSelected,
+      //rowCount,
     } = this.props;
 
     return (
@@ -77,9 +77,9 @@ export class EnhancedTableHead extends React.Component {
 }
 
 EnhancedTableHead.propTypes = {
-  numSelected: PropTypes.number.isRequired,
+  //numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
+  //onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,

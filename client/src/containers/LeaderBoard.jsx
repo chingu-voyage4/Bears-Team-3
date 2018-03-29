@@ -10,7 +10,7 @@ import Table, {
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox';
-import EnhancedTableToolbar from './LeaderBoardToolBar';
+//import EnhancedTableToolbar from './LeaderBoardToolBar';
 import EnhancedTableHead from './LeaderBoardHead';
 
 let counter = 0;
@@ -55,8 +55,8 @@ class EnhancedTable extends React.Component {
         createData('Nougat', 360, 19.0, 9, 37.0),
         createData('Oreo', 437, 18.0, 63, 4.0),
       ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
-      page: 0,
-      rowsPerPage: 5,
+      // page: 0,
+      // rowsPerPage: 50,
     };
   }
 
@@ -118,8 +118,8 @@ class EnhancedTable extends React.Component {
   render() {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
-    const emptyRows =
-      rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    // const emptyRows =
+    //   rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
     return (
       <div className="table">
@@ -128,16 +128,16 @@ class EnhancedTable extends React.Component {
           <div className={classes.tableWrapper}>
             <Table className={classes.table}>
               <EnhancedTableHead
-                numSelected={selected.length}
+                //numSelected={selected.length}
                 order={order}
                 orderBy={orderBy}
-                onSelectAllClick={this.handleSelectAllClick}
+                //onSelectAllClick={this.handleSelectAllClick}
                 onRequestSort={this.handleRequestSort}
                 rowCount={data.length}
               />
               <TableBody>
                 {data
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  //.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map(n => {
                     const isSelected = this.isSelected(n.id);
                     return (
@@ -162,11 +162,11 @@ class EnhancedTable extends React.Component {
                       </TableRow>
                     );
                   })}
-                {emptyRows > 0 && (
+                {/* {emptyRows > 0 && (
                   <TableRow style={{ height: 49 * emptyRows }}>
                     <TableCell colSpan={6} />
                   </TableRow>
-                )}
+                )} */}
               </TableBody>
               {/* <TableFooter>
                 <TableRow>
