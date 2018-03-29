@@ -62,7 +62,6 @@ const ActivitySchema = new Schema({
 	},
 	url: {
 		type: String,
-		required: true,
 		validate: {
 			validator: value => isValidUrl(value),
 			message: '{VALUE} is not a valid URL',
