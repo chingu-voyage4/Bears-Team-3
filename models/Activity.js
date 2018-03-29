@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const isValidUrl = require('../utils/isValidUrl');
+
 const ActivitySchema = new Schema({
 	activity: {
 		type: String,
@@ -41,7 +43,6 @@ const ActivitySchema = new Schema({
 	},
 	activityType: {
 		type: String,
-
 		enum: [
 			'project',
 			'foundation',
@@ -51,8 +52,25 @@ const ActivitySchema = new Schema({
 			'algorithms',
 		],
 	},
+	title: {
+		type: String,
+		required: true,
+	},
+	dateCompleted: {
+		type: Date,
+		default: Date.now(),
+	},
+	url: {
+		type: String,
+		required: true,
+		validate: {
+			validator: value => isValidUrl(value),
+			message: '{VALUE} is not a valid URL',
+		},
+	},
 	_user: {
-		type: mongoose.Schema.Types.ObjectId,
+		type: Schema.Types.ObjectId,
+		ref: 'User',
 		required: true,
 	},
 });
@@ -160,4 +178,3 @@ ActivitySchema.pre('save', function(next) {
 });
 
 mongoose.model('activity', ActivitySchema);
-//
