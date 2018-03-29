@@ -69,7 +69,7 @@ module.exports = app => {
 	//Updates activity name and users points
 	app.patch('/api/activity/:id', checkAuthentication, async (req, res) => {
 		const { id } = req.params;
-		const body = _.pick(req.body, ['activity']);
+		const body = _.pick(req.body, ['activity', 'url', 'title']);
 
 		if (!isValidId(id)) return res.status(404).send('Invalid Id');
 
@@ -81,7 +81,10 @@ module.exports = app => {
 
 			req.user.totalPoints -= oldActivity.points;
 
-			oldActivity.activity = body.activity;
+			Object.keys(body).forEach(key => {
+				oldActivity[key] = body[key];
+			});
+
 			const newActivity = await oldActivity.save();
 
 			req.user.totalPoints += newActivity.points;
