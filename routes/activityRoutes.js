@@ -18,11 +18,23 @@ module.exports = app => {
 		res.send(leaderboard);
 	});
 
+	app.get('/api/activities/:userName', async (req, res) => {
+		const { userName } = req.params;
+
+		try {
+			const user = await User.findOne({ userName });
+			const activities = await Activity.find({ _user: user._id });
+			res.send(activities);
+		} catch (err) {
+			res.status(400).send(err);
+		}
+	});
+
 	//adds activity and updates users totalPoints
 	app.post('/api/activity/new', checkAuthentication, async (req, res) => {
-		const body = _.pick(req.body, ['activity']);
+		const body = _.pick(req.body, ['activity', 'url', 'title']);
 		const activity = new Activity({
-			activity: body.activity,
+			...body,
 			_user: req.user.id,
 		});
 
@@ -69,7 +81,7 @@ module.exports = app => {
 	//Updates activity name and users points
 	app.patch('/api/activity/:id', checkAuthentication, async (req, res) => {
 		const { id } = req.params;
-		const body = _.pick(req.body, ['activity']);
+		const body = _.pick(req.body, ['activity', 'url', 'title']);
 
 		if (!isValidId(id)) return res.status(404).send('Invalid Id');
 
@@ -81,7 +93,10 @@ module.exports = app => {
 
 			req.user.totalPoints -= oldActivity.points;
 
-			oldActivity.activity = body.activity;
+			Object.keys(body).forEach(key => {
+				oldActivity[key] = body[key];
+			});
+
 			const newActivity = await oldActivity.save();
 
 			req.user.totalPoints += newActivity.points;
