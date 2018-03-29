@@ -20,9 +20,9 @@ module.exports = app => {
 
 	//adds activity and updates users totalPoints
 	app.post('/api/activity/new', checkAuthentication, async (req, res) => {
-		const body = _.pick(req.body, ['activity']);
+		const body = _.pick(req.body, ['activity', 'url', 'title']);
 		const activity = new Activity({
-			activity: body.activity,
+			...body,
 			_user: req.user.id,
 		});
 
