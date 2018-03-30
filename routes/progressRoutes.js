@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const _ = require('lodash/core');
 
 const checkAuthentication = require('../middleware/checkAuthentication');
 const isValidId = require('../utils/isValidId');
@@ -47,7 +48,24 @@ module.exports = app => {
 	});
 
 	//Update user's progress data
-	app.get('/api/progress/:userName', checkAuthentication, async (req, res) => {
-		res.send('Hi there');
+	app.patch('/api/progress/:userId', checkAuthentication, async (req, res) => {
+		try {
+			const { userId } = req.params;
+			if (!isValidId(userId)) throw new Error('Invalid id');
+
+			const body = _.pick(req.body, ['goal', 'currentCourse', 'studyPlan']);
+
+			const oldProgress = await Progress.findOne({ _user: userId });
+			if (!oldProgress) throw new Error('No progress data found to update!');
+
+			Object.keys(body).forEach(key => {
+				oldProgress[key] = body[key];
+			});
+
+			const newProgress = await oldProgress.save();
+			res.send(newProgress);
+		} catch (err) {
+			res.status(400).send(err.message);
+		}
 	});
 };
