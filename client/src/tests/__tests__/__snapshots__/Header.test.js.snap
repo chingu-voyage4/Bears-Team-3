@@ -60,6 +60,16 @@ exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
           <MenuItem>
             Logout
           </MenuItem>
+          <MenuItem
+            component={[Function]}
+            to={
+              Object {
+                "pathname": "/undefined",
+              }
+            }
+          >
+            My Page
+          </MenuItem>
         </WithStyles(Menu)>
       </div>
     </WithStyles(Toolbar)>

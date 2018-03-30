@@ -6,13 +6,11 @@ class User extends Component {
   };
 
   componentWillMount() {
-    console.log(this.props.match.params.userName);
     this.setState({ user: this.props.match.params.userName });
   }
 
   render() {
     const { user } = this.state;
-    console.log(user);
     return (
       <div>
         <h2>{user} Page</h2>
