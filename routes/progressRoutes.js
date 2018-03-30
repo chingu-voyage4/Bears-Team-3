@@ -48,14 +48,11 @@ module.exports = app => {
 	});
 
 	//Update user's progress data
-	app.patch('/api/progress/:userId', checkAuthentication, async (req, res) => {
+	app.patch('/api/progress', checkAuthentication, async (req, res) => {
 		try {
-			const { userId } = req.params;
-			if (!isValidId(userId)) throw new Error('Invalid id');
-
 			const body = _.pick(req.body, ['goal', 'currentCourse', 'studyPlan']);
 
-			const oldProgress = await Progress.findOne({ _user: userId });
+			const oldProgress = await Progress.findOne({ _user: req.user.id });
 			if (!oldProgress) throw new Error('No progress data found to update!');
 
 			Object.keys(body).forEach(key => {
