@@ -65,4 +65,15 @@ module.exports = app => {
 			res.status(400).send(err.message);
 		}
 	});
+
+	app.delete('/api/progress', checkAuthentication, async (req, res) => {
+		try {
+			const removed = await Progress.findOneAndRemove({ _user: req.user.id });
+			if (!removed) throw new Error('Nothing to delete');
+
+			res.send('Progress deleted');
+		} catch (err) {
+			res.status(400).send(err.message);
+		}
+	});
 };
