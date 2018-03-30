@@ -1,13 +1,24 @@
 const mongoose = require('mongoose');
 
 const checkAuthentication = require('../middleware/checkAuthentication');
+const isValidId = require('../utils/isValidId');
 
 const Progress = mongoose.model('progress');
 
 module.exports = app => {
 	//Gets user's progress data
-	app.get('/api/progress/:userName', async (req, res) => {
-		res.send('Hi there');
+	app.get('/api/progress/:userId', async (req, res) => {
+		try {
+			const { userId } = req.params;
+			if (!isValidId(userId)) throw new Error('Invalid id');
+
+			const progress = await Progress.findOne({ _user: userId });
+			if (!progress) throw new Error('No progress data found');
+
+			res.send(progress);
+		} catch (err) {
+			res.status(400).send(err.message);
+		}
 	});
 
 	//Create user's progress data
