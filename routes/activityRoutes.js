@@ -18,12 +18,18 @@ module.exports = app => {
 		res.send(leaderboard);
 	});
 
-	app.get('/api/activities/:userName', async (req, res) => {
+	app.get('/api/user/:userName', async (req, res) => {
 		const { userName } = req.params;
+		const user = await User.findOne({ userName });
+		res.send(user);
+	});
+
+	app.get('/api/activities/:id', async (req, res) => {
+		const { id } = req.params;
+		if (!isValidId(id)) return res.status(404).send('Invalid Id');
 
 		try {
-			const user = await User.findOne({ userName });
-			const activities = await Activity.find({ _user: user._id });
+			const activities = await Activity.find({ _user: id });
 			res.send(activities);
 		} catch (err) {
 			res.status(400).send(err);
