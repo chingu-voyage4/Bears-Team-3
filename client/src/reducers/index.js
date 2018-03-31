@@ -5,7 +5,7 @@ import counterReducer from './counterReducer';
 import activitiesReducer from './activitiesReducer';
 
 export default combineReducers({
-	authReducer,
-	counterReducer,
-	activities: activitiesReducer,
+  authReducer,
+  counterReducer,
+  activities: activitiesReducer,
 });

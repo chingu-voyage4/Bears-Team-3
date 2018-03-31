@@ -12,7 +12,7 @@ describe('Routes', () => {
         <MemoryRouter initialEntries={['/']} initialIndex={0}>
           <Routes />
         </MemoryRouter>
-      </MockProvider>,
+      </MockProvider>
     );
     expect(wrapper.find(Home)).toHaveLength(1);
   });
@@ -21,7 +21,7 @@ describe('Routes', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/about']} initialIndex={0}>
         <Routes />
-      </MemoryRouter>,
+      </MemoryRouter>
     );
     expect(wrapper.find(About)).toHaveLength(1);
   });
