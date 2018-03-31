@@ -5,6 +5,8 @@ import reducer from './../reducers';
 
 const store = createStore(reducer);
 
-const MockProvider = ({ children }) => <Provider store={store}>{children}</Provider>;
+const MockProvider = ({ children }) => (
+  <Provider store={store}>{children}</Provider>
+);
 
 export default MockProvider;

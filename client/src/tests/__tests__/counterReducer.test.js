@@ -3,7 +3,8 @@ import { INCREMENT, DECREMENT } from '../../actions/types';
 
 // To make the test unbiased we generate a random initialState for INCREMENT and DECREMENT,
 // The reducer result should always be predictable regardless of initialState.
-const getRandomNumber = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
+const getRandomNumber = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
 
 const randomNumber = getRandomNumber(1, 10);
 
@@ -15,14 +16,14 @@ describe('Counter reducer', () => {
     expect(
       counterReducer(randomNumber, {
         type: INCREMENT,
-      }),
+      })
     ).toEqual(randomNumber + 1);
   });
   it('should handle DECREMENT', () => {
     expect(
       counterReducer(randomNumber, {
         type: DECREMENT,
-      }),
+      })
     ).toEqual(randomNumber - 1);
   });
 });
