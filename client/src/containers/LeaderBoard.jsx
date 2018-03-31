@@ -11,7 +11,7 @@ import Table, {
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox';
 //import EnhancedTableToolbar from './LeaderBoardToolBar';
-import EnhancedTableHead from './LeaderBoardHead';
+import LeaderBoardHead from './LeaderBoardHead';
 
 let counter = 0;
 function createData(name, calories, fat, carbs, protein) {
@@ -32,7 +32,7 @@ const styles = theme => ({
   },
 });
 
-class EnhancedTable extends React.Component {
+class LeaderBoard extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -76,48 +76,49 @@ class EnhancedTable extends React.Component {
     this.setState({ data, order, orderBy });
   };
 
-  handleSelectAllClick = (event, checked) => {
-    if (checked) {
-      this.setState({ selected: this.state.data.map(n => n.id) });
-      return;
-    }
-    this.setState({ selected: [] });
-  };
+  // handleSelectAllClick = (event, checked) => {
+  //   if (checked) {
+  //     this.setState({ selected: this.state.data.map(n => n.id) });
+  //     return;
+  //   }
+  //   this.setState({ selected: [] });
+  // };
 
-  handleClick = (event, id) => {
-    const { selected } = this.state;
-    const selectedIndex = selected.indexOf(id);
-    let newSelected = [];
+  // handleClick = (event, id) => {
+  //   const { selected } = this.state;
+  //   const selectedIndex = selected.indexOf(id);
+  //   let newSelected = [];
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
+  //   if (selectedIndex === -1) {
+  //     newSelected = newSelected.concat(selected, id);
+  //   } else if (selectedIndex === 0) {
+  //     newSelected = newSelected.concat(selected.slice(1));
+  //   } else if (selectedIndex === selected.length - 1) {
+  //     newSelected = newSelected.concat(selected.slice(0, -1));
+  //   } else if (selectedIndex > 0) {
+  //     newSelected = newSelected.concat(
+  //       selected.slice(0, selectedIndex),
+  //       selected.slice(selectedIndex + 1)
+  //     );
+  //   }
 
-    this.setState({ selected: newSelected });
-  };
+  //   this.setState({ selected: newSelected });
+  // };
 
-  handleChangePage = (event, page) => {
-    this.setState({ page });
-  };
+  // handleChangePage = (event, page) => {
+  //   this.setState({ page });
+  // };
 
-  handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
-  };
+  // handleChangeRowsPerPage = event => {
+  //   this.setState({ rowsPerPage: event.target.value });
+  // };
 
-  isSelected = id => this.state.selected.indexOf(id) !== -1;
+  // isSelected = id => this.state.selected.indexOf(id) !== -1;
 
   render() {
     const { classes } = this.props;
-    const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
+    const { data, order, orderBy } = this.state;
+
     // const emptyRows =
     //   rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
@@ -127,7 +128,7 @@ class EnhancedTable extends React.Component {
           {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
           <div className={classes.tableWrapper}>
             <Table className={classes.table}>
-              <EnhancedTableHead
+              <LeaderBoardHead
                 //numSelected={selected.length}
                 order={order}
                 orderBy={orderBy}
@@ -139,16 +140,16 @@ class EnhancedTable extends React.Component {
                 {data
                   //.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map(n => {
-                    const isSelected = this.isSelected(n.id);
+                    //const isSelected = this.isSelected(n.id);
                     return (
                       <TableRow
                         hover
-                        onClick={event => this.handleClick(event, n.id)}
+                        //onClick={event => this.handleClick(event, n.id)}
                         role="checkbox"
-                        aria-checked={isSelected}
+                        //aria-checked={isSelected}
                         tabIndex={-1}
                         key={n.id}
-                        selected={isSelected}
+                        //selected={isSelected}
                       >
                         {/* <TableCell padding="checkbox">
                           <Checkbox checked={isSelected} />
@@ -194,8 +195,8 @@ class EnhancedTable extends React.Component {
   }
 }
 
-EnhancedTable.propTypes = {
+LeaderBoard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(EnhancedTable);
+export default withStyles(styles)(LeaderBoard);

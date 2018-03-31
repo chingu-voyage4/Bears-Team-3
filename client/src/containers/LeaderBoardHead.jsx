@@ -22,7 +22,7 @@ const columnData = [
   { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
 ];
 
-export class EnhancedTableHead extends React.Component {
+export class LeaderBoardHead extends React.Component {
   createSortHandler = property => event => {
     this.props.onRequestSort(event, property);
   };
@@ -76,7 +76,7 @@ export class EnhancedTableHead extends React.Component {
   }
 }
 
-EnhancedTableHead.propTypes = {
+LeaderBoardHead.propTypes = {
   //numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   //onSelectAllClick: PropTypes.func.isRequired,
@@ -85,4 +85,4 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-export default EnhancedTableHead;
+export default LeaderBoardHead;

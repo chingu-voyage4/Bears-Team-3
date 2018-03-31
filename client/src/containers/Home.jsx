@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from 'material-ui/Button';
 
-import EnhancedTable from './LeaderBoard';
+import LeaderBoard from './LeaderBoard';
 import * as actions from '../actions';
 
 const Home = ({ counterValue, handleIncreaseValue, handleDecreaseValue }) => (
@@ -12,7 +12,7 @@ const Home = ({ counterValue, handleIncreaseValue, handleDecreaseValue }) => (
     <Button variant="raised" color="primary">
       Hello World
     </Button>
-    <EnhancedTable />
+    <LeaderBoard />
     <p>The counter value is {counterValue}</p>
     <button onClick={handleIncreaseValue}>Add</button>
     <button onClick={handleDecreaseValue}>Remove</button>
