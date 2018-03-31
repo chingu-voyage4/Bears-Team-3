@@ -52,7 +52,7 @@ class App extends Component {
 							<Link to="/about">About</Link>
 						</li>
 						<li>
-							<Link to="/activities">Activities</Link>
+							<Link to="/activities/aaronmassey45">Activities</Link>
 						</li>
 					</ul>
 					<Routes />

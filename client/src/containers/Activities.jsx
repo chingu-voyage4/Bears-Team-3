@@ -9,20 +9,23 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
 import * as actions from '../actions/activityActions';
+import { fetchUserInfo } from '../actions/userActions';
 
 class Activities extends Component {
+	state = { isAuthenticated: false };
+
 	handleClick = () => {
 		this.props.addActivity({
 			title: 'My Project',
 			url: 'www.notreal.com',
 			activity: 'Basic Project',
 		});
-		this.props.fetchActivities('aaronmassey45');
+		this.props.fetchActivities(this.props.userPage._id);
 	};
 
 	handleDelete = id => {
 		this.props.deleteActivity(id);
-		this.props.fetchActivities('aaronmassey45');
+		this.props.fetchActivities(this.props.userPage._id);
 	};
 
 	handleUpdate = id => {
@@ -45,11 +48,38 @@ class Activities extends Component {
 			title: titles[getRandomNum(2)],
 			activity: projectType[getRandomNum(2)],
 		});
-		this.props.fetchActivities('aaronmassey45');
+		this.props.fetchActivities(this.props.userPage._id);
 	};
 
-	componentDidMount() {
-		this.props.fetchActivities('aaronmassey45');
+	checkAuth = () => {
+		const { match: { params }, userAuthenticated: { userName } } = this.props;
+
+		if (params.username === userName) {
+			this.setState(prevState => {
+				if (!prevState.isAuthenticated) return { isAuthenticated: true };
+				return;
+			});
+			return true;
+		}
+
+		this.setState(prevState => {
+			if (prevState.isAuthenticated) return { isAuthenticated: false };
+			return;
+		});
+		return false;
+	};
+
+	async componentDidMount() {
+		try {
+			await this.props.fetchUserInfo(this.props.match.params.username);
+			await this.props.fetchActivities(this.props.userPage._id);
+		} catch (err) {
+			this.props.history.push(`/404/${this.props.match.params.username}`);
+		}
+	}
+
+	componentDidUpdate() {
+		this.checkAuth();
 	}
 
 	renderActivities = () => {
@@ -69,12 +99,16 @@ class Activities extends Component {
 							{new Date(dateCompleted).toLocaleDateString()}
 						</p>
 						<p>{url}</p>
-						<button onClick={() => this.handleDelete(_id)}>
-							Delete Activity
-						</button>
-						<button onClick={() => this.handleUpdate(_id)}>
-							Update Activity
-						</button>
+						{this.state.isAuthenticated && (
+							<React.Fragment>
+								<button onClick={() => this.handleDelete(_id)}>
+									Delete Activity
+								</button>
+								<button onClick={() => this.handleUpdate(_id)}>
+									Update Activity
+								</button>
+							</React.Fragment>
+						)}
 					</ExpansionPanelDetails>
 				</ExpansionPanel>
 			);
@@ -82,34 +116,41 @@ class Activities extends Component {
 	};
 
 	render() {
-		const { user: { totalPoints, userName }, activities } = this.props;
-		return totalPoints ? (
-			<React.Fragment>
-				<p>Your total points are {totalPoints}</p>
-				<button onClick={this.handleClick}>Add Activity</button>
-				<hr />
-				{activities ? (
-					<React.Fragment>
-						<h2>Activities</h2>
-						{this.renderActivities()}
-					</React.Fragment>
-				) : null}
-			</React.Fragment>
-		) : userName ? (
-			<button onClick={this.handleClick}>Add Activity</button>
-		) : (
-			<p>You are not logged in</p>
-		);
+		const { activities, userPage } = this.props;
+
+		if (userPage) {
+			const { totalPoints, userName } = userPage;
+			return (
+				<React.Fragment>
+					<p>
+						{userName}'s total points are {totalPoints}
+					</p>
+					{this.state.isAuthenticated && (
+						<button onClick={this.handleClick}>Add Activity</button>
+					)}
+					<hr />
+					{activities && (
+						<React.Fragment>
+							<h2>Activities</h2>
+							{this.renderActivities()}
+						</React.Fragment>
+					)}
+				</React.Fragment>
+			);
+		} else {
+			return <p>Loading...</p>;
+		}
 	}
 }
 
 const mapStateToProps = state => ({
-	user: state.authReducer,
+	userAuthenticated: state.authReducer,
 	activities: state.activities,
+	userPage: state.userPage,
 });
 
 const mapDispatchToProps = dispatch => {
-	return bindActionCreators({ ...actions }, dispatch);
+	return bindActionCreators({ ...actions, fetchUserInfo }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Activities);
