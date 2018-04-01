@@ -6,8 +6,8 @@ import activitiesReducer from './activitiesReducer';
 import userPageReducer from './userPageReducer';
 
 export default combineReducers({
-	authReducer,
-	counterReducer,
-	activities: activitiesReducer,
-	userPage: userPageReducer,
+  authReducer,
+  counterReducer,
+  activities: activitiesReducer,
+  userPage: userPageReducer,
 });
