@@ -10,6 +10,7 @@
     "server": "nodemon --verbose index.js",
     "client": "cd ./client && yarn start",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "format": "prettier --write '**/*.{js,jsx}'",
     "client-install": "(cd ./client && yarn install)",
     "client-build": "(cd ./client && yarn run build)",
     "heroku-postbuild": "yarn run client-install && yarn run client-build"
@@ -26,5 +27,8 @@
     "nodemon": "^1.15.1",
     "passport": "^0.4.0",
     "passport-github": "^1.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.11.1"
   }
 }
