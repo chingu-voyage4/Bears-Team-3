@@ -14,12 +14,17 @@ const columnData = [
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: 'Dessert (100g serving)',
+    label: 'User Name',
   },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+  {
+    id: 'totalPoints',
+    numeric: true,
+    disablePadding: false,
+    label: 'Total Points',
+  },
+  // { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
+  // { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
+  // { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
 ];
 
 export class LeaderBoardHead extends React.Component {
@@ -54,6 +59,14 @@ export class LeaderBoardHead extends React.Component {
                 padding={'default'}
                 sortDirection={orderBy === column.id ? order : false}
               >
+                <span
+                  style={{
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    width: '150px',
+                    display: 'block',
+                  }}
+                />
                 <Tooltip
                   title="Sort"
                   placement={column.numeric ? 'bottom-end' : 'bottom-start'}

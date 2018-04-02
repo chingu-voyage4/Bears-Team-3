@@ -10,18 +10,20 @@ import Table, {
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox';
+import axios from 'axios';
+
 //import EnhancedTableToolbar from './LeaderBoardToolBar';
 import LeaderBoardHead from './LeaderBoardHead';
 
-let counter = 0;
-function createData(name, calories, fat, carbs, protein) {
-  counter += 1;
-  return { id: counter, name, calories, fat, carbs, protein };
-}
+// let counter = 0;
+// function createData(name, calories, fat, carbs, protein) {
+//   counter += 1;
+//   return { id: counter, name, calories, fat, carbs, protein };
+// }
 
 const styles = theme => ({
   root: {
-    width: '80%',
+    width: '100%',
     marginTop: theme.spacing.unit * 3,
   },
   table: {
@@ -41,24 +43,34 @@ class LeaderBoard extends React.Component {
       orderBy: 'calories',
       selected: [],
       data: [
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Donut', 452, 25.0, 51, 4.9),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-        createData('Honeycomb', 408, 3.2, 87, 6.5),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Jelly Bean', 375, 0.0, 94, 0.0),
-        createData('KitKat', 518, 26.0, 65, 7.0),
-        createData('Lollipop', 392, 0.2, 98, 0.0),
-        createData('Marshmallow', 318, 0, 81, 2.0),
-        createData('Nougat', 360, 19.0, 9, 37.0),
-        createData('Oreo', 437, 18.0, 63, 4.0),
-      ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
+        // createData('Cupcake', 305, 3.7, 67, 4.3),
+        // createData('Donut', 452, 25.0, 51, 4.9),
+        // createData('Eclair', 262, 16.0, 24, 6.0),
+        // createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+        // createData('Gingerbread', 356, 16.0, 49, 3.9),
+        // createData('Honeycomb', 408, 3.2, 87, 6.5),
+        // createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+        // createData('Jelly Bean', 375, 0.0, 94, 0.0),
+        // createData('KitKat', 518, 26.0, 65, 7.0),
+        // createData('Lollipop', 392, 0.2, 98, 0.0),
+        // createData('Marshmallow', 318, 0, 81, 2.0),
+        // createData('Nougat', 360, 19.0, 9, 37.0),
+        // createData('Oreo', 437, 18.0, 63, 4.0),
+      ].sort((a, b) => (a.totalPoints < b.totalPoints ? -1 : 1)),
       // page: 0,
       // rowsPerPage: 50,
     };
   }
+
+  componentDidMount = () => {
+    axios.get('/api/leaderboard').then(
+      function(res) {
+        console.log(res.data);
+        this.setState({ data: res.data });
+      }.bind(this)
+    );
+    console.log(this.state);
+  };
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
@@ -68,7 +80,7 @@ class LeaderBoard extends React.Component {
       order = 'asc';
     }
 
-    const data =
+    let data =
       order === 'desc'
         ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
         : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
@@ -155,11 +167,11 @@ class LeaderBoard extends React.Component {
                           <Checkbox checked={isSelected} />
                         </TableCell> */}
                         {/* <TableCell padding="none">{n.name}</TableCell> */}
-                        <TableCell>{n.name}</TableCell>
-                        <TableCell numeric>{n.calories}</TableCell>
-                        <TableCell numeric>{n.fat}</TableCell>
+                        <TableCell>{n.userName}</TableCell>
+                        <TableCell numeric>{n.totalPoints}</TableCell>
+                        {/* <TableCell numeric>{n.fat}</TableCell>
                         <TableCell numeric>{n.carbs}</TableCell>
-                        <TableCell numeric>{n.protein}</TableCell>
+                        <TableCell numeric>{n.protein}</TableCell> */}
                       </TableRow>
                     );
                   })}
