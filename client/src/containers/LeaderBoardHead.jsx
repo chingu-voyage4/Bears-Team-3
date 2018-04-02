@@ -59,14 +59,6 @@ export class LeaderBoardHead extends React.Component {
                 padding={'default'}
                 sortDirection={orderBy === column.id ? order : false}
               >
-                <span
-                  style={{
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    width: '150px',
-                    display: 'block',
-                  }}
-                />
                 <Tooltip
                   title="Sort"
                   placement={column.numeric ? 'bottom-end' : 'bottom-start'}

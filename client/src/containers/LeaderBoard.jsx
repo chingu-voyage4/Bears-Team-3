@@ -23,11 +23,16 @@ import LeaderBoardHead from './LeaderBoardHead';
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: '40%',
     marginTop: theme.spacing.unit * 3,
+    padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit * 3}px ${theme
+      .spacing.unit / 2}px ${theme.spacing.unit * 3}px`,
+    '&:last-child': {
+      paddingRight: theme.spacing.unit * 3,
+    },
   },
   table: {
-    minWidth: 800,
+    minWidth: 50,
   },
   tableWrapper: {
     overflowX: 'auto',
@@ -65,11 +70,9 @@ class LeaderBoard extends React.Component {
   componentDidMount = () => {
     axios.get('/api/leaderboard').then(
       function(res) {
-        console.log(res.data);
         this.setState({ data: res.data });
       }.bind(this)
     );
-    console.log(this.state);
   };
 
   handleRequestSort = (event, property) => {
@@ -157,18 +160,22 @@ class LeaderBoard extends React.Component {
                       <TableRow
                         hover
                         //onClick={event => this.handleClick(event, n.id)}
-                        role="checkbox"
+                        //role="checkbox"
                         //aria-checked={isSelected}
                         tabIndex={-1}
-                        key={n.id}
+                        key={n._id}
                         //selected={isSelected}
                       >
                         {/* <TableCell padding="checkbox">
                           <Checkbox checked={isSelected} />
                         </TableCell> */}
                         {/* <TableCell padding="none">{n.name}</TableCell> */}
-                        <TableCell>{n.userName}</TableCell>
-                        <TableCell numeric>{n.totalPoints}</TableCell>
+                        <TableCell className={classes.root}>
+                          {n.userName}
+                        </TableCell>
+                        <TableCell className={classes.root} numeric>
+                          {n.totalPoints}
+                        </TableCell>
                         {/* <TableCell numeric>{n.fat}</TableCell>
                         <TableCell numeric>{n.carbs}</TableCell>
                         <TableCell numeric>{n.protein}</TableCell> */}
