@@ -51,6 +51,7 @@ class LeaderBoard extends Component {
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
+    console.log(orderBy);
     let order = 'desc';
 
     if (this.state.orderBy === property && this.state.order === 'desc') {
@@ -59,8 +60,14 @@ class LeaderBoard extends Component {
 
     let data =
       order === 'desc'
-        ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-        : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+        ? this.state.data.sort(
+            (a, b) =>
+              b[orderBy].toLowerCase() < a[orderBy].toLowerCase() ? -1 : 1
+          )
+        : this.state.data.sort(
+            (a, b) =>
+              a[orderBy].toLowerCase() < b[orderBy].toLowerCase() ? -1 : 1
+          );
 
     this.setState({ data, order, orderBy });
   };

@@ -11,7 +11,7 @@ import Tooltip from 'material-ui/Tooltip';
 
 const columnData = [
   {
-    id: 'name',
+    id: 'userName',
     numeric: false,
     disablePadding: true,
     label: 'User Name',
