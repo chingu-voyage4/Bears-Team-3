@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
 import * as actions from '../actions/activityActions';
-import { fetchUserInfo } from '../actions/userActions';
+import { fetchUserInfo, fetchProgressData, addProgressData } from '../actions';
 
 class Activities extends Component {
   state = { isAuthenticated: false };
@@ -72,7 +72,8 @@ class Activities extends Component {
   async componentDidMount() {
     try {
       await this.props.fetchUserInfo(this.props.match.params.username);
-      await this.props.fetchActivities(this.props.userPage._id);
+      this.props.fetchActivities(this.props.userPage._id);
+      this.props.fetchProgressData(this.props.userPage._id);
     } catch (err) {
       this.props.history.push(`/404/${this.props.match.params.username}`);
     }
@@ -150,7 +151,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ ...actions, fetchUserInfo }, dispatch);
+  return bindActionCreators(
+    { ...actions, fetchUserInfo, fetchProgressData, addProgressData },
+    dispatch
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Activities);

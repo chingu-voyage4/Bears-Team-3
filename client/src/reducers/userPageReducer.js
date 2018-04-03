@@ -1,9 +1,25 @@
-import { FETCH_USER_PAGE } from '../actions/types';
+import {
+  FETCH_USER_PAGE,
+  ADD_PROGRESS,
+  FETCH_PROGRESS,
+} from '../actions/types';
 
-export default function(state = null, action) {
+const INITIAL_STATE = {
+  activities: [],
+  avatarURL: '',
+  currentCourse: '',
+  goal: '',
+  studyPlan: '',
+  totalPoints: '',
+  userName: 0,
+};
+
+export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_USER_PAGE:
-      return action.payload;
+    case FETCH_PROGRESS:
+    case ADD_PROGRESS:
+      return { ...state, ...action.payload };
     default:
       return state;
   }

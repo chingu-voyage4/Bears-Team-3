@@ -3,3 +3,5 @@ export * from './userActions';
 export * from './counterActions';
 
 export * from './activityActions';
+
+export * from './progressActions';
