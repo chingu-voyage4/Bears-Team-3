@@ -6,3 +6,7 @@ export const FETCH_USER = 'FETCH_USER';
 export const INCREMENT = 'INCREMENT';
 // decrement counter
 export const DECREMENT = 'DECREMENT';
+
+export const FETCH_ACTIVITIES = 'FETCH_ACTIVITIES';
+
+export const FETCH_USER_PAGE = 'FETCH_USER_PAGE';

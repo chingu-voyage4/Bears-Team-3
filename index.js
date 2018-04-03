@@ -7,6 +7,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 require('./models/User');
+require('./models/Activity');
+require('./models/Progress');
 require('./services/passport');
 
 // connect to mongo on mlab
@@ -35,6 +37,8 @@ app.use(passport.session());
 
 // Send request to route handlers
 require('./routes/authRoutes')(app);
+require('./routes/activityRoutes')(app);
+require('./routes/progressRoutes')(app);
 
 // Handle client routes in production
 if (process.env.NODE_ENV === 'production') {
