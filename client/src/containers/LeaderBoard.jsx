@@ -10,7 +10,10 @@ import LeaderBoardHead from './LeaderBoardHead';
 
 const styles = theme => ({
   root: {
-    width: '40%',
+    width: '80%',
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+    },
     marginTop: theme.spacing.unit * 3,
     padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit * 3}px ${theme
       .spacing.unit / 2}px ${theme.spacing.unit * 3}px`,
@@ -32,7 +35,7 @@ class LeaderBoard extends Component {
 
     this.state = {
       order: 'asc',
-      orderBy: 'calories',
+      orderBy: 'totalPoints',
       selected: [],
       data: [].sort((a, b) => (a.totalPoints < b.totalPoints ? -1 : 1)),
     };
