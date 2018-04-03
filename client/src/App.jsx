@@ -51,6 +51,9 @@ class App extends Component {
             <li>
               <Link to="/about">About</Link>
             </li>
+            <li>
+              <Link to="/activities/aaronmassey45">Activities</Link>
+            </li>
           </ul>
           <Routes />
         </main>

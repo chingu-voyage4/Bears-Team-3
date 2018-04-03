@@ -6,7 +6,12 @@ import Button from 'material-ui/Button';
 import LeaderBoard from './LeaderBoard';
 import * as actions from '../actions';
 
-const Home = ({ counterValue, handleIncreaseValue, handleDecreaseValue }) => (
+const Home = ({
+  counterValue,
+  totalPoints,
+  handleIncreaseValue,
+  handleDecreaseValue,
+}) => (
   <div>
     <h2>Home Page</h2>
     <Button variant="raised" color="primary">
