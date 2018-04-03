@@ -82,7 +82,7 @@ class LeaderBoard extends Component {
                   return (
                     <TableRow hover tabIndex={-1} key={n._id}>
                       <TableCell className={classes.root}>
-                        <Link to={{ pathname: `/${n.userName}` }}>
+                        <Link to={{ pathname: `/users/${n.userName}` }}>
                           {n.userName}
                         </Link>
                       </TableCell>
