@@ -110,6 +110,12 @@ export class Header extends Component {
                   onClose={this.handleClose}
                 >
                   <MenuItem onClick={this.props.logout}>Logout</MenuItem>
+                  <MenuItem
+                    component={Link}
+                    to={{ pathname: `/${this.props.auth.userName}` }}
+                  >
+                    My Page
+                  </MenuItem>
                 </Menu>
               </div>
             )}

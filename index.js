@@ -23,10 +23,10 @@ app.use(bodyParser.json());
 
 // Extract/add cookie data
 app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
-    keys: [process.env.COOKIE_KEY],
-  })
+	cookieSession({
+		maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
+		keys: [process.env.COOKIE_KEY],
+	})
 );
 
 // Initialize passport middleware
@@ -42,10 +42,10 @@ require('./routes/progressRoutes')(app);
 
 // Handle client routes in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
+	app.use(express.static('client/build'));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	});
 }
 
 // Start the server on process.env.PORT or 5000 if .env is missing
