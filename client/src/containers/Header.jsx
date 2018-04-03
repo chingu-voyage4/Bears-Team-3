@@ -112,7 +112,7 @@ export class Header extends Component {
                   <MenuItem onClick={this.props.logout}>Logout</MenuItem>
                   <MenuItem
                     component={Link}
-                    to={{ pathname: `/${this.props.auth.userName}` }}
+                    to={{ pathname: `/users/${this.props.auth.userName}` }}
                   >
                     My Page
                   </MenuItem>

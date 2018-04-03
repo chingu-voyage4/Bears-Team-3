@@ -26,9 +26,9 @@ describe('Routes', () => {
     expect(wrapper.find(About)).toHaveLength(1);
   });
 
-  it('/:userName path should redirect to User component', () => {
+  it('/users/:userName path should redirect to User component', () => {
     const wrapper = mount(
-      <MemoryRouter initialEntries={['/userName']} initialIndex={0}>
+      <MemoryRouter initialEntries={['/users/userName']} initialIndex={0}>
         <Routes />
       </MemoryRouter>
     );
