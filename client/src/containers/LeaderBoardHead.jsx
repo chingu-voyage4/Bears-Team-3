@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   TableCell,
@@ -24,7 +24,7 @@ const columnData = [
   },
 ];
 
-export class LeaderBoardHead extends React.Component {
+export class LeaderBoardHead extends Component {
   createSortHandler = property => event => {
     this.props.onRequestSort(event, property);
   };
