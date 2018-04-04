@@ -60,20 +60,24 @@ class LeaderBoard extends Component {
 
     const data =
       order === 'desc'
-        ? //order === 'desc'
+        ? // order === 'desc'
           orderBy === 'userName'
-          ? this.state.data.sort(
+          ? // If user sorts by userName
+            this.state.data.sort(
               (a, b) =>
                 b[orderBy].toLowerCase() < a[orderBy].toLowerCase() ? -1 : 1
             )
-          : this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
+          : // Else user is sorting by a column other than userName
+            this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
         : //order != 'desc'
           orderBy === 'userName'
-          ? this.state.data.sort(
+          ? // If user sorts by userName
+            this.state.data.sort(
               (a, b) =>
                 a[orderBy].toLowerCase() < b[orderBy].toLowerCase() ? -1 : 1
             )
-          : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+          : // Else user is sorting by a column other than userName
+            this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
 
     this.setState({ data, order, orderBy });
   };
