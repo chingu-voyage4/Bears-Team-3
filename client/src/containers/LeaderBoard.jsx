@@ -51,33 +51,36 @@ class LeaderBoard extends Component {
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
-    console.log(orderBy);
     let order = 'desc';
 
     if (this.state.orderBy === property && this.state.order === 'desc') {
       order = 'asc';
     }
 
-    const data =
-      order === 'desc'
-        ? // If order === 'desc'
-          orderBy === 'userName'
-          ? // If user sorts by userName
-            this.state.data.sort(
-              (a, b) =>
-                b[orderBy].toLowerCase() < a[orderBy].toLowerCase() ? -1 : 1
-            )
-          : // Else user is sorting by a column other than userName
-            this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-        : //Else order != 'desc'
-          orderBy === 'userName'
-          ? // If user sorts by userName
-            this.state.data.sort(
-              (a, b) =>
-                a[orderBy].toLowerCase() < b[orderBy].toLowerCase() ? -1 : 1
-            )
-          : // Else user is sorting by a column other than userName
-            this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+    let data;
+    if (order === 'desc') {
+      if (orderBy === 'userName') {
+        data = this.state.data.sort(
+          (a, b) =>
+            b[orderBy].toLowerCase() < a[orderBy].toLowerCase() ? -1 : 1
+        );
+      } else {
+        data = this.state.data.sort(
+          (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
+        );
+      }
+    } else {
+      if (orderBy === 'userName') {
+        data = this.state.data.sort(
+          (a, b) =>
+            a[orderBy].toLowerCase() < b[orderBy].toLowerCase() ? -1 : 1
+        );
+      } else {
+        data = this.state.data.sort(
+          (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1)
+        );
+      }
+    }
 
     this.setState({ data, order, orderBy });
   };
