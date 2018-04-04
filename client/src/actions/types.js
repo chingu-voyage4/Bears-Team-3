@@ -14,3 +14,5 @@ export const FETCH_USER_PAGE = 'FETCH_USER_PAGE';
 export const FETCH_PROGRESS = 'FETCH_PROGRESS';
 
 export const ADD_PROGRESS = 'ADD_PROGRESS';
+
+export const MODIFY_PROGRESS = 'MODIFY_PROGRESS';

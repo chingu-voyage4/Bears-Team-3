@@ -2,6 +2,7 @@ import {
   FETCH_USER_PAGE,
   ADD_PROGRESS,
   FETCH_PROGRESS,
+  MODIFY_PROGRESS,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -19,6 +20,7 @@ export default function(state = INITIAL_STATE, action) {
     case FETCH_USER_PAGE:
     case FETCH_PROGRESS:
     case ADD_PROGRESS:
+    case MODIFY_PROGRESS:
       return { ...state, ...action.payload };
     default:
       return state;

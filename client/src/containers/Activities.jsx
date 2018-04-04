@@ -8,10 +8,20 @@ import ExpansionPanel, {
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
-import * as actions from '../actions/activityActions';
-import { fetchUserInfo, fetchProgressData, addProgressData } from '../actions';
+import * as actions from '../actions';
 
 const getRandomNum = max => Math.floor(Math.random() * Math.floor(max));
+const goals = [
+  'To be the very best',
+  'To become the hokage',
+  'Chillax with my bros',
+];
+const studyPlan = ['Do this first', 'Do that first', 'Do nothing'];
+const currentCourse = [
+  'Being a Boss 101',
+  'Advanced Jutsu',
+  "Professor Oak's Tutorial",
+];
 
 class Activities extends Component {
   state = { isAuthenticated: false };
@@ -52,19 +62,15 @@ class Activities extends Component {
   };
 
   addProgress = () => {
-    const goals = [
-      'To be the very best',
-      'To become the hokage',
-      'Chillax with my bros',
-    ];
-    const studyPlan = ['Do this first', 'Do that first', 'Do nothing'];
-    const currentCourse = [
-      'Being a Boss 101',
-      'Advanced Jutsu',
-      "Professor Oak's Tutorial",
-    ];
-
     this.props.addProgressData({
+      goal: goals[getRandomNum(2)],
+      studyPlan: studyPlan[getRandomNum(2)],
+      currentCourse: currentCourse[getRandomNum(2)],
+    });
+  };
+
+  modifyProgress = () => {
+    this.props.modifyProgressData({
       goal: goals[getRandomNum(2)],
       studyPlan: studyPlan[getRandomNum(2)],
       currentCourse: currentCourse[getRandomNum(2)],
@@ -161,6 +167,7 @@ class Activities extends Component {
             <React.Fragment>
               <button onClick={this.handleClick}>Add Activity</button>
               <button onClick={this.addProgress}>Add Progress</button>
+              <button onClick={this.modifyProgress}>Edit Progress</button>
             </React.Fragment>
           )}
           <hr />
@@ -185,10 +192,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    { ...actions, fetchUserInfo, fetchProgressData, addProgressData },
-    dispatch
-  );
+  return bindActionCreators({ ...actions }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Activities);
