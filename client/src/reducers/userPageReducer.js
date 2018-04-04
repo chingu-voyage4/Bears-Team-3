@@ -3,6 +3,7 @@ import {
   ADD_PROGRESS,
   FETCH_PROGRESS,
   MODIFY_PROGRESS,
+  DELETE_PROGRESS,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -22,6 +23,8 @@ export default function(state = INITIAL_STATE, action) {
     case ADD_PROGRESS:
     case MODIFY_PROGRESS:
       return { ...state, ...action.payload };
+    case DELETE_PROGRESS:
+      return { ...state, goal: '', currentCourse: '', studyPlan: '' };
     default:
       return state;
   }
