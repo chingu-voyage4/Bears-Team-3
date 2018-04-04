@@ -60,7 +60,7 @@ class LeaderBoard extends Component {
 
     const data =
       order === 'desc'
-        ? // order === 'desc'
+        ? // If order === 'desc'
           orderBy === 'userName'
           ? // If user sorts by userName
             this.state.data.sort(
@@ -69,7 +69,7 @@ class LeaderBoard extends Component {
             )
           : // Else user is sorting by a column other than userName
             this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-        : //order != 'desc'
+        : //Else order != 'desc'
           orderBy === 'userName'
           ? // If user sorts by userName
             this.state.data.sort(
