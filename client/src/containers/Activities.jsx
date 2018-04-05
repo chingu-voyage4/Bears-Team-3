@@ -8,8 +8,20 @@ import ExpansionPanel, {
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 
-import * as actions from '../actions/activityActions';
-import { fetchUserInfo } from '../actions/userActions';
+import * as actions from '../actions';
+
+const getRandomNum = max => Math.floor(Math.random() * Math.floor(max));
+const goals = [
+  'To be the very best',
+  'To become the hokage',
+  'Chillax with my bros',
+];
+const studyPlan = ['Do this first', 'Do that first', 'Do nothing'];
+const currentCourse = [
+  'Being a Boss 101',
+  'Advanced Jutsu',
+  "Professor Oak's Tutorial",
+];
 
 class Activities extends Component {
   state = { isAuthenticated: false };
@@ -51,6 +63,26 @@ class Activities extends Component {
     this.props.fetchActivities(this.props.userPage._id);
   };
 
+  addProgress = () => {
+    this.props.addProgressData({
+      goal: goals[getRandomNum(2)],
+      studyPlan: studyPlan[getRandomNum(2)],
+      currentCourse: currentCourse[getRandomNum(2)],
+    });
+  };
+
+  modifyProgress = () => {
+    this.props.modifyProgressData({
+      goal: goals[getRandomNum(2)],
+      studyPlan: studyPlan[getRandomNum(2)],
+      currentCourse: currentCourse[getRandomNum(2)],
+    });
+  };
+
+  deleteProgress = () => {
+    this.props.deleteProgressData();
+  };
+
   checkAuth = () => {
     const { match: { params }, userAuthenticated: { userName } } = this.props;
 
@@ -72,7 +104,8 @@ class Activities extends Component {
   async componentDidMount() {
     try {
       await this.props.fetchUserInfo(this.props.match.params.username);
-      await this.props.fetchActivities(this.props.userPage._id);
+      this.props.fetchActivities(this.props.userPage._id);
+      this.props.fetchProgressData(this.props.userPage._id);
     } catch (err) {
       this.props.history.push(`/404/${this.props.match.params.username}`);
     }
@@ -119,14 +152,30 @@ class Activities extends Component {
     const { activities, userPage } = this.props;
 
     if (userPage) {
-      const { totalPoints, userName } = userPage;
+      const {
+        currentCourse,
+        goal,
+        studyPlan,
+        totalPoints,
+        userName,
+      } = userPage;
       return (
         <React.Fragment>
+          <h2>{userName}</h2>
+          <p>Total points: {totalPoints}</p>
           <p>
-            {userName}'s total points are {totalPoints}
+            <div>Current Course: {currentCourse}</div>
+            <div>Goal: {goal}</div>
+            <div>Study Plan: {studyPlan}</div>
           </p>
+          <hr />
           {this.state.isAuthenticated && (
-            <button onClick={this.handleClick}>Add Activity</button>
+            <React.Fragment>
+              <button onClick={this.handleClick}>Add Activity</button>
+              <button onClick={this.addProgress}>Add Progress</button>
+              <button onClick={this.modifyProgress}>Edit Progress</button>
+              <button onClick={this.deleteProgress}>Delete Progress</button>
+            </React.Fragment>
           )}
           <hr />
           {activities && (
@@ -150,7 +199,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ ...actions, fetchUserInfo }, dispatch);
+  return bindActionCreators({ ...actions }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Activities);
