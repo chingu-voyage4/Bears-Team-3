@@ -20,8 +20,14 @@ module.exports = app => {
 
   app.get('/api/user/:userName', async (req, res) => {
     const { userName } = req.params;
-    const user = await User.findOne({ userName });
-    res.send(user);
+    try {
+      const user = await User.findOne({ userName });
+      if (!user) res.status(404).send('User not found');
+
+      res.send(user);
+    } catch (err) {
+      res.status(400).send(err);
+    }
   });
 
   app.get('/api/activities/:id', async (req, res) => {
