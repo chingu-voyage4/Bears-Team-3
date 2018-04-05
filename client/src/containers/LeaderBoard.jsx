@@ -70,6 +70,7 @@ class LeaderBoard extends Component {
         );
       }
     } else {
+      // order === 'asc'
       if (orderBy === 'userName') {
         data = this.state.data.sort(
           (a, b) =>
