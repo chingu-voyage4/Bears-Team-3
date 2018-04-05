@@ -53,6 +53,8 @@ class Activities extends Component {
       'Tutorial Course',
     ];
 
+    const getRandomNum = max => Math.floor(Math.random() * Math.floor(max));
+
     this.props.modifyActivity(id, {
       url: urls[getRandomNum(2)],
       title: titles[getRandomNum(2)],
