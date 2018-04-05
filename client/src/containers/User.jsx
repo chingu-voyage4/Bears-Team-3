@@ -5,7 +5,7 @@ class User extends Component {
     user: null,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({ user: this.props.match.params.userName });
   }
 
