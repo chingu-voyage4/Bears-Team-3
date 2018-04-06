@@ -41,13 +41,10 @@ class LeaderBoard extends Component {
     };
   }
 
-  componentDidMount = () => {
-    axios.get('/api/leaderboard').then(
-      function(res) {
-        this.setState({ data: res.data });
-      }.bind(this)
-    );
-  };
+  async componentDidMount() {
+    const res = await axios.get('/api/leaderboard');
+    this.setState({ data: res.data });
+  }
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
