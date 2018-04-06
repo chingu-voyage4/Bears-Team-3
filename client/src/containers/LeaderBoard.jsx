@@ -119,6 +119,7 @@ class LeaderBoard extends Component {
             </div>
           </Paper>
         )}
+
       </div>
     );
   }
