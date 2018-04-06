@@ -10,7 +10,10 @@ import LeaderBoardHead from './LeaderBoardHead';
 
 const styles = theme => ({
   root: {
-    width: '40%',
+    width: '80%',
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+    },
     marginTop: theme.spacing.unit * 3,
     padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit * 3}px ${theme
       .spacing.unit / 2}px ${theme.spacing.unit * 3}px`,
@@ -32,19 +35,16 @@ class LeaderBoard extends Component {
 
     this.state = {
       order: 'asc',
-      orderBy: 'calories',
+      orderBy: 'totalPoints',
       selected: [],
-      data: [].sort((a, b) => (a.totalPoints < b.totalPoints ? -1 : 1)),
+      data: [],
     };
   }
 
-  componentDidMount = () => {
-    axios.get('/api/leaderboard').then(
-      function(res) {
-        this.setState({ data: res.data });
-      }.bind(this)
-    );
-  };
+  async componentDidMount() {
+    const res = await axios.get('/api/leaderboard');
+    this.setState({ data: res.data });
+  }
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
@@ -54,10 +54,31 @@ class LeaderBoard extends Component {
       order = 'asc';
     }
 
-    let data =
-      order === 'desc'
-        ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-        : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+    let data;
+    if (order === 'desc') {
+      if (orderBy === 'userName') {
+        data = this.state.data.sort(
+          (a, b) =>
+            b[orderBy].toLowerCase() < a[orderBy].toLowerCase() ? -1 : 1
+        );
+      } else {
+        data = this.state.data.sort(
+          (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
+        );
+      }
+    } else {
+      // order === 'asc'
+      if (orderBy === 'userName') {
+        data = this.state.data.sort(
+          (a, b) =>
+            a[orderBy].toLowerCase() < b[orderBy].toLowerCase() ? -1 : 1
+        );
+      } else {
+        data = this.state.data.sort(
+          (a, b) => (a[orderBy] < b[orderBy] ? -1 : 1)
+        );
+      }
+    }
 
     this.setState({ data, order, orderBy });
   };
@@ -68,34 +89,37 @@ class LeaderBoard extends Component {
 
     return (
       <div className="table">
-        <Paper className={classes.root}>
-          <div className={classes.tableWrapper}>
-            <Table className={classes.table}>
-              <LeaderBoardHead
-                order={order}
-                orderBy={orderBy}
-                onRequestSort={this.handleRequestSort}
-                rowCount={data.length}
-              />
-              <TableBody>
-                {data.map(n => {
-                  return (
-                    <TableRow hover tabIndex={-1} key={n._id}>
-                      <TableCell className={classes.root}>
-                        <Link to={{ pathname: `/users/${n.userName}` }}>
-                          {n.userName}
-                        </Link>
-                      </TableCell>
-                      <TableCell className={classes.root} numeric>
-                        {n.totalPoints}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </div>
-        </Paper>
+        {this.state.data.length > 0 && (
+          <Paper className={classes.root}>
+            <div className={classes.tableWrapper}>
+              <Table className={classes.table}>
+                <LeaderBoardHead
+                  order={order}
+                  orderBy={orderBy}
+                  onRequestSort={this.handleRequestSort}
+                  rowCount={data.length}
+                />
+                <TableBody>
+                  {data.map(n => {
+                    return (
+                      <TableRow hover tabIndex={-1} key={n._id}>
+                        <TableCell className={classes.root}>
+                          <Link to={{ pathname: `/users/${n.userName}` }}>
+                            {n.userName}
+                          </Link>
+                        </TableCell>
+                        <TableCell className={classes.root} numeric>
+                          {n.totalPoints}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </div>
+          </Paper>
+        )}
+
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   TableCell,
@@ -11,7 +11,7 @@ import Tooltip from 'material-ui/Tooltip';
 
 const columnData = [
   {
-    id: 'name',
+    id: 'userName',
     numeric: false,
     disablePadding: true,
     label: 'User Name',
@@ -24,7 +24,7 @@ const columnData = [
   },
 ];
 
-export class LeaderBoardHead extends React.Component {
+export class LeaderBoardHead extends Component {
   createSortHandler = property => event => {
     this.props.onRequestSort(event, property);
   };
