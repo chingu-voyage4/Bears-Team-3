@@ -37,7 +37,7 @@ class LeaderBoard extends Component {
       order: 'asc',
       orderBy: 'totalPoints',
       selected: [],
-      data: [].sort((a, b) => (a.totalPoints < b.totalPoints ? -1 : 1)),
+      data: [],
     };
   }
 
