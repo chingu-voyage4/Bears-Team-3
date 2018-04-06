@@ -22,6 +22,10 @@ import App from './App';
 
 import './style.scss';
 
+// For testing backend routes in the browser console -- remove for production
+import axios from 'axios';
+window.axios = axios;
+
 const middleware = [thunk];
 if (process.env.NODE_ENV !== 'production') middleware.push(logger);
 
