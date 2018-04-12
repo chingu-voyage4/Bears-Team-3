@@ -7,6 +7,7 @@ import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
+    width: '70%',
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
@@ -25,7 +26,7 @@ export class UserGoals extends Component {
     const { classes, goal } = this.props;
 
     return (
-      <div>
+      <div className="user__goal">
         <Paper className={classes.root} elevation={4}>
           <Typography variant="headline" component="h3">
             Goals
