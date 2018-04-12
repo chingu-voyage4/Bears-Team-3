@@ -43,9 +43,9 @@ class User extends Component {
   };
 
   checkAuth = () => {
-    const { match: { params }, userAuthenticated: { userName } } = this.props;
-
-    if (params.username === userName) {
+    if (
+      this.props.match.params.userName === this.props.userAuthenticated.userName
+    ) {
       this.setState(prevState => {
         if (!prevState.isAuthenticated) return { isAuthenticated: true };
         return;
@@ -73,6 +73,7 @@ class User extends Component {
 
   componentDidUpdate() {
     this.checkAuth();
+    console.log(this.state.isAuthenticated);
   }
 
   handleChange = (event, value) => {
