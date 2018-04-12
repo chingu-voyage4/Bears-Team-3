@@ -10,7 +10,7 @@ import LeaderBoardHead from './LeaderBoardHead';
 
 const styles = theme => ({
   root: {
-    width: '80%',
+    width: '90%',
     [theme.breakpoints.up('sm')]: {
       width: '50%',
     },
@@ -119,7 +119,6 @@ class LeaderBoard extends Component {
             </div>
           </Paper>
         )}
-
       </div>
     );
   }
