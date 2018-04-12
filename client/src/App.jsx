@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import CssBaseline from 'material-ui/CssBaseline';
 
 import * as actions from './actions';
 
@@ -32,32 +33,34 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <main className="container">
-          <Header />
-          <div>
-            <h1>hello world!</h1>
-            <img
-              className="container__image"
-              alt="react logo"
-              src={reactLogo}
-            />
-            <p>If you see this everything is working!</p>
-          </div>
-          <ul className="left">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/activities/aaronmassey45">Activities</Link>
-            </li>
-          </ul>
-          <Routes />
-        </main>
-      </BrowserRouter>
+      <CssBaseline>
+        <BrowserRouter>
+          <main className="container">
+            <Header />
+            <div>
+              <h1>hello world!</h1>
+              <img
+                className="container__image"
+                alt="react logo"
+                src={reactLogo}
+              />
+              <p>If you see this everything is working!</p>
+            </div>
+            <ul className="left">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/activities/lacyjpr">Activities</Link>
+              </li>
+            </ul>
+            <Routes />
+          </main>
+        </BrowserRouter>
+      </CssBaseline>
     );
   }
 }
