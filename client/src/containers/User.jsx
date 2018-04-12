@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
@@ -7,6 +10,8 @@ import Typography from 'material-ui/Typography';
 
 import UserActivities from './UserActivities';
 import UserStudyPlan from './UserStudyPlan';
+
+import * as actions from '../actions';
 
 function TabContainer(props) {
   return (
@@ -33,11 +38,41 @@ const styles = theme => ({
 class User extends Component {
   state = {
     user: null,
+    isAuthenticated: false,
     value: 0,
   };
 
-  componentDidMount() {
+  checkAuth = () => {
+    const { match: { params }, userAuthenticated: { userName } } = this.props;
+
+    if (params.username === userName) {
+      this.setState(prevState => {
+        if (!prevState.isAuthenticated) return { isAuthenticated: true };
+        return;
+      });
+      return true;
+    }
+
+    this.setState(prevState => {
+      if (prevState.isAuthenticated) return { isAuthenticated: false };
+      return;
+    });
+    return false;
+  };
+
+  async componentDidMount() {
     this.setState({ user: this.props.match.params.userName });
+    try {
+      await this.props.fetchUserInfo(this.props.match.params.userName);
+      this.props.fetchActivities(this.props.userPage._id);
+      this.props.fetchProgressData(this.props.userPage._id);
+    } catch (err) {
+      this.props.history.push(`/404/${this.props.match.params.userName}`);
+    }
+  }
+
+  componentDidUpdate() {
+    this.checkAuth();
   }
 
   handleChange = (event, value) => {
@@ -50,8 +85,7 @@ class User extends Component {
 
     return (
       <div>
-        <h2>{user} Page</h2>
-        <p>Welcome {user}!</p>
+        <h2>{user}</h2>
         <div className="user__tabs">
           <div className={classes.root}>
             <AppBar position="static">
@@ -81,4 +115,17 @@ User.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(User);
+const mapStateToProps = state => ({
+  userAuthenticated: state.authReducer,
+  activities: state.activities,
+  userPage: state.userPage,
+});
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ ...actions }, dispatch);
+};
+
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps)
+)(User);
