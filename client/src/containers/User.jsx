@@ -22,6 +22,8 @@ const styles = theme => ({
     flexGrow: 1,
     marginTop: theme.spacing.unit * 3,
     backgroundColor: theme.palette.background.paper,
+    width: '70%',
+    justifyContent: 'center',
   },
 });
 
@@ -47,17 +49,19 @@ class User extends Component {
       <div>
         <h2>{user} Page</h2>
         <p>Welcome {user}!</p>
-        <div className={classes.root}>
-          <AppBar position="static">
-            <Tabs value={value} onChange={this.handleChange} centered>
-              <Tab label="Item One" />
-              <Tab label="Item Two" />
-              <Tab label="Item Three" href="#basic-tabs" />
-            </Tabs>
-          </AppBar>
-          {value === 0 && <TabContainer>Item One</TabContainer>}
-          {value === 1 && <TabContainer>Item Two</TabContainer>}
-          {value === 2 && <TabContainer>Item Three</TabContainer>}
+        <div className="user__tabs">
+          <div className={classes.root}>
+            <AppBar position="static">
+              <Tabs value={value} onChange={this.handleChange} centered>
+                <Tab label="Item One" />
+                <Tab label="Item Two" />
+                <Tab label="Item Three" href="#basic-tabs" />
+              </Tabs>
+            </AppBar>
+            {value === 0 && <TabContainer>Item One</TabContainer>}
+            {value === 1 && <TabContainer>Item Two</TabContainer>}
+            {value === 2 && <TabContainer>Item Three</TabContainer>}
+          </div>
         </div>
       </div>
     );
