@@ -19,8 +19,6 @@ module.exports = app => {
       res.send(progress);
     } catch (err) {
       res.status(400).send(err.message);
-      const { goal, currentCourse, studyPlan } = res.body;
-      res.send(goal, currentCourse, studyPlan);
     }
   });
 
