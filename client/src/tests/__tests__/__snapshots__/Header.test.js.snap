@@ -64,7 +64,7 @@ exports[`Header handleMenu should set anchorEl to event.currentTarget 1`] = `
             component={[Function]}
             to={
               Object {
-                "pathname": "/undefined",
+                "pathname": "/users/undefined",
               }
             }
           >
