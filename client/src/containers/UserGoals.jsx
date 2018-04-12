@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import marked from 'marked';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
@@ -12,23 +13,36 @@ const styles = theme => ({
   }),
 });
 
-function UserGoals(props) {
-  const { classes, goal } = props;
-  console.log(props);
-  return (
-    <div>
-      <Paper className={classes.root} elevation={4}>
-        <Typography variant="headline" component="h3">
-          Goals
-        </Typography>
-        <Typography component="p">{goal}</Typography>
-      </Paper>
-    </div>
-  );
+export class UserGoals extends Component {
+  getMarkDown = goal => {
+    const markDown = marked(goal, { sanitize: true });
+    return {
+      __html: markDown,
+    };
+  };
+
+  render() {
+    const { classes, goal } = this.props;
+
+    return (
+      <div>
+        <Paper className={classes.root} elevation={4}>
+          <Typography variant="headline" component="h3">
+            Goals
+          </Typography>
+          <Typography
+            component="p"
+            dangerouslySetInnerHTML={this.getMarkDown(goal)}
+          />
+        </Paper>
+      </div>
+    );
+  }
 }
 
 UserGoals.propTypes = {
   classes: PropTypes.object.isRequired,
+  goal: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(UserGoals);
