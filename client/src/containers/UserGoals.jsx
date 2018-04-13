@@ -32,6 +32,7 @@ export class UserGoals extends Component {
             Goals
           </Typography>
           <Typography
+            style={{ textAlign: 'left' }}
             component="p"
             dangerouslySetInnerHTML={this.getMarkDown(goal)}
           />

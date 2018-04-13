@@ -33,6 +33,7 @@ export class UserStudyPlan extends Component {
           </Typography>
           <Typography
             component="p"
+            style={{ textAlign: 'left' }}
             dangerouslySetInnerHTML={this.getMarkDown(studyPlan)}
           />
         </Paper>
