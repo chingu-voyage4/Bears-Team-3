@@ -63,6 +63,7 @@ class User extends Component {
 
   async componentDidMount() {
     this.setState({ user: this.props.match.params.userName });
+    this.props.clearProgressData();
     try {
       await this.props.fetchUserInfo(this.props.match.params.userName);
       this.props.fetchActivities(this.props.userPage._id);

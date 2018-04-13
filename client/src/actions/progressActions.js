@@ -6,6 +6,10 @@ import {
   DELETE_PROGRESS,
 } from './types';
 
+export const clearProgressData = () => dispatch => {
+  dispatch({ type: DELETE_PROGRESS });
+};
+
 export const fetchProgressData = id => async dispatch => {
   const res = await axios.get(`/api/progress/${id}`);
   dispatch({ type: FETCH_PROGRESS, payload: res.data });
