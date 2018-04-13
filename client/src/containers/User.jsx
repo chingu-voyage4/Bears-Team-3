@@ -107,7 +107,7 @@ class User extends Component {
             )}
             {value === 1 && (
               <TabContainer>
-                <UserStudyPlan />
+                <UserStudyPlan studyPlan={this.props.userPage.studyPlan} />
               </TabContainer>
             )}
           </div>
