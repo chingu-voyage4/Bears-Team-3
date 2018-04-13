@@ -89,7 +89,9 @@ class User extends Component {
     return (
       <div>
         <h2>{user}</h2>
-        <UserGoals goal={this.props.userPage.goal} />
+        {this.props.userPage.goal.length > 0 && (
+          <UserGoals goal={this.props.userPage.goal} />
+        )}
 
         <div className="user__tabs">
           <div className={classes.root}>
