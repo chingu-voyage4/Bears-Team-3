@@ -10,9 +10,10 @@ import Typography from 'material-ui/Typography';
 
 import UserActivities from './UserActivities';
 import UserStudyPlan from './UserStudyPlan';
+import UserGoals from './UserGoals';
 
 import * as actions from '../actions';
-import UserGoals from './UserGoals';
+
 
 function TabContainer(props) {
   return (
