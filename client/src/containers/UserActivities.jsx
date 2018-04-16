@@ -51,7 +51,7 @@ export class UserActivities extends Component {
                   </TableCell>
                   <TableCell>{n.activity}</TableCell>
                   <TableCell numeric>{n.points}</TableCell>
-                  <TableCell numeric>{n.url}</TableCell>
+                  <TableCell>{<a href={`${n.url}`}>{n.url}</a>}</TableCell>
                 </TableRow>
               );
             })}
