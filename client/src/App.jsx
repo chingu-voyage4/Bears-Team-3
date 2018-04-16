@@ -7,8 +7,6 @@ import * as actions from './actions';
 import Header from './containers/Header';
 import Routes from './Routes';
 
-import reactLogo from './assets/React-icon.png';
-
 /**
  * this container is defined as class so we can modify state
  * @return {Component} react base component
@@ -35,21 +33,9 @@ class App extends Component {
       <BrowserRouter>
         <main className="container">
           <Header />
-          <div>
-            <h1>hello world!</h1>
-            <img
-              className="container__image"
-              alt="react logo"
-              src={reactLogo}
-            />
-            <p>If you see this everything is working!</p>
-          </div>
           <ul className="left">
             <li>
               <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
             </li>
             <li>
               <Link to="/activities/aaronmassey45">Activities</Link>
