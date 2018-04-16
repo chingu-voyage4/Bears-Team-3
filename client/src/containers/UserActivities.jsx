@@ -16,7 +16,7 @@ const styles = theme => ({
     overflowX: 'auto',
   },
   table: {
-    minWidth: 700,
+    minWidth: 200,
   },
 });
 
@@ -45,7 +45,7 @@ export class UserActivities extends Component {
                   </TableCell>
                   <TableCell>{n.activity}</TableCell>
                   <TableCell numeric>{n.points}</TableCell>
-                  <TableCell>{<a href={`${n.url}`}>{n.url}</a>}</TableCell>
+                  <TableCell>{<a href={`${n.url}`}>{n.title}</a>}</TableCell>
                 </TableRow>
               );
             })}
