@@ -14,7 +14,6 @@ import UserGoals from './UserGoals';
 
 import * as actions from '../actions';
 
-
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ marginBottom: '50px' }}>
@@ -103,7 +102,7 @@ class User extends Component {
             </AppBar>
             {value === 0 && (
               <TabContainer>
-                <UserActivities />
+                <UserActivities activites={this.props.activites} />
               </TabContainer>
             )}
             {value === 1 && (
