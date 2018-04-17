@@ -12,6 +12,9 @@ const styles = theme => ({
   root: {
     width: '80%',
     [theme.breakpoints.up('sm')]: {
+      width: '65%',
+    },
+    [theme.breakpoints.up('md')]: {
       width: '50%',
     },
     marginTop: theme.spacing.unit * 3,
