@@ -103,6 +103,7 @@ class LeaderBoard extends Component {
                   {data.map(n => {
                     return (
                       <TableRow hover tabIndex={-1} key={n._id}>
+                        <TableCell className={classes.root}>{n.rank}</TableCell>
                         <TableCell className={classes.root}>
                           <Link to={{ pathname: `/users/${n.userName}` }}>
                             {n.userName}
@@ -119,7 +120,6 @@ class LeaderBoard extends Component {
             </div>
           </Paper>
         )}
-
       </div>
     );
   }
