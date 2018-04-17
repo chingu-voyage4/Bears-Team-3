@@ -102,7 +102,10 @@ class User extends Component {
             </AppBar>
             {value === 0 && (
               <TabContainer>
-                <UserActivities activities={this.props.activities} />
+                {console.log(this.props.activities)}
+                {this.props.activities && (
+                  <UserActivities activities={this.props.activities} />
+                )}
               </TabContainer>
             )}
             {value === 1 && (
