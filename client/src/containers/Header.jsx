@@ -116,6 +116,9 @@ export class Header extends Component {
                   >
                     My Page
                   </MenuItem>
+                  <MenuItem component={Link} to="/delete">
+                    Delete Account
+                  </MenuItem>
                 </Menu>
               </div>
             )}
