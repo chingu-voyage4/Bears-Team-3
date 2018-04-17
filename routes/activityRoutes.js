@@ -14,7 +14,6 @@ module.exports = app => {
       .sortBy('totalPoints')
       .reverse()
       .slice(0, 49)
-      .map((user, i) => ({ ...user._doc, rank: i + 1 }))
       .value();
     res.send(leaderboard);
   });

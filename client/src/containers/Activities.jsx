@@ -83,10 +83,6 @@ class Activities extends Component {
     this.props.deleteProgressData();
   };
 
-  deleteUser = () => {
-    this.props.deleteUser();
-  };
-
   checkAuth = () => {
     const { match: { params }, userAuthenticated: { userName } } = this.props;
 
@@ -179,7 +175,6 @@ class Activities extends Component {
               <button onClick={this.addProgress}>Add Progress</button>
               <button onClick={this.modifyProgress}>Edit Progress</button>
               <button onClick={this.deleteProgress}>Delete Progress</button>
-              <button onClick={this.deleteUser}>Delete Account</button>
             </React.Fragment>
           )}
           <hr />
