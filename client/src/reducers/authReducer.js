@@ -6,6 +6,10 @@ export default function(state = {}, action) {
       return action.resData || false;
     case actions.LOGOUT:
       return false;
+    case actions.DELETE_USER_SUCCESS:
+      return false;
+    case actions.DELETE_USER_FAILURE:
+      return { ...state, error: 'Error deleting account, try again.' };
     default:
       return state;
   }
