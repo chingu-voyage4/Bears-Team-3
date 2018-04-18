@@ -28,7 +28,7 @@ const Home = props => {
             Speedstudy Tracker
           </Typography>
           <Typography component="p">
-            Doing p1xt's{' '}
+            Doing P1xt's{' '}
             <a target="_blank" href="https://github.com/P1xt/speedstudy">
               speedstudy
             </a>?
