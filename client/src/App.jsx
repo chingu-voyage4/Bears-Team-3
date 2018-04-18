@@ -35,9 +35,6 @@ class App extends Component {
           <Header />
           <ul className="left">
             <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
               <Link to="/activities/aaronmassey45">Activities</Link>
             </li>
           </ul>
