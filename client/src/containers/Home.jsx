@@ -25,7 +25,7 @@ const Home = props => {
       <div className="home__intro">
         <Paper className={classes.root} elevation={4}>
           <Typography variant="headline" component="h3">
-            Welcome!
+            Speedstudy Tracker
           </Typography>
           <Typography component="p">
             Doing p1xt's{' '}
@@ -38,14 +38,6 @@ const Home = props => {
           </Typography>
         </Paper>
       </div>
-      <div className="home__intro">
-        <Paper className={classes.root} elevation={4}>
-          <Typography variant="headline" component="h3">
-            Participants
-          </Typography>
-        </Paper>
-      </div>
-
       <LeaderBoard />
     </div>
   );
