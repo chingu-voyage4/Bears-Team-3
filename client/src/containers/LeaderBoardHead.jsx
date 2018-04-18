@@ -20,7 +20,7 @@ const columnData = [
     id: 'totalPoints',
     numeric: true,
     disablePadding: false,
-    label: 'Total Points',
+    label: 'Points',
   },
 ];
 
