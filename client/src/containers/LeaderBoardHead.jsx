@@ -14,7 +14,7 @@ const columnData = [
     id: 'userName',
     numeric: false,
     disablePadding: true,
-    label: 'User Name',
+    label: 'Participant',
   },
   {
     id: 'totalPoints',
