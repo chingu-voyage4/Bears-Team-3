@@ -1,7 +1,7 @@
 import React from 'react';
 import LeaderBoard from './LeaderBoard';
 
-const Home = ({ totalPoints }) => (
+const Home = () => (
   <div>
     <h2>Home Page</h2>
     <LeaderBoard />
