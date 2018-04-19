@@ -1,25 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Redirect } from 'react-router-dom';
 import Button from 'material-ui/Button';
 
 import { deleteUser } from '../actions';
 
 class DeleteUser extends Component {
-  state = {
-    redirect: false,
-  };
-  setRedirect = () => {
-    this.setState({
-      redirect: true,
-    });
-  };
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to="/" />;
-    }
-  };
   render() {
     return (
       <div>
@@ -32,7 +18,6 @@ class DeleteUser extends Component {
           color="primary"
           onClick={() => {
             this.props.deleteUser();
-            this.setRedirect();
           }}
         >
           Yes, Delete My Account

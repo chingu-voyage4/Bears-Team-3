@@ -32,6 +32,7 @@ export const fetchUserInfo = username => async dispatch => {
 export const deleteUser = () => async dispatch => {
   try {
     await axios.delete('/api/current_user');
+    window.location = '/';
     return dispatch({ type: DELETE_USER_SUCCESS });
   } catch (err) {
     return dispatch({ type: DELETE_USER_FAILURE });
