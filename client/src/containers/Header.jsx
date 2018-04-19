@@ -78,14 +78,14 @@ export class Header extends Component {
             >
               Speedstudy
             </Typography>
-            {!this.props.auth && (
+            {!this.props.auth.userName && (
               <div>
                 <Button color="inherit" onClick={this.handleLogin}>
                   Login With Github
                 </Button>
               </div>
             )}
-            {this.props.auth && (
+            {this.props.auth.userName && (
               <div>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
