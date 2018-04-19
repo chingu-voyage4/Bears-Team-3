@@ -5,9 +5,9 @@ export default function(state = {}, action) {
     case actions.FETCH_USER:
       return action.resData || false;
     case actions.LOGOUT:
-      return false;
+      return {};
     case actions.DELETE_USER_SUCCESS:
-      return false;
+      return {};
     case actions.DELETE_USER_FAILURE:
       return { ...state, error: 'Error deleting account, try again.' };
     default:
