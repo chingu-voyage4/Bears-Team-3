@@ -10,15 +10,13 @@ class DeleteUser extends Component {
   state = {
     redirect: false,
   };
-  handleClick = async () => {
-    console.log('handleClick called');
+  handleClick = async (deleteUser, _this) => {
     try {
-      let res = await this.props.deleteUser();
-      console.log(res);
-      if (res.payload.status === 400) throw new Error();
-      this.setState({ redirect: true });
+      const res = await deleteUser();
+      if (res.type !== 'DELETE_USER_SUCCESS') throw new Error();
+      _this.setState({ redirect: true });
     } catch (err) {
-      return null;
+      console.log(err);
     }
   };
   render() {
@@ -29,7 +27,11 @@ class DeleteUser extends Component {
         <h2>Delete Your Account</h2>
         <p>This will permanently remove all of your data</p>
         <p>Are you sure?</p>
-        <Button variant="raised" color="primary" onClick={this.handleClick}>
+        <Button
+          variant="raised"
+          color="primary"
+          onClick={() => this.handleClick(this.props.deleteUser, this)}
+        >
           Yes, Delete My Account
         </Button>
       </div>
