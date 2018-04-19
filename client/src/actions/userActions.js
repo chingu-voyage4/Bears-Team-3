@@ -7,12 +7,6 @@ import {
   DELETE_USER_FAILURE,
 } from './types';
 
-// export const logout = () => {
-//   return dispatch => {
-//     axios.get('/api/logout').then(() => dispatch({ type: LOGOUT }));
-//   };
-// };
-
 export const logout = () => async dispatch => {
   await axios.get('/api/logout');
   return dispatch({ type: LOGOUT });
