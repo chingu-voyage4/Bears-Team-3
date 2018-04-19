@@ -7,6 +7,7 @@ import ExpansionPanel, {
 } from 'material-ui/ExpansionPanel';
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+import { Link } from 'react-router-dom';
 
 import * as actions from '../actions';
 
@@ -175,7 +176,7 @@ class Activities extends Component {
           <hr />
           {this.state.isAuthenticated && (
             <React.Fragment>
-              <button onClick={this.handleClick}>Add Activity</button>
+              <Link to="/activity/new">Add Activity</Link>
               <button onClick={this.addProgress}>Add Progress</button>
               <button onClick={this.modifyProgress}>Edit Progress</button>
               <button onClick={this.deleteProgress}>Delete Progress</button>
