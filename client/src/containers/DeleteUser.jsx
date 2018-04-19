@@ -12,7 +12,6 @@ class DeleteUser extends Component {
         <h2>Delete Your Account</h2>
         <p>This will permanently remove all of your data</p>
         <p>Are you sure?</p>
-        {this.renderRedirect()}
         <Button
           variant="raised"
           color="primary"
