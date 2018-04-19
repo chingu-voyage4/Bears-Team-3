@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
@@ -18,33 +20,53 @@ const styles = theme => ({
   }),
 });
 
-const Home = props => {
-  const { classes } = props;
-  return (
-    <div>
-      <div className="home__intro">
-        <Paper className={classes.root} elevation={4}>
-          <Typography variant="headline" component="h3">
-            Speedstudy Tracker
-          </Typography>
-          <Typography component="p">
-            Doing P1xt's{' '}
-            <a target="_blank" href="https://github.com/P1xt/speedstudy">
-              speedstudy
-            </a>?
-          </Typography>
-          <Typography component="p">
-            Log in for an easy way to track your progress!
-          </Typography>
-        </Paper>
+export class Home extends Component {
+  render() {
+    const { classes, auth } = this.props;
+    const num = Math.random();
+    return (
+      <div>
+        <div className="home__intro">
+          <Paper className={classes.root} elevation={4}>
+            <Typography variant="headline" component="h3">
+              Speedstudy Tracker
+            </Typography>
+            {!auth.userName && (
+              <div>
+                <Typography component="p">
+                  Doing P1xt's{' '}
+                  <a target="_blank" href="https://github.com/P1xt/speedstudy">
+                    speedstudy
+                  </a>?
+                </Typography>
+                <Typography component="p">
+                  Log in for an easy way to track your progress!
+                </Typography>
+              </div>
+            )}
+            {auth.userName && (
+              <div>
+                <Typography component="p">
+                  Navigate to 'My Page' from the Avatar menu to track your
+                  progress!
+                </Typography>
+              </div>
+            )}
+          </Paper>
+        </div>
+        <LeaderBoard key={num} />
       </div>
-      <LeaderBoard />
-    </div>
-  );
-};
+    );
+  }
+}
 
 Home.propTypes = {
   classes: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Home);
+const mapStateToProps = state => ({
+  auth: state.authReducer,
+});
+
+export default compose(withStyles(styles), connect(mapStateToProps))(Home);
