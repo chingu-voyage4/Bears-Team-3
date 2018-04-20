@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { reduxForm, Field } from 'redux-form';
 
 import ActivityInputField from './ActivityInputField';
+import { addActivity } from '../../actions';
 
 const FIELDS = [
   { label: 'Title', name: 'title' },
@@ -9,7 +12,7 @@ const FIELDS = [
   { label: 'Activity', name: 'activity' },
 ];
 
-class activityForm extends Component {
+class ActivityForm extends Component {
   renderFields = () => {
     return FIELDS.map(({ label, name }) => {
       return (
@@ -26,7 +29,11 @@ class activityForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+      <form
+        onSubmit={this.props.handleSubmit(values =>
+          this.props.addActivity(values)
+        )}
+      >
         {this.renderFields()}
         <button type="submit">Submit</button>
       </form>
@@ -34,8 +41,12 @@ class activityForm extends Component {
   }
 }
 
-const ActivityForm = reduxForm({
-  form: 'activityForm',
-})(activityForm);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ addActivity }, dispatch);
+};
 
-export default ActivityForm;
+const connectedActivityForm = connect(null, mapDispatchToProps)(ActivityForm);
+
+export default reduxForm({
+  form: 'activityForm',
+})(connectedActivityForm);
