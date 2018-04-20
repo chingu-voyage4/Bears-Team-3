@@ -21,9 +21,6 @@ const styles = theme => ({
 });
 
 export class Home extends Component {
-  getDerivedStateFromProps() {
-    console.log('getDerivedStateFromProps');
-  }
   render() {
     const { classes, auth } = this.props;
     //const num = Math.random();
