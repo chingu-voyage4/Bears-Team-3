@@ -132,6 +132,7 @@ class LeaderBoard extends Component {
 
 LeaderBoard.propTypes = {
   classes: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(LeaderBoard);
