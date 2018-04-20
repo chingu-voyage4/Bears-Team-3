@@ -21,9 +21,12 @@ const styles = theme => ({
 });
 
 export class Home extends Component {
+  getDerivedStateFromProps() {
+    console.log('getDerivedStateFromProps');
+  }
   render() {
     const { classes, auth } = this.props;
-    const num = Math.random();
+    //const num = Math.random();
     return (
       <div>
         <div className="home__intro">
@@ -54,7 +57,7 @@ export class Home extends Component {
             )}
           </Paper>
         </div>
-        <LeaderBoard key={num} />
+        <LeaderBoard auth={auth} />
       </div>
     );
   }

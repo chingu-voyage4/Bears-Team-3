@@ -46,6 +46,11 @@ class LeaderBoard extends Component {
     this.setState({ data: res.data });
   }
 
+  async componentDidUpdate() {
+    const res = await axios.get('/api/leaderboard');
+    this.setState({ data: res.data });
+  }
+
   handleRequestSort = (event, property) => {
     const orderBy = property;
     let order = 'desc';
@@ -84,42 +89,42 @@ class LeaderBoard extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, auth } = this.props;
     const { data, order, orderBy } = this.state;
 
     return (
       <div className="table">
-        {this.state.data.length > 0 && (
-          <Paper className={classes.root}>
-            <div className={classes.tableWrapper}>
-              <Table className={classes.table}>
-                <LeaderBoardHead
-                  order={order}
-                  orderBy={orderBy}
-                  onRequestSort={this.handleRequestSort}
-                  rowCount={data.length}
-                />
-                <TableBody>
-                  {data.map(n => {
-                    return (
-                      <TableRow hover tabIndex={-1} key={n._id}>
-                        <TableCell className={classes.root}>
-                          <Link to={{ pathname: `/users/${n.userName}` }}>
-                            {n.userName}
-                          </Link>
-                        </TableCell>
-                        <TableCell className={classes.root} numeric>
-                          {n.totalPoints}
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </Table>
-            </div>
-          </Paper>
-        )}
-
+        {this.state.data.length > 0 &&
+          auth && (
+            <Paper className={classes.root}>
+              <div className={classes.tableWrapper}>
+                <Table className={classes.table}>
+                  <LeaderBoardHead
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={this.handleRequestSort}
+                    rowCount={data.length}
+                  />
+                  <TableBody>
+                    {data.map(n => {
+                      return (
+                        <TableRow hover tabIndex={-1} key={n._id}>
+                          <TableCell className={classes.root}>
+                            <Link to={{ pathname: `/users/${n.userName}` }}>
+                              {n.userName}
+                            </Link>
+                          </TableCell>
+                          <TableCell className={classes.root} numeric>
+                            {n.totalPoints}
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </TableBody>
+                </Table>
+              </div>
+            </Paper>
+          )}
       </div>
     );
   }
