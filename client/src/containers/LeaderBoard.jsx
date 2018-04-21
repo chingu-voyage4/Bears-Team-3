@@ -46,7 +46,7 @@ class LeaderBoard extends Component {
     this.setState({ data: res.data });
   }
 
-  async componentDidUpdate() {
+  async componentWillReceiveProps() {
     const res = await axios.get('/api/leaderboard');
     this.setState({ data: res.data });
   }
