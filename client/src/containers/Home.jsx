@@ -23,7 +23,6 @@ const styles = theme => ({
 export class Home extends Component {
   render() {
     const { classes, auth } = this.props;
-    //const num = Math.random();
     return (
       <div>
         <div className="home__intro">
@@ -54,6 +53,7 @@ export class Home extends Component {
             )}
           </Paper>
         </div>
+        {/* Pass auth prop to force re-mount. Assures that new users are added to the leaderboard. */}
         <LeaderBoard auth={auth} />
       </div>
     );
