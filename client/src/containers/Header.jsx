@@ -72,9 +72,12 @@ export class Header extends Component {
               <BookIcon />
             </IconButton>
             <Typography
+              component={Link}
+              to="/"
               variant="title"
               color="inherit"
               className={classes.flex}
+              style={{ textDecoration: 'none' }}
             >
               Speedstudy
             </Typography>

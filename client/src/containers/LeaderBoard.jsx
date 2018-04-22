@@ -49,6 +49,11 @@ class LeaderBoard extends Component {
     this.setState({ data: res.data });
   }
 
+  async componentWillReceiveProps() {
+    const res = await axios.get('/api/leaderboard');
+    this.setState({ data: res.data });
+  }
+
   handleRequestSort = (event, property) => {
     const orderBy = property;
     let order = 'desc';
@@ -130,6 +135,7 @@ class LeaderBoard extends Component {
 
 LeaderBoard.propTypes = {
   classes: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(LeaderBoard);

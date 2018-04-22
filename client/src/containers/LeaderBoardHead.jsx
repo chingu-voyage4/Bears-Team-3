@@ -20,13 +20,21 @@ const columnData = [
     id: 'userName',
     numeric: false,
     disablePadding: true,
-    label: 'User Name',
+    label: 'Participant',
   },
   {
     id: 'totalPoints',
     numeric: true,
+<<<<<<< HEAD
+    disablePadding: false,
+    label: 'Points',
+||||||| merged common ancestors
+    disablePadding: false,
+    label: 'Total Points',
+=======
     disablePadding: true,
     label: 'Total Points',
+>>>>>>> development
   },
 ];
 
