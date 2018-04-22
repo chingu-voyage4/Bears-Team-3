@@ -18,6 +18,7 @@ import {
   fetchActivities,
   fetchProgressData,
   clearActivities,
+  clearUserPage,
 } from '../actions';
 
 function TabContainer(props) {
@@ -81,6 +82,7 @@ class User extends Component {
 
   componentWillUnmount() {
     this.props.clearActivities();
+    this.props.clearUserPage();
   }
 
   componentDidUpdate() {
@@ -140,6 +142,7 @@ User.propTypes = {
   fetchUserInfo: PropTypes.func.isRequired,
   fetchActivities: PropTypes.func.isRequired,
   fetchProgressData: PropTypes.func.isRequired,
+  clearUserPage: PropTypes.func.isRequired,
   userPage: PropTypes.object,
   userAuthenticated: PropTypes.object,
   activities: PropTypes.array,
@@ -159,6 +162,7 @@ const mapDispatchToProps = dispatch => {
       fetchActivities,
       fetchProgressData,
       clearActivities,
+      clearUserPage,
     },
     dispatch
   );

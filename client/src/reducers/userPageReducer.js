@@ -4,6 +4,7 @@ import {
   FETCH_PROGRESS,
   MODIFY_PROGRESS,
   DELETE_PROGRESS,
+  CLEAR_USER_PAGE,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -25,6 +26,8 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, ...action.payload };
     case DELETE_PROGRESS:
       return { ...state, goal: '', currentCourse: '', studyPlan: '' };
+    case CLEAR_USER_PAGE:
+      return INITIAL_STATE;
     default:
       return state;
   }
