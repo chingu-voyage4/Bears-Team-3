@@ -12,7 +12,13 @@ import UserActivities from './UserActivities';
 import UserStudyPlan from './UserStudyPlan';
 import UserGoals from './UserGoals';
 
-import * as actions from '../actions';
+import {
+  clearProgressData,
+  fetchUserInfo,
+  fetchActivities,
+  fetchProgressData,
+  clearActivities,
+} from '../actions';
 
 function TabContainer(props) {
   return (
@@ -146,7 +152,16 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ ...actions }, dispatch);
+  return bindActionCreators(
+    {
+      clearProgressData,
+      fetchUserInfo,
+      fetchActivities,
+      fetchProgressData,
+      clearActivities,
+    },
+    dispatch
+  );
 };
 
 export default compose(
