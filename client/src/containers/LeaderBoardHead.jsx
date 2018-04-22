@@ -11,6 +11,12 @@ import Tooltip from 'material-ui/Tooltip';
 
 const columnData = [
   {
+    id: 'rank',
+    numeric: false,
+    disablePadding: true,
+    label: 'Rank',
+  },
+  {
     id: 'userName',
     numeric: false,
     disablePadding: true,
@@ -19,7 +25,7 @@ const columnData = [
   {
     id: 'totalPoints',
     numeric: true,
-    disablePadding: false,
+    disablePadding: true,
     label: 'Total Points',
   },
 ];
