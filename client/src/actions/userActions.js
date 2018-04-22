@@ -30,6 +30,7 @@ export const fetchUserInfo = username => async dispatch => {
 };
 
 export const deleteUser = () => async dispatch => {
+  console.log('deleteUser called');
   try {
     await axios.delete('/api/current_user');
     return dispatch({ type: DELETE_USER_SUCCESS });
