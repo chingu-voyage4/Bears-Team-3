@@ -23,7 +23,7 @@ export class UserGoals extends Component {
   };
 
   render() {
-    const { classes, goal } = this.props;
+    const { classes, goal, points } = this.props;
 
     return (
       <div className="user__goal">
@@ -36,6 +36,7 @@ export class UserGoals extends Component {
             component="p"
             dangerouslySetInnerHTML={this.getMarkDown(goal)}
           />
+          <Typography component="h4">Total Points: {points}</Typography>
         </Paper>
       </div>
     );
