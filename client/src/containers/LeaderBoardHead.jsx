@@ -25,16 +25,8 @@ const columnData = [
   {
     id: 'totalPoints',
     numeric: true,
-<<<<<<< HEAD
     disablePadding: false,
     label: 'Points',
-||||||| merged common ancestors
-    disablePadding: false,
-    label: 'Total Points',
-=======
-    disablePadding: true,
-    label: 'Total Points',
->>>>>>> development
   },
 ];
 
