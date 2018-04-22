@@ -73,6 +73,10 @@ class User extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearActivities();
+  }
+
   componentDidUpdate() {
     this.checkAuth();
     console.log(this.state.isAuthenticated);
@@ -92,7 +96,7 @@ class User extends Component {
 
         <UserGoals
           goal={this.props.userPage.goal}
-          points={this.props.userAuthenticated.totalPoints}
+          points={this.props.userPage.totalPoints}
         />
 
         <div className="user__tabs">
