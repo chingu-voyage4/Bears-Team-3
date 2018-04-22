@@ -44,7 +44,7 @@ export class UserStudyPlan extends Component {
 
 UserStudyPlan.propTypes = {
   classes: PropTypes.object.isRequired,
-  studyPlan: PropTypes.string.isRequired,
+  studyPlan: PropTypes.string,
 };
 
 export default withStyles(styles)(UserStudyPlan);
