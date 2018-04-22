@@ -97,6 +97,7 @@ class User extends Component {
         <UserGoals
           goal={this.props.userPage.goal}
           points={this.props.userPage.totalPoints}
+          currentCourse={this.props.userPage.currentCourse}
         />
 
         <div className="user__tabs">

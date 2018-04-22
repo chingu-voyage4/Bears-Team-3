@@ -23,7 +23,7 @@ export class UserGoals extends Component {
   };
 
   render() {
-    const { classes, goal, points } = this.props;
+    const { classes, goal, points, currentCourse } = this.props;
 
     return (
       <div className="user__goal">
@@ -37,6 +37,9 @@ export class UserGoals extends Component {
             dangerouslySetInnerHTML={this.getMarkDown(goal)}
           />
           <Typography component="h4">Total Points: {points}</Typography>
+          <Typography component="h4">
+            Current Course: {currentCourse}
+          </Typography>
         </Paper>
       </div>
     );
@@ -47,6 +50,7 @@ UserGoals.propTypes = {
   classes: PropTypes.object.isRequired,
   goal: PropTypes.string,
   points: PropTypes.number,
+  currentCourse: PropTypes.string,
 };
 
 export default withStyles(styles)(UserGoals);
