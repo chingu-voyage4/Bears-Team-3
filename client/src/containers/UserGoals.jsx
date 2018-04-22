@@ -45,7 +45,8 @@ export class UserGoals extends Component {
 
 UserGoals.propTypes = {
   classes: PropTypes.object.isRequired,
-  goal: PropTypes.string.isRequired,
+  goal: PropTypes.string,
+  points: PropTypes.number,
 };
 
 export default withStyles(styles)(UserGoals);
