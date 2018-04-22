@@ -12,6 +12,9 @@ const styles = theme => ({
   root: {
     width: '90%',
     [theme.breakpoints.up('sm')]: {
+      width: '65%',
+    },
+    [theme.breakpoints.up('md')]: {
       width: '50%',
     },
     marginTop: theme.spacing.unit * 3,
@@ -42,6 +45,11 @@ class LeaderBoard extends Component {
   }
 
   async componentDidMount() {
+    const res = await axios.get('/api/leaderboard');
+    this.setState({ data: res.data });
+  }
+
+  async componentWillReceiveProps() {
     const res = await axios.get('/api/leaderboard');
     this.setState({ data: res.data });
   }
@@ -103,6 +111,7 @@ class LeaderBoard extends Component {
                   {data.map(n => {
                     return (
                       <TableRow hover tabIndex={-1} key={n._id}>
+                        <TableCell className={classes.root}>{n.rank}</TableCell>
                         <TableCell className={classes.root}>
                           <Link to={{ pathname: `/users/${n.userName}` }}>
                             {n.userName}
@@ -126,6 +135,7 @@ class LeaderBoard extends Component {
 
 LeaderBoard.propTypes = {
   classes: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(LeaderBoard);

@@ -72,20 +72,23 @@ export class Header extends Component {
               <BookIcon />
             </IconButton>
             <Typography
+              component={Link}
+              to="/"
               variant="title"
               color="inherit"
               className={classes.flex}
+              style={{ textDecoration: 'none' }}
             >
               Speedstudy
             </Typography>
-            {!this.props.auth && (
+            {!this.props.auth.userName && (
               <div>
                 <Button color="inherit" onClick={this.handleLogin}>
                   Login With Github
                 </Button>
               </div>
             )}
-            {this.props.auth && (
+            {this.props.auth.userName && (
               <div>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
@@ -109,12 +112,15 @@ export class Header extends Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.props.logout}>Logout</MenuItem>
                   <MenuItem
                     component={Link}
                     to={{ pathname: `/users/${this.props.auth.userName}` }}
                   >
                     My Page
+                  </MenuItem>
+                  <MenuItem onClick={this.props.logout}>Logout</MenuItem>
+                  <MenuItem component={Link} to="/delete">
+                    Delete Account
                   </MenuItem>
                 </Menu>
               </div>
