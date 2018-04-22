@@ -58,6 +58,7 @@ export class UserActivities extends Component {
 
 UserActivities.propTypes = {
   classes: PropTypes.object.isRequired,
+  activities: PropTypes.array,
 };
 
 export default withStyles(styles)(UserActivities);
