@@ -90,7 +90,10 @@ class User extends Component {
       <div>
         <h2>{user}</h2>
 
-        <UserGoals goal={this.props.userPage.goal} />
+        <UserGoals
+          goal={this.props.userPage.goal}
+          points={this.props.userAuthenticated.totalPoints}
+        />
 
         <div className="user__tabs">
           <div className={classes.root}>
@@ -122,6 +125,13 @@ class User extends Component {
 
 User.propTypes = {
   classes: PropTypes.object.isRequired,
+  clearProgressData: PropTypes.func.isRequired,
+  fetchUserInfo: PropTypes.func.isRequired,
+  fetchActivities: PropTypes.func.isRequired,
+  fetchProgressData: PropTypes.func.isRequired,
+  userPage: PropTypes.object,
+  userAuthenticated: PropTypes.object,
+  activities: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
