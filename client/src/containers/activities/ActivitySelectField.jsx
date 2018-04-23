@@ -62,7 +62,11 @@ class ActivitySelectField extends Component {
 
   renderOptions = () => {
     return ACTIVITIES.map(activity => {
-      return <MenuItem value={activity}>{activity}</MenuItem>;
+      return (
+        <MenuItem key={activity} value={activity}>
+          {activity}
+        </MenuItem>
+      );
     });
   };
 
