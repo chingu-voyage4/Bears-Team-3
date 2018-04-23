@@ -31,6 +31,7 @@ export class UserActivities extends Component {
           <TableHead>
             <TableRow>
               <TableCell numeric>Date</TableCell>
+              <TableCell>Title</TableCell>
               <TableCell>Activity</TableCell>
               <TableCell numeric>Points</TableCell>
               <TableCell>Links</TableCell>
@@ -43,9 +44,10 @@ export class UserActivities extends Component {
                   <TableCell numeric>
                     {new Date(n.dateCompleted).toLocaleDateString()}
                   </TableCell>
+                  <TableCell>{n.title}</TableCell>
                   <TableCell>{n.activity}</TableCell>
                   <TableCell numeric>{n.points}</TableCell>
-                  <TableCell>{<a href={`${n.url}`}>{n.title}</a>}</TableCell>
+                  <TableCell>{n.url}</TableCell>
                 </TableRow>
               );
             })}
