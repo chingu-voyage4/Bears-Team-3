@@ -168,11 +168,11 @@ class Activities extends Component {
         <React.Fragment>
           <h2>{userName}</h2>
           <p>Total points: {totalPoints}</p>
-          <p>
+          <div>
             <div>Current Course: {currentCourse}</div>
             <div>Goal: {goal}</div>
             <div>Study Plan: {studyPlan}</div>
-          </p>
+          </div>
           <hr />
           {this.state.isAuthenticated && (
             <React.Fragment>
