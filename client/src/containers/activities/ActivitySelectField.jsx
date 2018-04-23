@@ -15,10 +15,10 @@ const styles = theme => ({
   },
   formControl: {
     margin: theme.spacing.unit,
-    minWidth: 120,
+    minWidth: 200,
   },
   selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit,
   },
 });
 
@@ -71,10 +71,11 @@ class ActivitySelectField extends Component {
   };
 
   render() {
-    const { input, label, touched, meta, classes } = this.props;
+    const { input, label, meta: { touched, error }, classes } = this.props;
+    const showError = touched && error ? true : false;
     return (
       <div>
-        <FormControl className={classes.formControl}>
+        <FormControl className={classes.formControl} error={showError}>
           <InputLabel htmlFor="activity-type">{label}</InputLabel>
           <Select
             value={this.state.activity}
@@ -87,8 +88,8 @@ class ActivitySelectField extends Component {
             </MenuItem>
             {this.renderOptions()}
           </Select>
+          {showError ? <FormHelperText>{error}</FormHelperText> : null}
         </FormControl>
-        {touched && error}
       </div>
     );
   }
