@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'react-router-dom';
+import Button from 'material-ui/Button';
+import Done from 'material-ui-icons/Done';
+import Cancel from 'material-ui-icons/Cancel';
 
 import ActivityInputField from './ActivityInputField';
 import ActivitySelectField from './ActivitySelectField';
@@ -32,11 +35,22 @@ class ActivityForm extends Component {
   };
 
   render() {
-    const { addActivity, history, handleSubmit } = this.props;
+    const { addActivity, dispatch, history, handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit(values => addActivity(values, history))}>
         {this.renderFields()}
-        <button type="submit">Submit</button>
+        <Button
+          variant="raised"
+          color="secondary"
+          onClick={() => history.push('/')}
+        >
+          Cancel
+          <Cancel />
+        </Button>
+        <Button variant="raised" color="primary" type="submit">
+          Add Activity
+          <Done />
+        </Button>
       </form>
     );
   }
