@@ -14,7 +14,7 @@ import { addActivity } from '../../actions';
 const FIELDS = [
   { label: 'Activity*', name: 'activity' },
   { label: 'Title*', name: 'title' },
-  { label: 'Repo Link', name: 'url' },
+  { label: 'URL', name: 'url' },
 ];
 
 class ActivityForm extends Component {
