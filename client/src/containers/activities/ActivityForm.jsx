@@ -9,9 +9,9 @@ import ActivitySelectField from './ActivitySelectField';
 import { addActivity } from '../../actions';
 
 const FIELDS = [
-  { label: 'Title', name: 'title' },
+  { label: 'Title*', name: 'title' },
   { label: 'Repo Link', name: 'url' },
-  { label: 'Activity', name: 'activity' },
+  { label: 'Activity*', name: 'activity' },
 ];
 
 class ActivityForm extends Component {
@@ -22,6 +22,7 @@ class ActivityForm extends Component {
           key={name}
           label={label}
           name={name}
+          required={name !== 'url'}
           component={
             name === 'activity' ? ActivitySelectField : ActivityInputField
           }
@@ -31,12 +32,9 @@ class ActivityForm extends Component {
   };
 
   render() {
+    const { addActivity, history, handleSubmit } = this.props;
     return (
-      <form
-        onSubmit={this.props.handleSubmit(values =>
-          this.props.addActivity(values, this.props.history)
-        )}
-      >
+      <form onSubmit={handleSubmit(values => addActivity(values, history))}>
         {this.renderFields()}
         <button type="submit">Submit</button>
       </form>
@@ -56,7 +54,8 @@ const validate = values => {
   const errors = {};
 
   FIELDS.forEach(({ name }) => {
-    if (!values[name]) errors[name] = `You must have a ${name}`;
+    if (!values[name] && name !== 'url')
+      errors[name] = `You must have a ${name}`;
   });
 
   return errors;
