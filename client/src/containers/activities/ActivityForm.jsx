@@ -12,9 +12,9 @@ import ActivitySelectField from './ActivitySelectField';
 import { addActivity } from '../../actions';
 
 const FIELDS = [
+  { label: 'Activity*', name: 'activity' },
   { label: 'Title*', name: 'title' },
   { label: 'Repo Link', name: 'url' },
-  { label: 'Activity*', name: 'activity' },
 ];
 
 class ActivityForm extends Component {
@@ -37,21 +37,24 @@ class ActivityForm extends Component {
   render() {
     const { addActivity, dispatch, history, handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(values => addActivity(values, history))}>
-        {this.renderFields()}
-        <Button
-          variant="raised"
-          color="secondary"
-          onClick={() => history.push('/')}
-        >
-          Cancel
-          <Cancel />
-        </Button>
-        <Button variant="raised" color="primary" type="submit">
-          Add Activity
-          <Done />
-        </Button>
-      </form>
+      <div>
+        <h2>Add an Activity</h2>
+        <form onSubmit={handleSubmit(values => addActivity(values, history))}>
+          {this.renderFields()}
+          <Button
+            variant="raised"
+            color="secondary"
+            onClick={() => history.push('/')}
+          >
+            Cancel
+            <Cancel />
+          </Button>
+          <Button variant="raised" color="primary" type="submit">
+            Add Activity
+            <Done />
+          </Button>
+        </form>
+      </div>
     );
   }
 }
