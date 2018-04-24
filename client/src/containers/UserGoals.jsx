@@ -31,11 +31,15 @@ export class UserGoals extends Component {
           <Typography component="h3">
             <strong>Goals</strong>
           </Typography>
-          <Typography
-            style={{ textAlign: 'left' }}
-            component="p"
-            dangerouslySetInnerHTML={this.getMarkDown(goal)}
-          />
+          {goal.length < 1 && <p>No data yet!</p>}
+          {goal.length > 0 && (
+            <Typography
+              style={{ textAlign: 'left' }}
+              component="p"
+              dangerouslySetInnerHTML={this.getMarkDown(goal)}
+            />
+          )}
+
           <Typography component="h4">
             <strong>Total Points: {points}</strong>
           </Typography>
