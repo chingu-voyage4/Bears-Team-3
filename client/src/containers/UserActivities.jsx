@@ -27,6 +27,7 @@ export class UserActivities extends Component {
 
     return (
       <Paper className={classes.root}>
+        {activities.length < 1 && <p>No data yet!</p>}
         {activities.length > 0 && (
           <Table className={classes.table}>
             <TableHead>
