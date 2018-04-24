@@ -39,9 +39,7 @@ class User extends Component {
   };
 
   checkAuth = () => {
-    if (
-      this.props.match.params.userName === this.props.userAuthenticated.userName
-    ) {
+    if (this.props.match.params.userName === this.props.userName) {
       this.setState(prevState => {
         if (!prevState.isAuthenticated) return { isAuthenticated: true };
       });
@@ -127,13 +125,13 @@ User.propTypes = {
   fetchActivities: PropTypes.func.isRequired,
   fetchProgressData: PropTypes.func.isRequired,
   clearUserPage: PropTypes.func.isRequired,
-  userPage: PropTypes.object,
-  userAuthenticated: PropTypes.object,
+  userPage: PropTypes.string,
+  userName: PropTypes.object,
   activities: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
-  userAuthenticated: state.authReducer,
+  userName: state.authReducer.userName,
   activities: state.activities,
   userPage: state.userPage,
 });
