@@ -2,15 +2,8 @@ import React, { Component } from 'react';
 import { TextField, withStyles } from 'material-ui';
 
 const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
   textField: {
     margin: theme.spacing.unit,
-    width: 200,
-  },
-  menu: {
     width: 200,
   },
 });
@@ -39,6 +32,9 @@ class ProgressInputField extends Component {
           className={classes.textField}
           value={this.state[label]}
           onChange={this.handleChange(label)}
+          multiline={label === 'Study Plan'}
+          rows="6"
+          rowsMax="12"
           {...input}
         />
       </div>
