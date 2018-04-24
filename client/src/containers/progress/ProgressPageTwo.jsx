@@ -4,6 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import { Typography, Grid, Paper, withStyles, Button } from 'material-ui';
 import NavigateNext from 'material-ui-icons/NavigateNext';
 import NavigateBefore from 'material-ui-icons/NavigateBefore';
+import marked from 'marked';
 
 import ProgressInputField from './ProgressInputField';
 
@@ -15,10 +16,12 @@ const styles = theme => ({
   },
   paper: {
     padding: theme.spacing.unit * 2,
-    textAlign: 'center',
     color: theme.palette.text.secondary,
     wordBreak: 'break-all',
+    height: '50vh',
+    overflowY: 'scroll',
   },
+  alignLeft: { textAlign: 'left' },
   grid: {
     margin: 8,
     width: 'auto',
@@ -75,7 +78,16 @@ class ProgressPageTwo extends Component {
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
-              <Typography>{values.studyPlan}</Typography>
+              <Typography component="div">
+                <h2>Study Plan Preview</h2>
+                <hr />
+                <div
+                  className={classes.alignLeft}
+                  dangerouslySetInnerHTML={{
+                    __html: marked(values.studyPlan || ''),
+                  }}
+                />
+              </Typography>
             </Paper>
           </Grid>
         </Grid>
