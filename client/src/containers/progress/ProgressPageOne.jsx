@@ -40,7 +40,11 @@ class ProgressPageOne extends Component {
             Cancel
             <Cancel />
           </Button>
-          <Button type="submit" variant="raised" color="primary">
+          <Button
+            variant="raised"
+            color="primary"
+            onClick={() => this.props.showPage(2)}
+          >
             Next
             <NavigateNext />
           </Button>
