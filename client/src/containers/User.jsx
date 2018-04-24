@@ -81,7 +81,7 @@ class User extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, userPage, activities } = this.props;
     const { user, value } = this.state;
 
     return (
@@ -89,9 +89,9 @@ class User extends Component {
         <h2>{user}</h2>
 
         <UserGoals
-          goal={this.props.userPage.goal}
-          points={this.props.userPage.totalPoints}
-          currentCourse={this.props.userPage.currentCourse}
+          goal={userPage.goal}
+          points={userPage.totalPoints}
+          currentCourse={userPage.currentCourse}
         />
 
         <div className="user__tabs">
@@ -104,15 +104,13 @@ class User extends Component {
             </AppBar>
             {value === 0 && (
               <TabContainer>
-                {console.log(this.props.activities)}
-                {this.props.activities && (
-                  <UserActivities activities={this.props.activities} />
-                )}
+                {console.log(activities)}
+                {activities && <UserActivities activities={activities} />}
               </TabContainer>
             )}
             {value === 1 && (
               <TabContainer>
-                <UserStudyPlan studyPlan={this.props.userPage.studyPlan} />
+                <UserStudyPlan studyPlan={userPage.studyPlan} />
               </TabContainer>
             )}
           </div>
