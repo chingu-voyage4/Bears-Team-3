@@ -2,29 +2,22 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 
 import ProgressPageOne from './ProgressPageOne';
+import ProgressPageTwo from './ProgressPageTwo';
 
 class ProgressNew extends Component {
-  state = {
-    showPageOne: true,
-    showPageTwo: false,
-    showFormReview: false,
+  state = { showPage: 1 };
+
+  showPage = value => {
+    this.setState({ showPage: value });
   };
 
   renderContent = () => {
-    const { showPageOne, showPageTwo, showFormReview } = this.state;
+    const { showPage } = this.state;
 
-    if (showPageOne) {
-      return (
-        <ProgressPageOne
-          componentDidRender={() =>
-            this.setState({
-              ...this.state,
-              showPageTwo: false,
-              showFormReview: false,
-            })
-          }
-        />
-      );
+    if (showPage === 1) {
+      return <ProgressPageOne showPage={this.showPage} />;
+    } else if (showPage === 2) {
+      return <ProgressPageTwo showPage={this.showPage} />;
     }
   };
 
