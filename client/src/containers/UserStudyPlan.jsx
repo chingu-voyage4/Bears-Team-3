@@ -27,15 +27,16 @@ export class UserStudyPlan extends Component {
 
     return (
       <div>
-        {studyPlan.length > 0 && (
-          <Paper className={classes.root} elevation={4}>
+        <Paper className={classes.root} elevation={4}>
+          {studyPlan.length < 1 && <p>No data yet!</p>}
+          {studyPlan.length > 0 && (
             <Typography
               component="p"
               style={{ textAlign: 'left' }}
               dangerouslySetInnerHTML={this.getMarkDown(studyPlan)}
             />
-          </Paper>
-        )}
+          )}
+        </Paper>
       </div>
     );
   }
