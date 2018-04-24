@@ -27,32 +27,34 @@ export class UserActivities extends Component {
 
     return (
       <Paper className={classes.root}>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell numeric>Date</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Activity</TableCell>
-              <TableCell numeric>Points</TableCell>
-              <TableCell>Links</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {activities.map(n => {
-              return (
-                <TableRow key={n._id}>
-                  <TableCell numeric>
-                    {new Date(n.dateCompleted).toLocaleDateString()}
-                  </TableCell>
-                  <TableCell>{n.title}</TableCell>
-                  <TableCell>{n.activity}</TableCell>
-                  <TableCell numeric>{n.points}</TableCell>
-                  <TableCell>{n.url}</TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
+        {activities.length > 0 && (
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow>
+                <TableCell numeric>Date</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell>Activity</TableCell>
+                <TableCell numeric>Points</TableCell>
+                <TableCell>Links</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {activities.map(n => {
+                return (
+                  <TableRow key={n._id}>
+                    <TableCell numeric>
+                      {new Date(n.dateCompleted).toLocaleDateString()}
+                    </TableCell>
+                    <TableCell>{n.title}</TableCell>
+                    <TableCell>{n.activity}</TableCell>
+                    <TableCell numeric>{n.points}</TableCell>
+                    <TableCell>{n.url}</TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        )}
       </Paper>
     );
   }
