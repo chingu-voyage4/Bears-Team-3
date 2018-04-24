@@ -125,8 +125,8 @@ User.propTypes = {
   fetchActivities: PropTypes.func.isRequired,
   fetchProgressData: PropTypes.func.isRequired,
   clearUserPage: PropTypes.func.isRequired,
-  userPage: PropTypes.string,
-  userName: PropTypes.object,
+  userPage: PropTypes.object,
+  userName: PropTypes.string,
   activities: PropTypes.array,
 };
 
