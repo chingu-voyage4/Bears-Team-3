@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { FETCH_USER_PAGE, FETCH_ACTIVITIES } from './types';
 
-export const addActivity = values => async dispatch => {
+export const addActivity = (values, history) => async dispatch => {
   const res = await axios.post('/api/activity/new', values);
+  history.push('/');
   dispatch({ type: FETCH_USER_PAGE, payload: res.data });
 };
 
