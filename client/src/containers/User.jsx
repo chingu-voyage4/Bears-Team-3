@@ -44,14 +44,12 @@ class User extends Component {
     ) {
       this.setState(prevState => {
         if (!prevState.isAuthenticated) return { isAuthenticated: true };
-        return;
       });
       return true;
     }
 
     this.setState(prevState => {
       if (prevState.isAuthenticated) return { isAuthenticated: false };
-      return;
     });
     return false;
   };
