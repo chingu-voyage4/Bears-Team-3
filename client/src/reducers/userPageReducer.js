@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   currentCourse: '',
   goal: '',
   studyPlan: '',
-  totalPoints: '',
+  totalPoints: 0,
   userName: 0,
 };
 
