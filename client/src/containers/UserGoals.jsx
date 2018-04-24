@@ -28,17 +28,19 @@ export class UserGoals extends Component {
     return (
       <div className="user__goal">
         <Paper className={classes.root} elevation={4}>
-          <Typography variant="headline" component="h3">
-            Goals
+          <Typography component="h3">
+            <strong>Goals</strong>
           </Typography>
           <Typography
             style={{ textAlign: 'left' }}
             component="p"
             dangerouslySetInnerHTML={this.getMarkDown(goal)}
           />
-          <Typography component="h4">Total Points: {points}</Typography>
           <Typography component="h4">
-            Current Course: {currentCourse}
+            <strong>Total Points: {points}</strong>
+          </Typography>
+          <Typography component="h4">
+            <strong>Current Course: {currentCourse}</strong>
           </Typography>
         </Paper>
       </div>
