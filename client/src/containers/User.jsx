@@ -8,6 +8,7 @@ import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
 
+import TabContainer from './TabContainer';
 import UserActivities from './UserActivities';
 import UserStudyPlan from './UserStudyPlan';
 import UserGoals from './UserGoals';
@@ -20,18 +21,6 @@ import {
   clearActivities,
   clearUserPage,
 } from '../actions';
-
-function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ marginBottom: '50px' }}>
-      {props.children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 const styles = theme => ({
   root: {
