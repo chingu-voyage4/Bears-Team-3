@@ -23,7 +23,6 @@ const styles = theme => ({
 export class UserActivities extends Component {
   render() {
     const { classes, activities } = this.props;
-    console.log(this.props);
 
     return (
       <Paper className={classes.root}>

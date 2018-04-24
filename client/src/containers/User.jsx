@@ -102,7 +102,6 @@ class User extends Component {
             </AppBar>
             {value === 0 && (
               <TabContainer>
-                {console.log(activities)}
                 {activities && <UserActivities activities={activities} />}
               </TabContainer>
             )}
