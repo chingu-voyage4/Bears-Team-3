@@ -31,7 +31,7 @@ export class UserGoals extends Component {
           <Typography component="h3">
             <strong>Goals</strong>
           </Typography>
-          {goal.length < 1 && <p>No data yet!</p>}
+          {goal.length < 1 && <p>No goals yet!</p>}
           {goal.length > 0 && (
             <Typography
               style={{ textAlign: 'left' }}

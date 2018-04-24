@@ -28,7 +28,7 @@ export class UserStudyPlan extends Component {
     return (
       <div>
         <Paper className={classes.root} elevation={4}>
-          {studyPlan.length < 1 && <p>No data yet!</p>}
+          {studyPlan.length < 1 && <p>No study plan yet!</p>}
           {studyPlan.length > 0 && (
             <Typography
               component="p"
