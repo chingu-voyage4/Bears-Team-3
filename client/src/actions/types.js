@@ -5,7 +5,11 @@ export const FETCH_USER = 'FETCH_USER';
 
 export const FETCH_ACTIVITIES = 'FETCH_ACTIVITIES';
 
+export const CLEAR_ACTIVITIES = 'CLEAR_ACTIVITIES';
+
 export const FETCH_USER_PAGE = 'FETCH_USER_PAGE';
+
+export const CLEAR_USER_PAGE = 'CLEAR_USER_PAGE';
 
 export const FETCH_PROGRESS = 'FETCH_PROGRESS';
 

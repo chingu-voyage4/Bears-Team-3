@@ -27,7 +27,7 @@ import axios from 'axios';
 window.axios = axios;
 
 const middleware = [thunk];
-// if (process.env.NODE_ENV !== 'production') middleware.push(logger);
+if (process.env.NODE_ENV !== 'production') middleware.push(logger);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

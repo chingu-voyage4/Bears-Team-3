@@ -24,6 +24,19 @@ body {
   justify-content: center;
 }
 
+.user {
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+  }
+  &__goal {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .home__intro {
   display: flex;
   justify-content: center;

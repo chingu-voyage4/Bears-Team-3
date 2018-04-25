@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER_PAGE, FETCH_ACTIVITIES } from './types';
+import { FETCH_USER_PAGE, FETCH_ACTIVITIES, CLEAR_ACTIVITIES } from './types';
 
 export const addActivity = (values, history) => async dispatch => {
   const res = await axios.post('/api/activity/new', values);
@@ -20,4 +20,8 @@ export const deleteActivity = id => async dispatch => {
 export const modifyActivity = (id, values) => async dispatch => {
   const res = await axios.patch(`/api/activity/${id}`, values);
   dispatch({ type: FETCH_USER_PAGE, payload: res.data });
+};
+
+export const clearActivities = () => dispatch => {
+  dispatch({ type: CLEAR_ACTIVITIES });
 };
