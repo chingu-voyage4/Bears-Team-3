@@ -25,6 +25,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     marginTop: theme.spacing.unit * 3,
+    marginBottom: '0px',
     backgroundColor: theme.palette.background.paper,
     width: '70%',
     justifyContent: 'center',
@@ -71,7 +72,6 @@ class User extends Component {
 
   componentDidUpdate() {
     this.checkAuth();
-    console.log(this.state.isAuthenticated);
   }
 
   handleChange = (event, value) => {
