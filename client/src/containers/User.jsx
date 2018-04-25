@@ -71,7 +71,6 @@ class User extends Component {
 
   componentDidUpdate() {
     this.checkAuth();
-    console.log(this.state.isAuthenticated);
   }
 
   handleChange = (event, value) => {
