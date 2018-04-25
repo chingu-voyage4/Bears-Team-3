@@ -8,7 +8,7 @@ import Cancel from 'material-ui-icons/Cancel';
 import ProgressInputField from './ProgressInputField';
 
 const FIELDS = [
-  { label: 'Current Course', name: 'course' },
+  { label: 'Current Course', name: 'currentCourse' },
   { label: 'Current Goal', name: 'goal' },
 ];
 
