@@ -35,7 +35,7 @@ class ActivityForm extends Component {
   };
 
   render() {
-    const { addActivity, dispatch, history, handleSubmit } = this.props;
+    const { addActivity, history, handleSubmit } = this.props;
     return (
       <div>
         <h2>Add an Activity</h2>
