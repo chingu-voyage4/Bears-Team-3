@@ -34,7 +34,7 @@ export class UserGoals extends Component {
           {goal.length < 1 && <p>No goals yet!</p>}
           {goal.length > 0 && (
             <Typography
-              style={{ textAlign: 'left' }}
+              style={{ textAlign: 'center' }}
               component="p"
               dangerouslySetInnerHTML={this.getMarkDown(goal)}
             />
@@ -43,9 +43,16 @@ export class UserGoals extends Component {
           <Typography component="h4">
             <strong>Total Points: {points}</strong>
           </Typography>
-          <Typography component="h4">
-            <strong>Current Course: {currentCourse}</strong>
-          </Typography>
+          {currentCourse.length < 1 && (
+            <Typography component="h4">
+              <strong>Current Course: No Current Course!</strong>
+            </Typography>
+          )}
+          {currentCourse.length > 0 && (
+            <Typography component="h4">
+              <strong>Current Course: {currentCourse}</strong>
+            </Typography>
+          )}
         </Paper>
       </div>
     );
