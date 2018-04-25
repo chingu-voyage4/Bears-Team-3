@@ -63,7 +63,11 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({ addActivity }, dispatch);
 };
 
-const connectedActivityForm = connect(null, mapDispatchToProps)(
+const mapStateToProps = state => ({
+  userName: state.authReducer.userName,
+});
+
+const connectedActivityForm = connect(mapStateToProps, mapDispatchToProps)(
   withRouter(ActivityForm)
 );
 
