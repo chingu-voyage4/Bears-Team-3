@@ -45,7 +45,7 @@ export class UserGoals extends Component {
           </Typography>
           {currentCourse.length < 1 && (
             <Typography component="h4">
-              <strong>Current Course: No Current Course!</strong>
+              <strong>Current Course: No course yet!</strong>
             </Typography>
           )}
           {currentCourse.length > 0 && (
