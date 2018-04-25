@@ -3,12 +3,15 @@ import { reduxForm } from 'redux-form';
 
 import ProgressPageOne from './ProgressPageOne';
 import ProgressPageTwo from './ProgressPageTwo';
+import ProgressPageThree from './ProgressPageThree';
 
 class ProgressNew extends Component {
   state = { showPage: 1 };
 
   showPage = value => {
-    this.setState({ showPage: value });
+    if (value > 0 && value < 4) {
+      this.setState({ showPage: value });
+    }
   };
 
   renderContent = () => {
@@ -18,6 +21,8 @@ class ProgressNew extends Component {
       return <ProgressPageOne showPage={this.showPage} />;
     } else if (showPage === 2) {
       return <ProgressPageTwo showPage={this.showPage} />;
+    } else {
+      return <ProgressPageThree showPage={this.showPage} />;
     }
   };
 
