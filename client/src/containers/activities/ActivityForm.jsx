@@ -35,16 +35,20 @@ class ActivityForm extends Component {
   };
 
   render() {
-    const { addActivity, history, handleSubmit } = this.props;
+    const { addActivity, history, handleSubmit, userName } = this.props;
     return (
       <div>
         <h2>Add an Activity</h2>
-        <form onSubmit={handleSubmit(values => addActivity(values, history))}>
+        <form
+          onSubmit={handleSubmit(values =>
+            addActivity(values, history, userName)
+          )}
+        >
           {this.renderFields()}
           <Button
             variant="raised"
             color="secondary"
-            onClick={() => history.push('/')}
+            onClick={() => history.push(`/users/${userName}`)}
           >
             Cancel
             <Cancel />
