@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import CssBaseline from 'material-ui/CssBaseline';
 
 import * as actions from './actions';
 
@@ -30,17 +31,19 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <main className="container">
-          <Header />
-          <ul className="left">
-            <li>
-              <Link to="/activities/aaronmassey45">Activities</Link>
-            </li>
-          </ul>
-          <Routes />
-        </main>
-      </BrowserRouter>
+      <CssBaseline>
+        <BrowserRouter>
+          <main className="container">
+            <Header />
+            <ul className="left">
+              <li>
+                <Link to="/activities/aaronmassey45">Activities</Link>
+              </li>
+            </ul>
+            <Routes />
+          </main>
+        </BrowserRouter>
+      </CssBaseline>
     );
   }
 }

@@ -10,7 +10,7 @@ import LeaderBoardHead from './LeaderBoardHead';
 
 const styles = theme => ({
   root: {
-    width: '80%',
+    width: '90%',
     [theme.breakpoints.up('sm')]: {
       width: '65%',
     },
