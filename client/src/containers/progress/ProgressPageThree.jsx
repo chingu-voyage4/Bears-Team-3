@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Typography, Grid, Paper, withStyles, Button } from 'material-ui';
 import Done from 'material-ui-icons/Done';
 import NavigateBefore from 'material-ui-icons/NavigateBefore';
+import Divider from 'material-ui/Divider';
 import marked from 'marked';
 
 import { addProgressData } from '../../actions';
@@ -13,6 +14,7 @@ const styles = theme => ({
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3,
+    textAlign: 'left',
   }),
 });
 
@@ -37,6 +39,7 @@ const ProgressReviewForm = ({
           <p>
             <b>{label}:</b> {formValues[name]}
           </p>
+          <Divider />
         </div>
       ) : (
         <div key={name}>
