@@ -32,10 +32,17 @@ const ProgressReviewForm = ({
 }) => {
   const reviewFields = () => {
     return FIELDS.map(({ name, label }) => {
-      return (
+      return name !== 'studyPlan' ? (
         <div key={name}>
           <p>
             <b>{label}:</b> {formValues[name]}
+          </p>
+        </div>
+      ) : (
+        <div key={name}>
+          <p>
+            <b>{label}</b>
+            <p dangerouslySetInnerHTML={{ __html: marked(formValues[name]) }} />
           </p>
         </div>
       );
