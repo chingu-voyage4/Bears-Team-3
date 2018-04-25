@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Typography, Grid, Paper, withStyles, Button } from 'material-ui';
-import NavigateNext from 'material-ui-icons/NavigateNext';
+import Done from 'material-ui-icons/Done';
 import NavigateBefore from 'material-ui-icons/NavigateBefore';
 import marked from 'marked';
 
@@ -64,7 +64,7 @@ const ProgressReviewForm = ({
         color="primary"
         onClick={() => addProgressData(formValues, userName, history)}
       >
-        Submit <NavigateNext />
+        Submit <Done />
       </Button>
     </div>
   );
