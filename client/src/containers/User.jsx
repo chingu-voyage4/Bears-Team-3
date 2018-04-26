@@ -25,6 +25,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     marginTop: theme.spacing.unit * 3,
+    marginBottom: '0px',
     backgroundColor: theme.palette.background.paper,
     width: '70%',
     justifyContent: 'center',
@@ -79,7 +80,7 @@ class User extends Component {
 
   render() {
     const { classes, userPage, activities } = this.props;
-    const { user, value } = this.state;
+    const { user, value, isAuthenticated } = this.state;
 
     return (
       <div>
@@ -101,7 +102,12 @@ class User extends Component {
             </AppBar>
             {value === 0 && (
               <TabContainer>
-                {activities && <UserActivities activities={activities} />}
+                {activities && (
+                  <UserActivities
+                    activities={activities}
+                    isAuthenticated={isAuthenticated}
+                  />
+                )}
               </TabContainer>
             )}
             {value === 1 && (

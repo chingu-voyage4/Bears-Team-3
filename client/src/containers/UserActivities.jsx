@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
 import Table, {
   TableBody,
   TableCell,
@@ -15,47 +17,60 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
   },
+  button: {
+    marginTop: theme.spacing.unit * 2,
+  },
   table: {
     minWidth: 200,
+    marginTop: 0,
   },
 });
 
 export class UserActivities extends Component {
   render() {
-    const { classes, activities } = this.props;
+    const { classes, activities, isAuthenticated } = this.props;
 
     return (
-      <Paper className={classes.root}>
-        {activities.length < 1 && <p>No activites yet!</p>}
-        {activities.length > 0 && (
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell numeric>Date</TableCell>
-                <TableCell>Title</TableCell>
-                <TableCell>Activity</TableCell>
-                <TableCell numeric>Points</TableCell>
-                <TableCell>Links</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {activities.map(n => {
-                return (
-                  <TableRow key={n._id}>
-                    <TableCell numeric>
-                      {new Date(n.dateCompleted).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell>{n.title}</TableCell>
-                    <TableCell>{n.activity}</TableCell>
-                    <TableCell numeric>{n.points}</TableCell>
-                    <TableCell>{n.url}</TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
+      <div>
+        {isAuthenticated && (
+          <Link to="/activity/new" style={{ textDecoration: 'none' }}>
+            <Button className={classes.button} color="primary">
+              Add Activity
+            </Button>
+          </Link>
         )}
-      </Paper>
+        <Paper className={classes.root}>
+          {activities.length < 1 && <p>No activites yet!</p>}
+          {activities.length > 0 && (
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell numeric>Date</TableCell>
+                  <TableCell>Title</TableCell>
+                  <TableCell>Activity</TableCell>
+                  <TableCell numeric>Points</TableCell>
+                  <TableCell>Links</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {activities.map(n => {
+                  return (
+                    <TableRow key={n._id}>
+                      <TableCell numeric>
+                        {new Date(n.dateCompleted).toLocaleDateString()}
+                      </TableCell>
+                      <TableCell>{n.title}</TableCell>
+                      <TableCell>{n.activity}</TableCell>
+                      <TableCell numeric>{n.points}</TableCell>
+                      <TableCell>{n.url}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          )}
+        </Paper>
+      </div>
     );
   }
 }
