@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
+import Button from 'material-ui/Button';
 
 import TabContainer from './TabContainer';
 import UserActivities from './UserActivities';
@@ -85,6 +87,15 @@ class User extends Component {
     return (
       <div>
         <h2>{user}</h2>
+
+        {userPage.goal.length < 1 &&
+          isAuthenticated && (
+            <Link to="/progress/new" style={{ textDecoration: 'none' }}>
+              <Button className={classes.button} color="primary">
+                Add Goals, Current Course & Study Plan
+              </Button>
+            </Link>
+          )}
 
         <UserGoals
           goal={userPage.goal}
