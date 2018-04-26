@@ -35,16 +35,20 @@ class ActivityForm extends Component {
   };
 
   render() {
-    const { addActivity, dispatch, history, handleSubmit } = this.props;
+    const { addActivity, history, handleSubmit, userName } = this.props;
     return (
       <div>
         <h2>Add an Activity</h2>
-        <form onSubmit={handleSubmit(values => addActivity(values, history))}>
+        <form
+          onSubmit={handleSubmit(values =>
+            addActivity(values, history, userName)
+          )}
+        >
           {this.renderFields()}
           <Button
             variant="raised"
             color="secondary"
-            onClick={() => history.push('/')}
+            onClick={() => history.push(`/users/${userName}`)}
           >
             Cancel
             <Cancel />
@@ -63,7 +67,11 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({ addActivity }, dispatch);
 };
 
-const connectedActivityForm = connect(null, mapDispatchToProps)(
+const mapStateToProps = state => ({
+  userName: state.authReducer.userName,
+});
+
+const connectedActivityForm = connect(mapStateToProps, mapDispatchToProps)(
   withRouter(ActivityForm)
 );
 
