@@ -73,7 +73,7 @@ export class UserActivities extends Component {
                             <IconButton
                               size="small"
                               component={Link}
-                              to="/"
+                              to="/activity/edit"
                               className={classes.menuButton}
                               color="primary"
                               aria-label="edit"
