@@ -16,6 +16,10 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
     textAlign: 'left',
   }),
+  paperContainer: {
+    padding: '0 5%',
+    margin: '10px 0',
+  },
 });
 
 const FIELDS = [
@@ -45,7 +49,10 @@ const ProgressReviewForm = ({
         <div key={name}>
           <p>
             <b>{label}</b>
-            <p dangerouslySetInnerHTML={{ __html: marked(formValues[name]) }} />
+            <br />
+            <span
+              dangerouslySetInnerHTML={{ __html: marked(formValues[name]) }}
+            />
           </p>
         </div>
       );
@@ -55,20 +62,24 @@ const ProgressReviewForm = ({
   return (
     <div>
       <h3>Please confirm your entries</h3>
-      <Paper className={classes.root} elevation={4}>
-        {reviewFields()}
-      </Paper>
-      <Button variant="raised" color="secondary" onClick={() => showPage(2)}>
-        Back
-        <NavigateBefore />
-      </Button>
-      <Button
-        variant="raised"
-        color="primary"
-        onClick={() => addProgressData(formValues, userName, history)}
-      >
-        Submit <Done />
-      </Button>
+      <div className={classes.paperContainer}>
+        <Paper className={classes.root} elevation={4}>
+          {reviewFields()}
+        </Paper>
+      </div>
+      <div style={{ marginTop: 10 }}>
+        <Button variant="raised" color="secondary" onClick={() => showPage(2)}>
+          Back
+          <NavigateBefore />
+        </Button>
+        <Button
+          variant="raised"
+          color="primary"
+          onClick={() => addProgressData(formValues, userName, history)}
+        >
+          Submit <Done />
+        </Button>
+      </div>
     </div>
   );
 };
