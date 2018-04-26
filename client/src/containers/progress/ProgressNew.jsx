@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import ProgressPageOne from './ProgressPageOne';
@@ -16,13 +17,14 @@ class ProgressNew extends Component {
 
   renderContent = () => {
     const { showPage } = this.state;
+    const { user } = this.props;
 
     if (showPage === 1) {
-      return <ProgressPageOne showPage={this.showPage} />;
+      return <ProgressPageOne showPage={this.showPage} user={user} />;
     } else if (showPage === 2) {
       return <ProgressPageTwo showPage={this.showPage} />;
     } else {
-      return <ProgressPageThree showPage={this.showPage} />;
+      return <ProgressPageThree showPage={this.showPage} user={user} />;
     }
   };
 
@@ -31,4 +33,10 @@ class ProgressNew extends Component {
   }
 }
 
-export default reduxForm({ form: 'progressForm' })(ProgressNew);
+const mapStateToProps = state => ({
+  user: state.authReducer.userName,
+});
+
+export default reduxForm({ form: 'progressForm' })(
+  connect(mapStateToProps)(ProgressNew)
+);
