@@ -16,8 +16,13 @@ export const fetchProgressData = id => async dispatch => {
   dispatch({ type: FETCH_PROGRESS, payload: res.data });
 };
 
-export const addProgressData = values => async dispatch => {
+export const addProgressData = (
+  values,
+  username,
+  history
+) => async dispatch => {
   const res = await axios.post('/api/progress/new', values);
+  history.push(`/users/${username}`);
   dispatch({ type: ADD_PROGRESS, payload: res.data });
 };
 
