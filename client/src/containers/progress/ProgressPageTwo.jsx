@@ -17,10 +17,10 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
-    wordBreak: 'break-all',
     height: '50vh',
     overflowY: 'scroll',
   },
+  breakAll: { wordBreak: 'break-all' },
   alignLeft: { textAlign: 'left' },
   grid: {
     margin: 8,
@@ -55,6 +55,17 @@ class ProgressPageTwo extends Component {
         <Grid container spacing={16} className={classes.grid}>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
+              <Typography variant="caption">
+                Enter markdown for your study plan. Don't have one yet? Check
+                out the{' '}
+                <a
+                  href="https://github.com/P1xt/speedstudy/tree/master/course-paths"
+                  target="_blank"
+                >
+                  Speedstudy Coursepaths
+                </a>{' '}
+                to find one!
+              </Typography>
               <form>
                 {this.renderFields()}
                 <Button
@@ -77,7 +88,7 @@ class ProgressPageTwo extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>
+            <Paper className={`${classes.paper} ${classes.breakAll}`}>
               <Typography component="div">
                 <h2>Study Plan Preview</h2>
                 <hr />
