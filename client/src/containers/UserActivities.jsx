@@ -48,37 +48,37 @@ export class UserActivities extends Component {
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
+                  {isAuthenticated && <TableCell>Actions</TableCell>}
                   <TableCell numeric>Date</TableCell>
                   <TableCell>Title</TableCell>
                   <TableCell>Activity</TableCell>
                   <TableCell numeric>Points</TableCell>
                   <TableCell>Links</TableCell>
-                  {isAuthenticated && <TableCell>Actions</TableCell>}
                 </TableRow>
               </TableHead>
               <TableBody>
                 {activities.map(n => {
                   return (
                     <TableRow key={n._id}>
-                      <TableCell numeric>
-                        {new Date(n.dateCompleted).toLocaleDateString()}
-                      </TableCell>
-                      <TableCell>{n.title}</TableCell>
-                      <TableCell>{n.activity}</TableCell>
-                      <TableCell numeric>{n.points}</TableCell>
-                      <TableCell>{n.url}</TableCell>
                       {isAuthenticated && (
                         <TableCell>
                           <div>
                             <IconButton
                               size="small"
                               component={Link}
-                              to={{ pathname: '/activity/edit', state: {id: `${n._id}`, activity: `${n.activity}`, title: `${n.title}`, url: `${n.url}`} }}
+                              to={{
+                                pathname: '/activity/edit',
+                                state: {
+                                  id: `${n._id}`,
+                                  activity: `${n.activity}`,
+                                  title: `${n.title}`,
+                                  url: `${n.url}`,
+                                },
+                              }}
                               className={classes.menuButton}
                               color="primary"
                               aria-label="edit"
-                              style={{display: 'inline'}}
-                              
+                              style={{ display: 'inline' }}
                             >
                               <EditIcon />
                             </IconButton>
@@ -89,13 +89,20 @@ export class UserActivities extends Component {
                               className={classes.menuButton}
                               color="secondary"
                               aria-label="edit"
-                              style={{display: 'inline'}}
+                              style={{ display: 'inline' }}
                             >
                               <DeleteIcon />
                             </IconButton>
                           </div>
                         </TableCell>
                       )}
+                      <TableCell numeric>
+                        {new Date(n.dateCompleted).toLocaleDateString()}
+                      </TableCell>
+                      <TableCell>{n.title}</TableCell>
+                      <TableCell>{n.activity}</TableCell>
+                      <TableCell numeric>{n.points}</TableCell>
+                      <TableCell>{n.url}</TableCell>
                     </TableRow>
                   );
                 })}

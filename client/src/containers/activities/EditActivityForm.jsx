@@ -9,9 +9,7 @@ import Cancel from 'material-ui-icons/Cancel';
 
 import ActivityInputField from './ActivityInputField';
 import ActivitySelectField from './ActivitySelectField';
-import { modifyActivity} from '../../actions';
-
- 
+import { modifyActivity } from '../../actions';
 
 const FIELDS = [
   { label: 'Activity*', name: 'activity' },
@@ -21,8 +19,8 @@ const FIELDS = [
 
 class EditActivityForm extends Component {
   componentDidMount() {
-    const {id, activity, title, url} = this.props.location.state
-    console.log(id, activity, title, url)
+    const { id, activity, title, url } = this.props.location.state;
+    console.log(id, activity, title, url);
   }
   renderFields = () => {
     return FIELDS.map(({ label, name }) => {
@@ -32,7 +30,7 @@ class EditActivityForm extends Component {
           label={label}
           name={name}
           required={name !== 'url'}
-          component={ 
+          component={
             name === 'activity' ? ActivitySelectField : ActivityInputField
           }
         />
