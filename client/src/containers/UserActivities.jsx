@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import EditIcon from 'material-ui-icons/Edit';
+import DeleteIcon from 'material-ui-icons/Delete';
 import Table, {
   TableBody,
   TableCell,
@@ -50,6 +53,7 @@ export class UserActivities extends Component {
                   <TableCell>Activity</TableCell>
                   <TableCell numeric>Points</TableCell>
                   <TableCell>Links</TableCell>
+                  {isAuthenticated && <TableCell>Actions</TableCell>}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -63,6 +67,34 @@ export class UserActivities extends Component {
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
                       <TableCell>{n.url}</TableCell>
+                      {isAuthenticated && (
+                        <TableCell>
+                          <div>
+                            <IconButton
+                              size="small"
+                              component={Link}
+                              to="/"
+                              className={classes.menuButton}
+                              color="primary"
+                              aria-label="edit"
+                              style={{display: 'inline'}}
+                            >
+                              <EditIcon />
+                            </IconButton>
+                            <IconButton
+                              size="small"
+                              component={Link}
+                              to="/"
+                              className={classes.menuButton}
+                              color="secondary"
+                              aria-label="edit"
+                              style={{display: 'inline'}}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </div>
+                        </TableCell>
+                      )}
                     </TableRow>
                   );
                 })}
