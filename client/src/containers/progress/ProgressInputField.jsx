@@ -33,8 +33,7 @@ class ProgressInputField extends Component {
           value={this.state[label]}
           onChange={this.handleChange(label)}
           multiline={label === 'Study Plan'}
-          rows="1"
-          rowsMax="12"
+          rows="8"
           {...input}
         />
       </div>
