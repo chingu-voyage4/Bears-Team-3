@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Typography, Grid, Paper, withStyles, Button } from 'material-ui';
+import { Paper, withStyles, Button } from 'material-ui';
 import Done from 'material-ui-icons/Done';
 import NavigateBefore from 'material-ui-icons/NavigateBefore';
 import Divider from 'material-ui/Divider';
@@ -34,7 +34,7 @@ const ProgressReviewForm = ({
   formValues,
   history,
   showPage,
-  userName,
+  user,
 }) => {
   const reviewFields = () => {
     return FIELDS.map(({ name, label }) => {
@@ -75,7 +75,7 @@ const ProgressReviewForm = ({
         <Button
           variant="raised"
           color="primary"
-          onClick={() => addProgressData(formValues, userName, history)}
+          onClick={() => addProgressData(formValues, user, history)}
         >
           Submit <Done />
         </Button>
@@ -86,7 +86,6 @@ const ProgressReviewForm = ({
 
 const mapStateToProps = state => ({
   formValues: state.form.progressForm.values,
-  userName: state.authReducer.userName,
 });
 
 export default connect(mapStateToProps, { addProgressData })(
