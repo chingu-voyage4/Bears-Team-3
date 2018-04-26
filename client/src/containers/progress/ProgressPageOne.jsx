@@ -30,12 +30,12 @@ class ProgressPageOne extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+        <form>
           {this.renderFields()}
           <Button
             color="secondary"
             variant="raised"
-            onClick={() => this.props.history.push('/')}
+            onClick={() => this.props.history.push(`/users/${this.props.user}`)}
           >
             Cancel
             <Cancel />
