@@ -4,7 +4,7 @@ import { TextField, withStyles } from 'material-ui';
 const styles = theme => ({
   textField: {
     margin: theme.spacing.unit,
-    width: 200,
+    width: '90%',
   },
 });
 
