@@ -73,7 +73,7 @@ export class UserActivities extends Component {
                             <IconButton
                               size="small"
                               component={Link}
-                              to={{ pathname: '/activity/edit', state: {activity: `${n.activity}`, title: `${n.title}`, url: `${n.url}`} }}
+                              to={{ pathname: '/activity/edit', state: {id: `${n._id}`, activity: `${n.activity}`, title: `${n.title}`, url: `${n.url}`} }}
                               className={classes.menuButton}
                               color="primary"
                               aria-label="edit"
