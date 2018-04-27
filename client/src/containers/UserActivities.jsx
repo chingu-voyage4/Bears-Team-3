@@ -36,8 +36,8 @@ const styles = theme => ({
 export class UserActivities extends Component {
   handleDelete = id => {
     this.props.deleteActivity(id);
-    console.log(this.props.userPage._id);
-    this.props.fetchActivities(this.props.userPage._id);
+    console.log(this.props.userPage._user);
+    this.props.fetchActivities(this.props.userPage._user);
   };
 
   render() {
