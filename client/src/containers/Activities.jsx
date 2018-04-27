@@ -109,7 +109,7 @@ class Activities extends Component {
   async componentDidMount() {
     try {
       await this.props.fetchUserInfo(this.props.match.params.username);
-      this.props.fetchActivities(this.props.userPage._user);
+      this.props.fetchActivities(this.props.userPage._id);
       this.props.fetchProgressData(this.props.userPage._id);
     } catch (err) {
       this.props.history.push(`/404/${this.props.match.params.username}`);
