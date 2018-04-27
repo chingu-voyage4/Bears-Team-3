@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
@@ -13,6 +16,7 @@ import Table, {
   TableRow,
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import { deleteActivity, fetchActivities } from '../actions';
 
 const styles = theme => ({
   root: {
@@ -30,6 +34,12 @@ const styles = theme => ({
 });
 
 export class UserActivities extends Component {
+  handleDelete = id => {
+    this.props.deleteActivity(id);
+    console.log(this.props.userPage._id);
+    this.props.fetchActivities(this.props.userPage._id);
+  };
+
   render() {
     const { classes, activities, isAuthenticated } = this.props;
 
@@ -64,6 +74,7 @@ export class UserActivities extends Component {
                         <TableCell>
                           <div>
                             <IconButton
+                              //todo
                               size="small"
                               component={Link}
                               to={{
@@ -84,12 +95,13 @@ export class UserActivities extends Component {
                             </IconButton>
                             <IconButton
                               size="small"
-                              component={Link}
-                              to="/"
+                              // component={Link}
+                              // to="/"
                               className={classes.menuButton}
                               color="secondary"
                               aria-label="edit"
                               style={{ display: 'inline' }}
+                              onClick={() => this.handleDelete(n._id)}
                             >
                               <DeleteIcon />
                             </IconButton>
@@ -120,4 +132,15 @@ UserActivities.propTypes = {
   activities: PropTypes.array,
 };
 
-export default withStyles(styles)(UserActivities);
+const mapStateToProps = state => ({
+  userPage: state.userPage,
+});
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ deleteActivity, fetchActivities }, dispatch);
+};
+
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps)
+)(UserActivities);
