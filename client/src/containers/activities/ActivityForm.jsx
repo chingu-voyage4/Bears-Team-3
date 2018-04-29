@@ -21,7 +21,6 @@ class ActivityForm extends Component {
   componentDidMount() {
     if (typeof this.props.location.state !== 'undefined') {
       const { id, activity, title, url } = this.props.location.state;
-      console.log(id, activity, title, url);
       if (url !== 'undefined') {
         this.props.initialize({
           id: id,
@@ -41,8 +40,6 @@ class ActivityForm extends Component {
 
   renderFields = () => {
     if (typeof this.props.location.state !== 'undefined') {
-      const { activity, title, url } = this.props.location.state;
-      console.log(activity, title, url);
       return (
         <div>
           <Field
@@ -51,7 +48,6 @@ class ActivityForm extends Component {
             name="activity"
             required={name !== 'url'}
             component={ActivitySelectField}
-            //defaultValue={activity}
           />
           <Field
             key="title"
@@ -59,27 +55,14 @@ class ActivityForm extends Component {
             name="title"
             required={name !== 'url'}
             component={ActivityInputField}
-            //defaultValue={title}
           />
-          {url !== 'undefined' && (
-            <Field
-              key="url"
-              label="URL"
-              name="url"
-              required={name !== 'url'}
-              component={ActivityInputField}
-              //defaultValue={url}
-            />
-          )}
-          {url === 'undefined' && (
-            <Field
-              key="url"
-              label="URL"
-              name="url"
-              required={name !== 'url'}
-              component={ActivityInputField}
-            />
-          )}
+          <Field
+            key="url"
+            label="URL"
+            name="url"
+            required={name !== 'url'}
+            component={ActivityInputField}
+          />
         </div>
       );
     } else {
@@ -91,7 +74,6 @@ class ActivityForm extends Component {
             name="activity"
             required={name !== 'url'}
             component={ActivitySelectField}
-            //defaultValue={activity}
           />
           <Field
             key="title"
@@ -99,7 +81,6 @@ class ActivityForm extends Component {
             name="title"
             required={name !== 'url'}
             component={ActivityInputField}
-            //defaultValue={title}
           />
           <Field
             key="url"
@@ -107,7 +88,6 @@ class ActivityForm extends Component {
             name="url"
             required={name !== 'url'}
             component={ActivityInputField}
-            //defaultValue={url}
           />
         </div>
       );
@@ -125,16 +105,13 @@ class ActivityForm extends Component {
 
     if (typeof this.props.location.state !== 'undefined') {
       const { id } = this.props.location.state;
-      console.log(id);
       return (
         <div>
           <h2>Edit an Activity</h2>
           <form
-            onSubmit={handleSubmit(
-              values => {
-                modifyActivity(id, values, history, userName);
-              }
-            )}
+            onSubmit={handleSubmit(values => {
+              modifyActivity(id, values, history, userName);
+            })}
           >
             {this.renderFields()}
             <Button
