@@ -19,8 +19,14 @@ export const deleteActivity = id => async dispatch => {
   dispatch({ type: FETCH_USER_PAGE, payload: res.data });
 };
 
-export const modifyActivity = (id, values) => async dispatch => {
+export const modifyActivity = (
+  id,
+  values,
+  history,
+  userName
+) => async dispatch => {
   const res = await axios.patch(`/api/activity/${id}`, values);
+  history.push(`/users/${userName}`);
   dispatch({ type: FETCH_USER_PAGE, payload: res.data });
 };
 
