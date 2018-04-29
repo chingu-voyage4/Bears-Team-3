@@ -132,9 +132,8 @@ class ActivityForm extends Component {
           <form
             onSubmit={handleSubmit(
               values => {
-                modifyActivity(id,  values, history, userName);
+                modifyActivity(id, values, history, userName);
               }
-              //{!this.props.location.state && (addActivity(values, history, userName))}
             )}
           >
             {this.renderFields()}
