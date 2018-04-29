@@ -39,59 +39,19 @@ class ActivityForm extends Component {
   }
 
   renderFields = () => {
-    if (typeof this.props.location.state !== 'undefined') {
+    return FIELDS.map(({ label, name }) => {
       return (
-        <div>
-          <Field
-            key="activity"
-            label="Activity*"
-            name="activity"
-            required={name !== 'url'}
-            component={ActivitySelectField}
-          />
-          <Field
-            key="title"
-            label="Title*"
-            name="title"
-            required={name !== 'url'}
-            component={ActivityInputField}
-          />
-          <Field
-            key="url"
-            label="URL"
-            name="url"
-            required={name !== 'url'}
-            component={ActivityInputField}
-          />
-        </div>
+        <Field
+          key={name}
+          label={label}
+          name={name}
+          required={name !== 'url'}
+          component={
+            name === 'activity' ? ActivitySelectField : ActivityInputField
+          }
+        />
       );
-    } else {
-      return (
-        <div>
-          <Field
-            key="activity"
-            label="Activity*"
-            name="activity"
-            required={name !== 'url'}
-            component={ActivitySelectField}
-          />
-          <Field
-            key="title"
-            label="Title*"
-            name="title"
-            required={name !== 'url'}
-            component={ActivityInputField}
-          />
-          <Field
-            key="url"
-            label="URL"
-            name="url"
-            required={name !== 'url'}
-            component={ActivityInputField}
-          />
-        </div>
-      );
-    }
+    });
   };
 
   render() {
