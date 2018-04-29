@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Home, Activities, User, DeleteUser } from './containers';
 import ActivityForm from './containers/activities/ActivityForm';
-import EditActivityForm from './containers/activities/EditActivityForm';
 import ProgressNew from './containers/progress/ProgressNew';
 
 const Routes = () => (
@@ -13,7 +12,6 @@ const Routes = () => (
     <Route exact path="/activities/:username" component={Activities} />
     <Route path="/delete" component={DeleteUser} />
     <Route path="/activity/new" component={ActivityForm} />
-    <Route path="/activity/edit" component={EditActivityForm} />
     <Route path="/progress/new" component={ProgressNew} />
   </Switch>
 );
