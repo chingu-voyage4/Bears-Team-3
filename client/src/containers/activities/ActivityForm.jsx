@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Done from 'material-ui-icons/Done';
 import Cancel from 'material-ui-icons/Cancel';
@@ -117,6 +118,18 @@ class ActivityForm extends Component {
     }
   }
 }
+
+ActivityForm.propTypes = {
+  activity: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string,
+  id: PropTypes.string,
+  modifyActivity: PropTypes.func,
+  addActivity: PropTypes.func,
+  history: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired,
+};
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({ addActivity, modifyActivity }, dispatch);
