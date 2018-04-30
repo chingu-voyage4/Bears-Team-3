@@ -94,18 +94,14 @@ export class UserActivities extends Component {
                               className={classes.menuButton}
                               color="primary"
                               aria-label="edit"
-                              //style={{ display: 'inline' }}
                             >
                               <EditIcon />
                             </IconButton>
                             <IconButton
                               size="small"
-                              // component={Link}
-                              // to="/"
                               className={classes.menuButton}
                               color="secondary"
                               aria-label="edit"
-                              //style={{ display: 'inline' }}
                               onClick={() => this.handleDelete(n._id)}
                             >
                               <DeleteIcon />
