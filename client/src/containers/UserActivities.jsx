@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import compose from 'recompose/compose';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import EditIcon from 'material-ui-icons/Edit';
+import DeleteIcon from 'material-ui-icons/Delete';
 import Table, {
   TableBody,
   TableCell,
@@ -10,6 +16,7 @@ import Table, {
   TableRow,
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import { deleteActivity, fetchActivities } from '../actions';
 
 const styles = theme => ({
   root: {
@@ -27,6 +34,11 @@ const styles = theme => ({
 });
 
 export class UserActivities extends Component {
+  handleDelete = id => {
+    this.props.deleteActivity(id);
+    this.props.fetchActivities(this.props.userPage._id);
+  };
+
   render() {
     const { classes, activities, isAuthenticated } = this.props;
 
@@ -45,6 +57,7 @@ export class UserActivities extends Component {
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
+                  {isAuthenticated && <TableCell>Actions</TableCell>}
                   <TableCell numeric>Date</TableCell>
                   <TableCell>Title</TableCell>
                   <TableCell>Activity</TableCell>
@@ -56,6 +69,44 @@ export class UserActivities extends Component {
                 {activities.map(n => {
                   return (
                     <TableRow key={n._id}>
+                      {isAuthenticated && (
+                        <TableCell>
+                          <div>
+                            <IconButton
+                              //todo
+                              size="small"
+                              component={Link}
+                              to={{
+                                pathname: '/activity/edit',
+                                state: {
+                                  id: `${n._id}`,
+                                  activity: `${n.activity}`,
+                                  title: `${n.title}`,
+                                  url: `${n.url}`,
+                                },
+                              }}
+                              className={classes.menuButton}
+                              color="primary"
+                              aria-label="edit"
+                              style={{ display: 'inline' }}
+                            >
+                              <EditIcon />
+                            </IconButton>
+                            <IconButton
+                              size="small"
+                              // component={Link}
+                              // to="/"
+                              className={classes.menuButton}
+                              color="secondary"
+                              aria-label="edit"
+                              style={{ display: 'inline' }}
+                              onClick={() => this.handleDelete(n._id)}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </div>
+                        </TableCell>
+                      )}
                       <TableCell numeric>
                         {new Date(n.dateCompleted).toLocaleDateString()}
                       </TableCell>
@@ -80,4 +131,15 @@ UserActivities.propTypes = {
   activities: PropTypes.array,
 };
 
-export default withStyles(styles)(UserActivities);
+const mapStateToProps = state => ({
+  userPage: state.userPage,
+});
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ deleteActivity, fetchActivities }, dispatch);
+};
+
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps)
+)(UserActivities);

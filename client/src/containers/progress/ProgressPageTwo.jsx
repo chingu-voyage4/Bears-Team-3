@@ -45,12 +45,7 @@ class ProgressPageTwo extends Component {
   };
 
   render() {
-    const {
-      handleSubmit,
-      showPage,
-      form: { values },
-      classes,
-    } = this.props;
+    const { handleSubmit, showPage, form: { values }, classes } = this.props;
     return (
       <div className={classes.root}>
         <Grid container spacing={16} className={classes.grid}>

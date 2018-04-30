@@ -89,10 +89,7 @@ class Activities extends Component {
   };
 
   checkAuth = () => {
-    const {
-      match: { params },
-      userAuthenticated: { userName },
-    } = this.props;
+    const { match: { params }, userAuthenticated: { userName } } = this.props;
 
     if (params.username === userName) {
       this.setState(prevState => {
