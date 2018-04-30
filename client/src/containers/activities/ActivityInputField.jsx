@@ -25,7 +25,14 @@ class ActivityInputField extends Component {
   };
 
   render() {
-    const { input, label, meta: { error, touched }, classes } = this.props;
+    const {
+      input,
+      label,
+      meta: { error, touched },
+      classes,
+      helperText,
+    } = this.props;
+    console.log(this.props);
     return (
       <div>
         <TextField
@@ -34,6 +41,7 @@ class ActivityInputField extends Component {
           className={classes.textField}
           value={this.state[label]}
           onChange={this.handleChange(label)}
+          helperText={helperText}
           {...input}
         />
       </div>

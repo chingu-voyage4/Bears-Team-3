@@ -14,18 +14,19 @@ import { addActivity } from '../../actions';
 const FIELDS = [
   { label: 'Activity*', name: 'activity' },
   { label: 'Title*', name: 'title' },
-  { label: 'URL', name: 'url' },
+  { label: 'URL', name: 'url', helperText: 'http:// or https:// only' },
 ];
 
 class ActivityForm extends Component {
   renderFields = () => {
-    return FIELDS.map(({ label, name }) => {
+    return FIELDS.map(({ label, name, helperText }) => {
       return (
         <Field
           key={name}
           label={label}
           name={name}
           required={name !== 'url'}
+          props={{ helperText }}
           component={
             name === 'activity' ? ActivitySelectField : ActivityInputField
           }
