@@ -14,7 +14,8 @@ const INITIAL_STATE = {
   goal: '',
   studyPlan: '',
   totalPoints: 0,
-  userName: 0,
+  userName: '',
+  _id: '',
 };
 
 export default function(state = INITIAL_STATE, action) {
