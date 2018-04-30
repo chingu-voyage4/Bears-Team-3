@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const validator = require('validator');
 
-const isValidUrl = require('../utils/isValidUrl');
+const { Schema } = mongoose;
 
 const ActivitySchema = new Schema({
   activity: {
@@ -52,7 +52,7 @@ const ActivitySchema = new Schema({
   url: {
     type: String,
     validate: {
-      validator: value => isValidUrl(value),
+      validator: value => validator.isURL(value, { require_protocol: true }),
       message: '{VALUE} is not a valid URL',
     },
   },
