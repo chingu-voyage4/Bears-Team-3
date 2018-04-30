@@ -83,7 +83,7 @@ export class UserActivities extends Component {
                               size="small"
                               component={Link}
                               to={{
-                                pathname: '/activity/new',
+                                pathname: '/activity/edit',
                                 state: {
                                   id: `${n._id}`,
                                   activity: `${n.activity}`,
