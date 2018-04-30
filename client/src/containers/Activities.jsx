@@ -33,12 +33,12 @@ class Activities extends Component {
       url: 'www.notreal.com',
       activity: 'Basic Project',
     });
-    this.props.fetchActivities(this.props.userPage._id);
+    this.props.fetchActivities(this.props.userPage._user);
   };
 
   handleDelete = id => {
     this.props.deleteActivity(id);
-    this.props.fetchActivities(this.props.userPage._id);
+    this.props.fetchActivities(this.props.userPage._user);
   };
 
   handleUpdate = id => {
@@ -61,7 +61,7 @@ class Activities extends Component {
       title: titles[getRandomNum(2)],
       activity: projectType[getRandomNum(2)],
     });
-    this.props.fetchActivities(this.props.userPage._id);
+    this.props.fetchActivities(this.props.userPage._user);
   };
 
   addProgress = () => {
@@ -89,10 +89,7 @@ class Activities extends Component {
   };
 
   checkAuth = () => {
-    const {
-      match: { params },
-      userAuthenticated: { userName },
-    } = this.props;
+    const { match: { params }, userAuthenticated: { userName } } = this.props;
 
     if (params.username === userName) {
       this.setState(prevState => {
