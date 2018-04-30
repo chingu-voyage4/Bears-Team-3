@@ -78,9 +78,8 @@ export class UserActivities extends Component {
                       <TableCell>{n.url}</TableCell>
                       {isAuthenticated && (
                         <TableCell>
-                          <div>
+                          <div className="table__actions">
                             <IconButton
-                              //todo
                               size="small"
                               component={Link}
                               to={{
@@ -95,7 +94,7 @@ export class UserActivities extends Component {
                               className={classes.menuButton}
                               color="primary"
                               aria-label="edit"
-                              style={{ display: 'inline' }}
+                              //style={{ display: 'inline' }}
                             >
                               <EditIcon />
                             </IconButton>
@@ -106,7 +105,7 @@ export class UserActivities extends Component {
                               className={classes.menuButton}
                               color="secondary"
                               aria-label="edit"
-                              style={{ display: 'inline' }}
+                              //style={{ display: 'inline' }}
                               onClick={() => this.handleDelete(n._id)}
                             >
                               <DeleteIcon />
