@@ -9,17 +9,22 @@ import Cancel from 'material-ui-icons/Cancel';
 
 import ActivityInputField from './ActivityInputField';
 import ActivitySelectField from './ActivitySelectField';
+import ActivityDatePicker from './ActivityDatePicker';
 import { addActivity } from '../../actions';
-
-const FIELDS = [
-  { label: 'Activity*', name: 'activity' },
-  { label: 'Title*', name: 'title' },
-  { label: 'URL', name: 'url', helperText: 'http:// or https:// only' },
-];
+import { FIELDS } from './exports';
 
 class ActivityForm extends Component {
   renderFields = () => {
     return FIELDS.map(({ label, name, helperText }) => {
+      let component;
+      if (name === 'activity') {
+        component = ActivitySelectField;
+      } else if (name === 'dateCompleted') {
+        component = ActivityDatePicker;
+      } else {
+        component = ActivityInputField;
+      }
+
       return (
         <Field
           key={name}
@@ -27,9 +32,7 @@ class ActivityForm extends Component {
           name={name}
           required={name !== 'url'}
           props={{ helperText }}
-          component={
-            name === 'activity' ? ActivitySelectField : ActivityInputField
-          }
+          component={component}
         />
       );
     });
@@ -79,9 +82,8 @@ const connectedActivityForm = connect(mapStateToProps, mapDispatchToProps)(
 const validate = values => {
   const errors = {};
 
-  FIELDS.forEach(({ name }) => {
-    if (!values[name] && name !== 'url')
-      errors[name] = `You must have a ${name}`;
+  FIELDS.forEach(({ name, errmsg }) => {
+    if (!values[name] && name !== 'url') errors[name] = errmsg;
   });
 
   return errors;

@@ -8,19 +8,7 @@ import {
   withStyles,
 } from 'material-ui';
 
-const styles = theme => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 200,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit,
-  },
-});
+import { styles } from './exports';
 
 const ACTIVITIES = [
   'Basic Project',
@@ -71,7 +59,12 @@ class ActivitySelectField extends Component {
   };
 
   render() {
-    const { input, label, meta: { touched, error }, classes } = this.props;
+    const {
+      input,
+      label,
+      meta: { touched, error },
+      classes,
+    } = this.props;
     const showError = touched && error ? true : false;
     return (
       <div>
