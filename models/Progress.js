@@ -17,4 +17,13 @@ const ProgressSchema = new Schema({
   },
 });
 
+ProgressSchema.methods.toJSON = function() {
+  const data = this;
+  const dataObj = data.toObject();
+
+  const { goal, currentCourse, studyPlan } = dataObj;
+
+  return { goal, currentCourse, studyPlan };
+};
+
 mongoose.model('progress', ProgressSchema);
