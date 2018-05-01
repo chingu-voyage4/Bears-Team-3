@@ -18,12 +18,7 @@ class ProgressInputField extends Component {
   };
 
   render() {
-    const {
-      input,
-      label,
-      meta: { error, touched },
-      classes,
-    } = this.props;
+    const { input, label, meta: { error, touched }, classes } = this.props;
     return (
       <div>
         <TextField

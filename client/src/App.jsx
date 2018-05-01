@@ -13,21 +13,15 @@ import Routes from './Routes';
  * @return {Component} react base component
  */
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.getCurrentUser = this.getCurrentUser.bind(this);
-  }
-
   componentDidMount() {
     // Workaround to avoid re-rendering & CORS issues Credit @jenovs https://github.com/jenovs & https://stackoverflow.com/questions/28392393/passport-js-after-authentication-in-popup-window-close-it-and-redirect-the-pa/29314111#29314111
     window.addEventListener('focus', this.getCurrentUser);
-    this.props.fetchUser();
+    this.getCurrentUser();
   }
 
-  getCurrentUser() {
+  getCurrentUser = () => {
     this.props.fetchUser();
-  }
+  };
 
   render() {
     return (
