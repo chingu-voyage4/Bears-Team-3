@@ -11,7 +11,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
-import BookIcon from 'material-ui-icons/ImportContacts';
+import HomeIcon from 'material-ui-icons/Home';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
 import { logout } from '../actions';
@@ -69,7 +69,7 @@ export class Header extends Component {
               color="inherit"
               aria-label="Book"
             >
-              <BookIcon />
+              <HomeIcon />
             </IconButton>
             <Typography
               component={Link}
