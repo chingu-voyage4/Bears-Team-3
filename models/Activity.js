@@ -47,7 +47,7 @@ const ActivitySchema = new Schema({
   },
   dateCompleted: {
     type: Date,
-    default: Date.now(),
+    required: true,
   },
   url: {
     type: String,
