@@ -79,7 +79,7 @@ export class Header extends Component {
               className={classes.flex}
               style={{ textDecoration: 'none' }}
             >
-              Speedstudy
+              Speedstudy Tracker
             </Typography>
             {!this.props.auth.userName && (
               <div>
