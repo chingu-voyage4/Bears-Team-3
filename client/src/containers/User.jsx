@@ -39,6 +39,7 @@ class User extends Component {
     user: null,
     isAuthenticated: false,
     value: 0,
+    canShowBtn: false,
   };
 
   checkAuth = () => {
@@ -56,15 +57,27 @@ class User extends Component {
   };
 
   async componentDidMount() {
-    this.setState({ user: this.props.match.params.userName });
-    this.props.clearProgressData();
+    const {
+      clearProgressData,
+      fetchUserInfo,
+      fetchActivities,
+      fetchProgressData,
+      history,
+      match: { params },
+    } = this.props;
+
+    clearProgressData();
+
     try {
-      await this.props.fetchUserInfo(this.props.match.params.userName);
-      this.props.fetchActivities(this.props.userPage._id);
-      this.props.fetchProgressData(this.props.userPage._id);
+      await fetchUserInfo(params.userName);
+      const { userPage } = this.props;
+
+      fetchActivities(userPage._id);
+      fetchProgressData(userPage._id);
     } catch (err) {
-      this.props.history.push(`/404/${this.props.match.params.userName}`);
+      history.push(`/404/${params.userName}`);
     }
+    this.setState({ ...this.state, user: params.userName, canShowBtn: true });
   }
 
   componentWillUnmount() {
@@ -82,13 +95,14 @@ class User extends Component {
 
   render() {
     const { classes, userPage, activities } = this.props;
-    const { user, value, isAuthenticated } = this.state;
+    const { user, value, isAuthenticated, canShowBtn } = this.state;
 
     return (
       <div>
         <h2>{user}</h2>
 
-        {userPage.goal.length < 1 &&
+        {canShowBtn &&
+          userPage.goal.length < 1 &&
           isAuthenticated && (
             <Link to="/progress/new" style={{ textDecoration: 'none' }}>
               <Button className={classes.button} color="primary">
