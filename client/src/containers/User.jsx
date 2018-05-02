@@ -73,7 +73,7 @@ class User extends Component {
       const { userPage } = this.props;
 
       fetchActivities(userPage._id);
-      fetchProgressData(userPage._id);
+      await fetchProgressData(userPage._id);
     } catch (err) {
       history.push(`/404/${params.userName}`);
     }
@@ -102,7 +102,7 @@ class User extends Component {
         <h2>{user}</h2>
 
         {canShowBtn &&
-          userPage.goal.length < 1 &&
+          !userPage.goal &&
           isAuthenticated && (
             <Link to="/progress/new" style={{ textDecoration: 'none' }}>
               <Button className={classes.button} color="primary">
