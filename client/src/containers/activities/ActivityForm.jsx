@@ -65,6 +65,7 @@ class ActivityForm extends Component {
   };
 
   handleSubmitAction = (id, values, history, userName) => {
+    if (!values.dateCompleted) values.dateCompleted = new Date();
     if (this.state.editting)
       return this.props.modifyActivity(id, values, history, userName);
 
