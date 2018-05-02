@@ -26,8 +26,13 @@ export const addProgressData = (
   dispatch({ type: ADD_PROGRESS, payload: res.data });
 };
 
-export const modifyProgressData = values => async dispatch => {
+export const modifyProgressData = (
+  values,
+  userName,
+  history
+) => async dispatch => {
   const res = await axios.patch('/api/progress', values);
+  history.push(`/users/${userName}`);
   dispatch({ type: MODIFY_PROGRESS, payload: res.data });
 };
 
