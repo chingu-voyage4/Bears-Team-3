@@ -15,9 +15,14 @@ import { addActivity, modifyActivity } from '../../actions';
 import { FIELDS } from './exports';
 
 class ActivityForm extends Component {
+  state = { editting: false, id: null };
+
   componentDidMount() {
     if (typeof this.props.location.state !== 'undefined') {
       const { id, activity, title, url } = this.props.location.state;
+
+      this.setState({ editting: true, id });
+
       if (url !== 'undefined') {
         this.props.initialize({
           id: id,
@@ -59,67 +64,41 @@ class ActivityForm extends Component {
     });
   };
 
-  render() {
-    const {
-      modifyActivity,
-      addActivity,
-      history,
-      handleSubmit,
-      userName,
-    } = this.props;
+  handleSubmitAction = (id, values, history, userName) => {
+    if (this.state.editting)
+      return this.props.modifyActivity(id, values, history, userName);
 
-    if (typeof this.props.location.state !== 'undefined') {
-      const { id } = this.props.location.state;
-      return (
-        <div>
-          <h2>Edit an Activity</h2>
-          <form
-            onSubmit={handleSubmit(values => {
-              modifyActivity(id, values, history, userName);
-            })}
+    return this.props.addActivity(values, history, userName);
+  };
+
+  render() {
+    const { history, handleSubmit, userName } = this.props;
+    const { editting, id } = this.state;
+
+    return (
+      <div>
+        <h2>{editting ? 'Edit' : 'Add'} an Activity</h2>
+        <form
+          onSubmit={handleSubmit(values => {
+            this.handleSubmitAction(id, values, history, userName);
+          })}
+        >
+          {this.renderFields()}
+          <Button
+            variant="raised"
+            color="secondary"
+            onClick={() => history.push(`/users/${userName}`)}
           >
-            {this.renderFields()}
-            <Button
-              variant="raised"
-              color="secondary"
-              onClick={() => history.push(`/users/${userName}`)}
-            >
-              Cancel
-              <Cancel />
-            </Button>
-            <Button variant="raised" color="primary" type="submit">
-              Save Activity
-              <Done />
-            </Button>
-          </form>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <h2>Add an Activity</h2>
-          <form
-            onSubmit={handleSubmit(values =>
-              addActivity(values, history, userName)
-            )}
-          >
-            {this.renderFields()}
-            <Button
-              variant="raised"
-              color="secondary"
-              onClick={() => history.push(`/users/${userName}`)}
-            >
-              Cancel
-              <Cancel />
-            </Button>
-            <Button variant="raised" color="primary" type="submit">
-              Add Activity
-              <Done />
-            </Button>
-          </form>
-        </div>
-      );
-    }
+            Cancel
+            <Cancel />
+          </Button>
+          <Button variant="raised" color="primary" type="submit">
+            {editting ? 'Save' : 'Add'} Activity
+            <Done />
+          </Button>
+        </form>
+      </div>
+    );
   }
 }
 
