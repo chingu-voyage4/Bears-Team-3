@@ -14,7 +14,6 @@ module.exports = app => {
       if (!isValidId(userId)) throw new Error('Invalid id');
 
       const progress = await Progress.findOne({ _user: userId });
-      //if (!progress) throw new Error('No progress data found');
 
       res.send(progress || 'No progress data found');
     } catch (err) {
