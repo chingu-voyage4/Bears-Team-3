@@ -1,51 +1,46 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
+import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
+import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
+import DatePicker from 'material-ui-pickers/DatePicker';
 
 import { styles } from './exports';
 
-class DatePicker extends Component {
+class DateSelector extends Component {
   state = { dateCompleted: new Date() };
 
-  handleChange = event => {
-    const dateCompleted = new Date(event.target.value);
-    this.setState({ dateCompleted });
-  };
-
-  formatDate = date => {
-    const m = date.getUTCMonth() + 1;
-    const d = date.getUTCDate();
-
-    const month = m < 10 ? `0${m}` : m;
-    const day = d < 10 ? `0${d}` : d;
-
-    console.log(`${date.getFullYear()}-${month}-${day}`);
-
-    return `${date.getFullYear()}-${month}-${day}`;
+  handleDateChange = date => {
+    this.setState({ dateCompleted: date });
   };
 
   render() {
     const {
-      formatDate,
       handleChange,
       props: { classes, input, label },
       state: { dateCompleted },
     } = this;
 
     return (
-      <div>
-        <TextField
-          {...input}
-          label={label}
-          type="date"
-          value={`${formatDate(dateCompleted)}`}
-          className={classes.textField}
-          InputLabelProps={{ shrink: true }}
-          onChange={handleChange}
-        />
-      </div>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <div>
+          <DatePicker
+            {...input}
+            autoOk={true}
+            animateYearScrolling={false}
+            className={classes.textField}
+            disableFuture
+            format="MMM DD"
+            label={label}
+            maxDateMessage="You can't add future accomplishments!"
+            minDate="2018-01-01"
+            onChange={this.handleDateChange}
+            showTodayButton
+            value={dateCompleted}
+          />
+        </div>
+      </MuiPickersUtilsProvider>
     );
   }
 }
 
-export default withStyles(styles)(DatePicker);
+export default withStyles(styles)(DateSelector);
