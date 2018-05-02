@@ -75,7 +75,7 @@ class User extends Component {
       fetchActivities(userPage._id);
       await fetchProgressData(userPage._id);
     } catch (err) {
-      history.push(`/404/${params.userName}`);
+      return history.push(`/404/${params.userName}`);
     }
     this.setState({ ...this.state, user: params.userName, canShowBtn: true });
   }
