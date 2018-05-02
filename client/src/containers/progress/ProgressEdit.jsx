@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
-import ProgressPageOne from './ProgressPageOne';
-import ProgressPageTwo from './ProgressPageTwo';
-import ProgressPageThree from './ProgressPageThree';
+import ProgressEditPageOne from './ProgressEditPageOne';
+//import ProgressPageTwo from './ProgressPageTwo';
+import ProgressEditPageTwo from './ProgressEditPageTwo';
 
 class ProgressEdit extends Component {
+  componentDidMount() {
+    if (typeof this.props.location.state !== 'undefined') {
+      const { currentCourse, goal, studyPlan } = this.props.location.state;
+      this.props.initialize({
+        currentCourse: currentCourse,
+        goal: goal,
+        studyPlan: studyPlan,
+      });
+    }
+  }
   state = { showPage: 1 };
 
   showPage = value => {
@@ -20,11 +30,9 @@ class ProgressEdit extends Component {
     const { user } = this.props;
 
     if (showPage === 1) {
-      return <ProgressPageOne showPage={this.showPage} user={user} />;
-    } else if (showPage === 2) {
-      return <ProgressPageTwo showPage={this.showPage} />;
+      return <ProgressEditPageOne showPage={this.showPage} user={user} />;
     } else {
-      return <ProgressPageThree showPage={this.showPage} user={user} />;
+      return <ProgressEditPageTwo showPage={this.showPage} user={user} />;
     }
   };
 
@@ -37,6 +45,6 @@ const mapStateToProps = state => ({
   user: state.authReducer.userName,
 });
 
-export default reduxForm({ form: 'progressForm' })(
+export default reduxForm({ form: 'progressEditForm' })(
   connect(mapStateToProps)(ProgressEdit)
 );
