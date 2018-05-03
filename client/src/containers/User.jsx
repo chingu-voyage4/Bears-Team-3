@@ -100,7 +100,24 @@ class User extends Component {
     return (
       <div>
         <h2>{user}</h2>
-
+        {userPage.goal &&
+          isAuthenticated && (
+            <Link
+              to={{
+                pathname: '/progress/edit',
+                state: {
+                  currentCourse: `${userPage.currentCourse}`,
+                  goal: `${userPage.goal}`,
+                  studyPlan: `${userPage.studyPlan}`,
+                },
+              }}
+              style={{ textDecoration: 'none' }}
+            >
+              <Button className={classes.button} color="primary">
+                Edit Goals, Current Course & Study Plan
+              </Button>
+            </Link>
+          )}
         {canShowBtn &&
           !userPage.goal &&
           isAuthenticated && (
