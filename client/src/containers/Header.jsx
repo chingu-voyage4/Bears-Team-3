@@ -42,7 +42,7 @@ export class Header extends Component {
   handleLogin = () => {
     // Workaround to avoid re-rendering & CORS issues Credit @jenovs https://github.com/jenovs & https://stackoverflow.com/questions/28392393/passport-js-after-authentication-in-popup-window-close-it-and-redirect-the-pa/29314111#29314111
     window.open('/auth/github', '_blank', 'width=300,height=400');
-    this.setState({ anchorEl: null });
+    this.handleClose();
   };
 
   handleMenu = event => {
@@ -54,7 +54,7 @@ export class Header extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { auth, classes, logout } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
@@ -81,14 +81,14 @@ export class Header extends Component {
             >
               Speedstudy
             </Typography>
-            {!this.props.auth.userName && (
+            {!auth.userName && (
               <div>
                 <Button color="inherit" onClick={this.handleLogin}>
                   Login With Github
                 </Button>
               </div>
             )}
-            {this.props.auth.userName && (
+            {auth.userName && (
               <div>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
@@ -96,30 +96,29 @@ export class Header extends Component {
                   onClick={this.handleMenu}
                   color="inherit"
                 >
-                  <Avatar alt="User Avatar" src={this.props.auth.avatarURL} />
+                  <Avatar alt="User Avatar" src={auth.avatarURL} />
                 </IconButton>
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
+                  anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                  transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                   open={open}
                   onClose={this.handleClose}
                 >
                   <MenuItem
                     component={Link}
-                    to={{ pathname: `/users/${this.props.auth.userName}` }}
+                    to={{ pathname: `/users/${auth.userName}` }}
+                    onClick={this.handleClose}
                   >
                     My Page
                   </MenuItem>
-                  <MenuItem onClick={this.props.logout}>Logout</MenuItem>
-                  <MenuItem component={Link} to="/delete">
+                  <MenuItem onClick={logout}>Logout</MenuItem>
+                  <MenuItem
+                    component={Link}
+                    to="/delete"
+                    onClick={this.handleClose}
+                  >
                     Delete Account
                   </MenuItem>
                 </Menu>
