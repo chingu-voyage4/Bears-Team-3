@@ -57,11 +57,10 @@ export class UserActivities extends Component {
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
-                  <TableCell numeric>Date</TableCell>
-                  <TableCell>Title</TableCell>
                   <TableCell>Activity</TableCell>
+                  <TableCell>Title</TableCell>
                   <TableCell numeric>Points</TableCell>
-                  <TableCell>Links</TableCell>
+                  <TableCell numeric>Date</TableCell>
                   {isAuthenticated && <TableCell>Actions</TableCell>}
                 </TableRow>
               </TableHead>
@@ -69,13 +68,20 @@ export class UserActivities extends Component {
                 {activities.map(n => {
                   return (
                     <TableRow key={n._id}>
+                      <TableCell>{n.activity}</TableCell>
+                      <TableCell>
+                        {n.url ? (
+                          <a href={n.url} target="_blank">
+                            {n.title}
+                          </a>
+                        ) : (
+                          n.title
+                        )}
+                      </TableCell>
+                      <TableCell numeric>{n.points}</TableCell>
                       <TableCell numeric>
                         {new Date(n.dateCompleted).toLocaleDateString()}
                       </TableCell>
-                      <TableCell>{n.title}</TableCell>
-                      <TableCell>{n.activity}</TableCell>
-                      <TableCell numeric>{n.points}</TableCell>
-                      <TableCell>{n.url}</TableCell>
                       {isAuthenticated && (
                         <TableCell>
                           <div className="table__actions">

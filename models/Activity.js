@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const validator = require('validator');
 
-const isValidUrl = require('../utils/isValidUrl');
+const { Schema } = mongoose;
 
 const ActivitySchema = new Schema({
   activity: {
@@ -47,12 +47,12 @@ const ActivitySchema = new Schema({
   },
   dateCompleted: {
     type: Date,
-    default: Date.now(),
+    required: true,
   },
   url: {
     type: String,
     validate: {
-      validator: value => isValidUrl(value),
+      validator: value => validator.isURL(value, { require_protocol: true }),
       message: '{VALUE} is not a valid URL',
     },
   },
@@ -67,17 +67,26 @@ ActivitySchema.pre('save', function(next) {
   let action = this;
 
   switch (action.activity) {
+    case 'University Level Course':
+      action.points = 500;
+      break;
+    case 'Gigantic Project':
+      action.points = 400;
+      break;
+    case 'Large Project':
+      action.points = 300;
+      break;
+    case 'Substantial Project':
+    case 'Book':
+    case 'Module to npm':
+      action.points = 200;
+      break;
     case 'Google Code Jam':
     case 'CodinGame Tier':
     case 'Team Up for a project':
     case 'Tutorial Course':
     case 'Basic Project':
       action.points = 100;
-      break;
-    case 'Substantial Project':
-    case 'Book':
-    case 'Module to npm':
-      action.points = 200;
       break;
     case 'HackerRank':
     case 'CodeWars':
@@ -90,29 +99,23 @@ ActivitySchema.pre('save', function(next) {
     case 'Driven Data Competition':
       action.points = 50;
       break;
+    case 'Blog Post Tutorial':
+      action.points = 40;
+      break;
+    case 'CodinGame Bot Competition':
+      action.points = 20;
+      break;
+    case 'Blog Post':
+      action.points = 15;
+      break;
     case 'Physical Activity':
     case 'Musical Instrument Practice':
     case 'Khan Academy':
     case 'Practice Writing Skills':
       action.points = 10;
       break;
-    case 'Large Project':
-      action.points = 300;
-      break;
-    case 'Gigantic Project':
-      action.points = 400;
-      break;
-    case 'Blog Post':
-      action.points = 15;
-      break;
-    case 'Blog Post Tutorial':
-      action.points = 40;
-      break;
     case 'Diary entry':
       action.points = 5;
-      break;
-    case 'CodinGame Bot Competition':
-      action.points = 20;
       break;
     default:
       break;

@@ -10,18 +10,19 @@ import Cancel from 'material-ui-icons/Cancel';
 
 import ActivityInputField from './ActivityInputField';
 import ActivitySelectField from './ActivitySelectField';
+import ActivityDatePicker from './ActivityDatePicker';
 import { addActivity, modifyActivity } from '../../actions';
-
-const FIELDS = [
-  { label: 'Activity*', name: 'activity' },
-  { label: 'Title*', name: 'title' },
-  { label: 'URL', name: 'url' },
-];
+import { FIELDS } from './exports';
 
 class ActivityForm extends Component {
+  state = { editing: false, id: null };
+
   componentDidMount() {
     if (typeof this.props.location.state !== 'undefined') {
       const { id, activity, title, url } = this.props.location.state;
+
+      this.setState({ editing: true, id });
+
       if (url !== 'undefined') {
         this.props.initialize({
           id: id,
@@ -40,82 +41,65 @@ class ActivityForm extends Component {
   }
 
   renderFields = () => {
-    return FIELDS.map(({ label, name }) => {
+    return FIELDS.map(({ label, name, helperText }) => {
+      let component;
+      if (name === 'activity') {
+        component = ActivitySelectField;
+      } else if (name === 'dateCompleted') {
+        component = ActivityDatePicker;
+      } else {
+        component = ActivityInputField;
+      }
+
       return (
         <Field
           key={name}
           label={label}
           name={name}
           required={name !== 'url'}
-          component={
-            name === 'activity' ? ActivitySelectField : ActivityInputField
-          }
+          props={{ helperText }}
+          component={component}
         />
       );
     });
   };
 
-  render() {
-    const {
-      modifyActivity,
-      addActivity,
-      history,
-      handleSubmit,
-      userName,
-    } = this.props;
+  handleSubmitAction = (id, values, history, userName) => {
+    if (!values.dateCompleted) values.dateCompleted = new Date();
+    if (this.state.editing)
+      return this.props.modifyActivity(id, values, history, userName);
 
-    if (typeof this.props.location.state !== 'undefined') {
-      const { id } = this.props.location.state;
-      return (
-        <div>
-          <h2>Edit an Activity</h2>
-          <form
-            onSubmit={handleSubmit(values => {
-              modifyActivity(id, values, history, userName);
-            })}
+    return this.props.addActivity(values, history, userName);
+  };
+
+  render() {
+    const { history, handleSubmit, userName } = this.props;
+    const { editing, id } = this.state;
+
+    return (
+      <div>
+        <h2>{editing ? 'Edit' : 'Add'} an Activity</h2>
+        <form
+          onSubmit={handleSubmit(values => {
+            this.handleSubmitAction(id, values, history, userName);
+          })}
+        >
+          {this.renderFields()}
+          <Button
+            variant="raised"
+            color="secondary"
+            onClick={() => history.push(`/users/${userName}`)}
           >
-            {this.renderFields()}
-            <Button
-              variant="raised"
-              color="secondary"
-              onClick={() => history.push(`/users/${userName}`)}
-            >
-              Cancel
-              <Cancel />
-            </Button>
-            <Button variant="raised" color="primary" type="submit">
-              Save Activity
-              <Done />
-            </Button>
-          </form>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <h2>Add an Activity</h2>
-          <form
-            onSubmit={handleSubmit(values =>
-              addActivity(values, history, userName)
-            )}
-          >
-            {this.renderFields()}
-            <Button
-              variant="raised"
-              color="secondary"
-              onClick={() => history.push(`/users/${userName}`)}
-            >
-              Cancel
-              <Cancel />
-            </Button>
-            <Button variant="raised" color="primary" type="submit">
-              Add Activity
-              <Done />
-            </Button>
-          </form>
-        </div>
-      );
-    }
+            Cancel
+            <Cancel />
+          </Button>
+          <Button variant="raised" color="primary" type="submit">
+            {editing ? 'Save' : 'Add'} Activity
+            <Done />
+          </Button>
+        </form>
+      </div>
+    );
   }
 }
 
@@ -146,9 +130,8 @@ const connectedActivityForm = connect(mapStateToProps, mapDispatchToProps)(
 const validate = values => {
   const errors = {};
 
-  FIELDS.forEach(({ name }) => {
-    if (!values[name] && name !== 'url')
-      errors[name] = `You must have a ${name}`;
+  FIELDS.forEach(({ name, errmsg }) => {
+    if (!values[name] && name !== 'url') errors[name] = errmsg;
   });
 
   return errors;

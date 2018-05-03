@@ -1,19 +1,7 @@
 import React, { Component } from 'react';
 import { TextField, withStyles } from 'material-ui';
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    margin: theme.spacing.unit,
-    width: 200,
-  },
-  menu: {
-    width: 200,
-  },
-});
+import { styles } from './exports';
 
 class ActivityInputField extends Component {
   state = {};
@@ -25,7 +13,14 @@ class ActivityInputField extends Component {
   };
 
   render() {
-    const { input, label, meta: { error, touched }, classes } = this.props;
+    const {
+      input,
+      label,
+      meta: { error, touched },
+      classes,
+      helperText,
+    } = this.props;
+
     return (
       <div>
         <TextField
@@ -34,6 +29,7 @@ class ActivityInputField extends Component {
           className={classes.textField}
           value={this.state[label]}
           onChange={this.handleChange(label)}
+          helperText={helperText}
           {...input}
         />
       </div>
