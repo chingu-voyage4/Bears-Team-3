@@ -107,9 +107,9 @@ class User extends Component {
               to={{
                 pathname: '/progress/edit',
                 state: {
-                  currentCourse: `${userPage.currentCourse}`,
-                  goal: `${userPage.goal}`,
-                  studyPlan: `${userPage.studyPlan}`,
+                  currentCourse: userPage.currentCourse,
+                  goal: userPage.goal,
+                  studyPlan: userPage.studyPlan,
                 },
               }}
               style={{ textDecoration: 'none' }}
