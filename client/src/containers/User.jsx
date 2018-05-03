@@ -100,6 +100,7 @@ class User extends Component {
     return (
       <div>
         <h2>{user}</h2>
+
         {userPage.goal &&
           isAuthenticated && (
             <Link
