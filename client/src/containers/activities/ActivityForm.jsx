@@ -15,13 +15,13 @@ import { addActivity, modifyActivity } from '../../actions';
 import { FIELDS } from './exports';
 
 class ActivityForm extends Component {
-  state = { editting: false, id: null };
+  state = { editing: false, id: null };
 
   componentDidMount() {
     if (typeof this.props.location.state !== 'undefined') {
       const { id, activity, title, url } = this.props.location.state;
 
-      this.setState({ editting: true, id });
+      this.setState({ editing: true, id });
 
       if (url !== 'undefined') {
         this.props.initialize({
@@ -66,7 +66,7 @@ class ActivityForm extends Component {
 
   handleSubmitAction = (id, values, history, userName) => {
     if (!values.dateCompleted) values.dateCompleted = new Date();
-    if (this.state.editting)
+    if (this.state.editing)
       return this.props.modifyActivity(id, values, history, userName);
 
     return this.props.addActivity(values, history, userName);
@@ -74,11 +74,11 @@ class ActivityForm extends Component {
 
   render() {
     const { history, handleSubmit, userName } = this.props;
-    const { editting, id } = this.state;
+    const { editing, id } = this.state;
 
     return (
       <div>
-        <h2>{editting ? 'Edit' : 'Add'} an Activity</h2>
+        <h2>{editing ? 'Edit' : 'Add'} an Activity</h2>
         <form
           onSubmit={handleSubmit(values => {
             this.handleSubmitAction(id, values, history, userName);
@@ -94,7 +94,7 @@ class ActivityForm extends Component {
             <Cancel />
           </Button>
           <Button variant="raised" color="primary" type="submit">
-            {editting ? 'Save' : 'Add'} Activity
+            {editing ? 'Save' : 'Add'} Activity
             <Done />
           </Button>
         </form>
