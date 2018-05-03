@@ -26,6 +26,7 @@ class ActivityForm extends Component {
         url,
         dateCompleted,
       } = this.props.location.state;
+      console.log(dateCompleted);
 
       this.setState({ editting: true, id });
 
