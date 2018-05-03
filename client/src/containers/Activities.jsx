@@ -178,7 +178,19 @@ class Activities extends Component {
             <React.Fragment>
               <Link to="/activity/new">Add Activity</Link>
               <Link to="/progress/new">Add Progress</Link>
-              <button onClick={this.modifyProgress}>Edit Progress</button>
+              <Link
+                to={{
+                  pathname: '/progress/edit',
+                  state: {
+                    currentCourse: `${currentCourse}`,
+                    goal: `${goal}`,
+                    studyPlan: `${studyPlan}`,
+                  },
+                }}
+              >
+                Edit Progress
+              </Link>
+              {/* <button onClick={this.modifyProgress}>Edit Progress</button> */}
               <button onClick={this.deleteProgress}>Delete Progress</button>
               <button onClick={this.deleteUser}>Delete Account</button>
             </React.Fragment>
