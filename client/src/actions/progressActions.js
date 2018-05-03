@@ -13,6 +13,9 @@ export const clearProgressData = () => dispatch => {
 
 export const fetchProgressData = id => async dispatch => {
   const res = await axios.get(`/api/progress/${id}`);
+  if (res.data === 'No progress data found') {
+    return;
+  }
   dispatch({ type: FETCH_PROGRESS, payload: res.data });
 };
 

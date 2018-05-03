@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
+import Button from 'material-ui/Button';
 
 import TabContainer from './TabContainer';
 import UserActivities from './UserActivities';
@@ -37,6 +39,7 @@ class User extends Component {
     user: null,
     isAuthenticated: false,
     value: 0,
+    canShowBtn: false,
   };
 
   checkAuth = () => {
@@ -54,15 +57,27 @@ class User extends Component {
   };
 
   async componentDidMount() {
-    this.setState({ user: this.props.match.params.userName });
-    this.props.clearProgressData();
+    const {
+      clearProgressData,
+      fetchUserInfo,
+      fetchActivities,
+      fetchProgressData,
+      history,
+      match: { params },
+    } = this.props;
+
+    clearProgressData();
+
     try {
-      await this.props.fetchUserInfo(this.props.match.params.userName);
-      this.props.fetchActivities(this.props.userPage._id);
-      this.props.fetchProgressData(this.props.userPage._id);
+      await fetchUserInfo(params.userName);
+      const { userPage } = this.props;
+
+      fetchActivities(userPage._id);
+      await fetchProgressData(userPage._id);
     } catch (err) {
-      this.props.history.push(`/404/${this.props.match.params.userName}`);
+      return history.push(`/404/${params.userName}`);
     }
+    this.setState({ ...this.state, user: params.userName, canShowBtn: true });
   }
 
   componentWillUnmount() {
@@ -80,11 +95,21 @@ class User extends Component {
 
   render() {
     const { classes, userPage, activities } = this.props;
-    const { user, value, isAuthenticated } = this.state;
+    const { user, value, isAuthenticated, canShowBtn } = this.state;
 
     return (
       <div>
         <h2>{user}</h2>
+
+        {canShowBtn &&
+          !userPage.goal &&
+          isAuthenticated && (
+            <Link to="/progress/new" style={{ textDecoration: 'none' }}>
+              <Button className={classes.button} color="primary">
+                Add Goals, Current Course & Study Plan
+              </Button>
+            </Link>
+          )}
 
         <UserGoals
           goal={userPage.goal}
