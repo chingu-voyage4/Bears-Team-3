@@ -59,12 +59,7 @@ class ActivitySelectField extends Component {
   };
 
   render() {
-    const {
-      input,
-      label,
-      meta: { touched, error },
-      classes,
-    } = this.props;
+    const { input, label, meta: { touched, error }, classes } = this.props;
     const showError = touched && error ? true : false;
     return (
       <div>

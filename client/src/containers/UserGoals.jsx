@@ -28,8 +28,8 @@ export class UserGoals extends Component {
     return (
       <div className="user__goal">
         <Paper className={classes.root} elevation={4}>
-          <Typography component="h3">
-            <strong>Goals</strong>
+          <Typography variant="headline" component="h3">
+            Goals
           </Typography>
           {goal.length < 1 && <p>No goals yet!</p>}
           {goal.length > 0 && (
@@ -40,17 +40,15 @@ export class UserGoals extends Component {
             />
           )}
 
-          <Typography component="h4">
-            <strong>Total Points: {points}</strong>
-          </Typography>
+          <Typography component="h4">Total Points: {points}</Typography>
           {currentCourse.length < 1 && (
             <Typography component="h4">
-              <strong>Current Course: No course yet!</strong>
+              Current Course: No course yet!
             </Typography>
           )}
           {currentCourse.length > 0 && (
             <Typography component="h4">
-              <strong>Current Course: {currentCourse}</strong>
+              Current Course: {currentCourse}
             </Typography>
           )}
         </Paper>
