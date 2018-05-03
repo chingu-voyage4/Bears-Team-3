@@ -19,7 +19,13 @@ class ActivityForm extends Component {
 
   componentDidMount() {
     if (typeof this.props.location.state !== 'undefined') {
-      const { id, activity, title, url } = this.props.location.state;
+      const {
+        id,
+        activity,
+        title,
+        url,
+        dateCompleted,
+      } = this.props.location.state;
 
       this.setState({ editting: true, id });
 
@@ -28,6 +34,7 @@ class ActivityForm extends Component {
           id: id,
           activity: activity,
           title: title,
+          dateCompleted: dateCompleted,
           url: url,
         });
       } else {
@@ -35,6 +42,7 @@ class ActivityForm extends Component {
           id: id,
           activity: activity,
           title: title,
+          dateCompleted: dateCompleted,
         });
       }
     }
