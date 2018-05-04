@@ -7,7 +7,7 @@ import NavigateBefore from 'material-ui-icons/NavigateBefore';
 import Divider from 'material-ui/Divider';
 import marked from 'marked';
 
-import { addProgressData } from '../../actions';
+import { addProgressData, modifyProgressData } from '../../actions';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -31,8 +31,10 @@ const FIELDS = [
 const ProgressReviewForm = ({
   addProgressData,
   classes,
+  editing,
   formValues,
   history,
+  modifyProgressData,
   showPage,
   user,
 }) => {
@@ -59,6 +61,14 @@ const ProgressReviewForm = ({
     });
   };
 
+  const handleSubmitAction = (formValues, user, history) => {
+    if (editing) {
+      return modifyProgressData(formValues, user, history);
+    } else {
+      return addProgressData(formValues, user, history);
+    }
+  };
+
   return (
     <div>
       <h3>Please confirm your entries</h3>
@@ -75,7 +85,7 @@ const ProgressReviewForm = ({
         <Button
           variant="raised"
           color="primary"
-          onClick={() => addProgressData(formValues, user, history)}
+          onClick={() => handleSubmitAction(formValues, user, history)}
         >
           Submit <Done />
         </Button>
@@ -88,6 +98,7 @@ const mapStateToProps = state => ({
   formValues: state.form.progressForm.values,
 });
 
-export default connect(mapStateToProps, { addProgressData })(
-  withRouter(withStyles(styles)(ProgressReviewForm))
-);
+export default connect(mapStateToProps, {
+  addProgressData,
+  modifyProgressData,
+})(withRouter(withStyles(styles)(ProgressReviewForm)));
