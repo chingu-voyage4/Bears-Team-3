@@ -7,7 +7,7 @@ import NavigateBefore from 'material-ui-icons/NavigateBefore';
 import Divider from 'material-ui/Divider';
 import marked from 'marked';
 
-import { addProgressData } from '../../actions';
+import { modifyProgressData } from '../../actions';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -28,8 +28,8 @@ const FIELDS = [
   { label: 'Study Plan', name: 'studyPlan' },
 ];
 
-const ProgressReviewForm = ({
-  addProgressData,
+const ProgressEditReviewForm = ({
+  modifyProgressData,
   classes,
   formValues,
   history,
@@ -68,14 +68,14 @@ const ProgressReviewForm = ({
         </Paper>
       </div>
       <div style={{ marginTop: 10 }}>
-        <Button variant="raised" color="secondary" onClick={() => showPage(2)}>
+        <Button variant="raised" color="secondary" onClick={() => showPage(1)}>
           Back
           <NavigateBefore />
         </Button>
         <Button
           variant="raised"
           color="primary"
-          onClick={() => addProgressData(formValues, user, history)}
+          onClick={() => modifyProgressData(formValues, user, history)}
         >
           Submit <Done />
         </Button>
@@ -85,9 +85,9 @@ const ProgressReviewForm = ({
 };
 
 const mapStateToProps = state => ({
-  formValues: state.form.progressForm.values,
+  formValues: state.form.progressEditForm.values,
 });
 
-export default connect(mapStateToProps, { addProgressData })(
-  withRouter(withStyles(styles)(ProgressReviewForm))
+export default connect(mapStateToProps, { modifyProgressData })(
+  withRouter(withStyles(styles)(ProgressEditReviewForm))
 );

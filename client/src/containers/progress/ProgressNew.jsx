@@ -6,20 +6,8 @@ import ProgressPageOne from './ProgressPageOne';
 import ProgressPageTwo from './ProgressPageTwo';
 import ProgressPageThree from './ProgressPageThree';
 
-class ProgressForm extends Component {
-  state = { showPage: 1, editing: false };
-
-  componentDidMount() {
-    if (typeof this.props.location.state !== 'undefined') {
-      const { currentCourse, goal, studyPlan } = this.props.location.state;
-      this.props.initialize({
-        currentCourse: currentCourse,
-        goal: goal,
-        studyPlan: studyPlan,
-      });
-      this.setState({ ...this.state, editing: true });
-    }
-  }
+class ProgressNew extends Component {
+  state = { showPage: 1 };
 
   showPage = value => {
     if (value > 0 && value < 4) {
@@ -28,7 +16,7 @@ class ProgressForm extends Component {
   };
 
   renderContent = () => {
-    const { showPage, editing } = this.state;
+    const { showPage } = this.state;
     const { user } = this.props;
 
     if (showPage === 1) {
@@ -36,13 +24,7 @@ class ProgressForm extends Component {
     } else if (showPage === 2) {
       return <ProgressPageTwo showPage={this.showPage} />;
     } else {
-      return (
-        <ProgressPageThree
-          showPage={this.showPage}
-          user={user}
-          editing={editing}
-        />
-      );
+      return <ProgressPageThree showPage={this.showPage} user={user} />;
     }
   };
 
@@ -56,5 +38,5 @@ const mapStateToProps = state => ({
 });
 
 export default reduxForm({ form: 'progressForm' })(
-  connect(mapStateToProps)(ProgressForm)
+  connect(mapStateToProps)(ProgressNew)
 );
