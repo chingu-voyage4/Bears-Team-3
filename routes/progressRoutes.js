@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const _ = require('lodash/core');
 
 const checkAuthentication = require('../middleware/checkAuthentication');
 const isValidId = require('../utils/isValidId');
@@ -49,7 +48,8 @@ module.exports = app => {
   //Update user's progress data
   app.patch('/api/progress', checkAuthentication, async (req, res) => {
     try {
-      const body = _.pick(req.body, ['goal', 'currentCourse', 'studyPlan']);
+      const { goal, currentCourse, studyPlan, dateCompleted } = req.body;
+      const body = { goal, currentCourse, studyPlan, dateCompleted };
 
       const oldProgress = await Progress.findOne({ _user: req.user.id });
       if (!oldProgress) throw new Error('No progress data found to update!');
