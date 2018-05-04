@@ -7,20 +7,20 @@ import DatePicker from 'material-ui-pickers/DatePicker';
 import { styles } from './exports';
 
 class DateSelector extends Component {
-  state = { dateCompleted: new Date() };
+  state = { };
 
-  handleDateChange = date => {
-    this.setState({ dateCompleted: date });
+  handleChange = name => event => {
+    this.setState({
+      [name]: event,
+    });
   };
 
   render() {
     const { props: { classes, input, label }, state: { dateCompleted } } = this;
-    console.log(dateCompleted);
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>
           <DatePicker
-            {...input}
             autoOk={true}
             animateYearScrolling={false}
             className={classes.textField}
@@ -29,9 +29,10 @@ class DateSelector extends Component {
             label={label}
             maxDateMessage="You can't add future accomplishments!"
             minDate="2018-01-01"
-            onChange={this.handleDateChange}
+            onChange={this.handleChange(input.name)}
             showTodayButton
-            value={this.state.dateCompleted}
+            value={this.state[input.name]}
+            {...input}
           />
         </div>
       </MuiPickersUtilsProvider>
