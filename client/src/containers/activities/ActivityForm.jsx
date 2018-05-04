@@ -25,16 +25,18 @@ class ActivityForm extends Component {
 
       if (url !== 'undefined') {
         this.props.initialize({
-          id: id,
-          activity: activity,
-          title: title,
-          url: url,
+          id,
+          activity,
+          title,
+          url,
+          dateCompleted,
         });
       } else {
         this.props.initialize({
-          id: id,
-          activity: activity,
-          title: title,
+          id,
+          activity,
+          title,
+          dateCompleted,
         });
       }
     }
