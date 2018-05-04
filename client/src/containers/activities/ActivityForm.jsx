@@ -81,23 +81,32 @@ class ActivityForm extends Component {
     return this.props.addActivity(values, history, userName);
   };
 
-  render() {
+  updateHistory = () => {
+    const { history, userName } = this.props;
+    history.push(`/users/${userName}`);
+  }
+
+  onSubmit = () => {
     const { history, handleSubmit, userName } = this.props;
-    const { editing, id } = this.state;
+    handleSubmit(values => {
+      this.handleSubmitAction(this.state.id, values, history, userName);
+    });
+  }
+
+  render() {
+    const { editing } = this.state;
 
     return (
       <div>
         <h2>{editing ? 'Edit' : 'Add'} an Activity</h2>
         <form
-          onSubmit={handleSubmit(values => {
-            this.handleSubmitAction(id, values, history, userName);
-          })}
+          onSubmit={this.onSubmit}
         >
           {this.renderFields()}
           <Button
             variant="raised"
             color="secondary"
-            onClick={() => history.push(`/users/${userName}`)}
+            onClick={this.updateHistory}
           >
             Cancel
             <Cancel />
