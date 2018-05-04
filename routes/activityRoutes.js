@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const _ = require('lodash');
 const checkAuthentication = require('../middleware/checkAuthentication');
 const isValidId = require('../utils/isValidId');
 
@@ -9,13 +8,16 @@ const Activity = mongoose.model('activity');
 module.exports = app => {
   //Gets top 50 users by totalPoints
   app.get('/api/leaderboard', async (req, res) => {
-    const users = await User.find().select('userName totalPoints');
-    const leaderboard = _.chain(users)
-      .sortBy('totalPoints')
-      .reverse()
-      .slice(0, 49)
-      .map((user, i) => ({ ...user._doc, rank: i + 1 }))
-      .value();
+    const users = await User
+      .find()
+      .select('userName totalPoints')
+      .sort( { totalPoints: -1 } )
+      .limit(49);
+
+    const leaderboard = users.map((user, index) => {
+      return {...user._doc, rank: index + 1 }
+    })
+
     res.send(leaderboard);
   });
 
