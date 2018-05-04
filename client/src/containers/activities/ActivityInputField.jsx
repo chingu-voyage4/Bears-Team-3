@@ -6,9 +6,10 @@ import { styles } from './exports';
 class ActivityInputField extends Component {
   state = {};
 
-  handleChange = name => event => {
+  handleChange = event => {
+    const { label } = this.props;
     this.setState({
-      [name]: event.target.value,
+      [label]: event.target.value,
     });
   };
 
@@ -28,7 +29,7 @@ class ActivityInputField extends Component {
           label={touched && error ? error : label}
           className={classes.textField}
           value={this.state[label]}
-          onChange={this.handleChange(label)}
+          onChange={this.handleChange}
           helperText={helperText}
           {...input}
         />
