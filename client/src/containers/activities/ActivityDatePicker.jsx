@@ -29,9 +29,9 @@ class DateSelector extends Component {
             label={label}
             maxDateMessage="You can't add future accomplishments!"
             minDate="2018-01-01"
-            onChange={this.handleChange(input.name)}
+            onChange={this.handleDateChange}
             showTodayButton
-            value={this.state.dateCompleted}
+            value={this.state[input.name]}
           />
         </div>
       </MuiPickersUtilsProvider>
