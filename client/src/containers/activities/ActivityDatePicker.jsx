@@ -7,7 +7,7 @@ import DatePicker from 'material-ui-pickers/DatePicker';
 import { styles } from './exports';
 
 class DateSelector extends Component {
-  state = { dateCompleted: new Date() };
+  state = { };
 
   handleDateChange = date => {
     this.setState({ dateCompleted: date });
