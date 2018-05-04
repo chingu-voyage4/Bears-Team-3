@@ -19,7 +19,7 @@ class ActivityForm extends Component {
 
   componentDidMount() {
     if (typeof this.props.location.state !== 'undefined') {
-      const { id, activity, title, url } = this.props.location.state;
+      const { id, activity, title, url, dateCompleted } = this.props.location.state;
 
       this.setState({ editing: true, id });
 
