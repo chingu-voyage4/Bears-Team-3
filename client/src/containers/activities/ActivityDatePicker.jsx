@@ -9,7 +9,8 @@ import { styles } from './exports';
 class DateSelector extends Component {
   state = { };
 
-  handleChange = name => event => {
+  handleChange = event => {
+    const { name } = this.props.input;
     this.setState({
       [name]: event,
     });
@@ -29,7 +30,7 @@ class DateSelector extends Component {
             label={label}
             maxDateMessage="You can't add future accomplishments!"
             minDate="2018-01-01"
-            onChange={this.handleChange(input.name)}
+            onChange={this.handleChange}
             showTodayButton
             value={this.state[input.name]}
             {...input}
