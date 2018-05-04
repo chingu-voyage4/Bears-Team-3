@@ -10,18 +10,13 @@ class DateSelector extends Component {
   state = { };
 
   handleChange = name => event => {
-    console.log('name',name);
-    console.log('event',event);
     this.setState({
       [name]: event,
     });
-    console.log(this.state[name])
   };
 
   render() {
     const { props: { classes, input, label }, state: { dateCompleted } } = this;
-    console.log('input',input);
-    console.log('label',label);
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>
