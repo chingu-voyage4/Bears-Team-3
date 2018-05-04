@@ -9,8 +9,10 @@ import { styles } from './exports';
 class DateSelector extends Component {
   state = { };
 
-  handleDateChange = date => {
-    this.setState({ dateCompleted: date });
+  handleChange = name => event => {
+    this.setState({
+      [name]: event,
+    });
   };
 
   render() {
