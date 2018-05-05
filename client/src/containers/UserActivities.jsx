@@ -95,12 +95,7 @@ export class UserActivities extends Component {
                                   activity: `${n.activity}`,
                                   title: `${n.title}`,
                                   url: `${n.url}`,
-<<<<<<< HEAD
                                   dateCompleted: n.dateCompleted,
-||||||| merged common ancestors
-=======
-                                  dateCompleted: `${n.dateCompleted}`,
->>>>>>> development
                                 },
                               }}
                               className={classes.menuButton}
