@@ -7,7 +7,7 @@ import DatePicker from 'material-ui-pickers/DatePicker';
 import { styles } from './exports';
 
 class DateSelector extends Component {
-  state = { };
+  state = {};
 
   handleChange = event => {
     const { name } = this.props.input;
@@ -18,6 +18,14 @@ class DateSelector extends Component {
 
   render() {
     const { props: { classes, input, label }, state: { dateCompleted } } = this;
+    console.log(this.state[input.name]);
+    console.log(typeof this.state[input.name]);
+    let date;
+    if (typeof this.state[input.name] === undefined) {
+      date = new Date();
+    } else {
+      date = this.state[input.name];
+    }
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>
@@ -32,7 +40,7 @@ class DateSelector extends Component {
             minDate="2018-01-01"
             onChange={this.handleChange}
             showTodayButton
-            value={this.state[input.name]}
+            value={date}
             {...input}
           />
         </div>
