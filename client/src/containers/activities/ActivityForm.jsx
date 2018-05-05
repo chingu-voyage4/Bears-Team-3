@@ -26,7 +26,6 @@ class ActivityForm extends Component {
         url,
         dateCompleted,
       } = this.props.location.state;
-      console.log(dateCompleted);
 
       this.setState({ editing: true, id });
 
@@ -86,21 +85,24 @@ class ActivityForm extends Component {
     history.push(`/users/${userName}`);
   }
 
-  onSubmit = () => {
+  /* onSubmit = () => {
     const { history, handleSubmit, userName } = this.props;
     handleSubmit(values => {
       this.handleSubmitAction(this.state.id, values, history, userName);
     });
-  }
+  } */
 
   render() {
+    const { history, handleSubmit, userName } = this.props;
     const { editing } = this.state;
 
     return (
       <div>
         <h2>{editing ? 'Edit' : 'Add'} an Activity</h2>
         <form
-          onSubmit={this.onSubmit}
+          onSubmit={handleSubmit(values => {
+            this.handleSubmitAction(this.state.id, values, history, userName);
+          })}
         >
           {this.renderFields()}
           <Button
