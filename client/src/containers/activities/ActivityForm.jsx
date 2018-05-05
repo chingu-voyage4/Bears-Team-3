@@ -45,6 +45,14 @@ class ActivityForm extends Component {
           dateCompleted,
         });
       }
+    } else {
+      this.props.initialize({
+        id: null,
+        activity: null,
+        title: null,
+        url: null,
+        dateCompleted: Date.now(),
+      });
     }
   }
 
