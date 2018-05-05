@@ -52,7 +52,7 @@ class ActivityForm extends Component {
         id: null,
         activity: null,
         title: null,
-        url: null,
+        url: undefined,
         dateCompleted: Date.now(),
       });
     }
