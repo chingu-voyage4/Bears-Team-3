@@ -76,7 +76,7 @@ export class UserActivities extends Component {
                         {new Date(n.dateCompleted)
                           .toUTCString()
                           .split(' ')
-                          .slice(1, 3)
+                          .slice(1, 4)
                           .join(' ')}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
