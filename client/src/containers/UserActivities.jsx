@@ -73,7 +73,11 @@ export class UserActivities extends Component {
                   return (
                     <TableRow key={n._id}>
                       <TableCell numeric>
-                        {new Date(n.dateCompleted).toDateString()}
+                        {new Date(n.dateCompleted)
+                          .toUTCString()
+                          .split(' ')
+                          .slice(1, 3)
+                          .join(' ')}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
