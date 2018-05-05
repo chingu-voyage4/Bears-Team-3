@@ -41,7 +41,11 @@ export class UserActivities extends Component {
 
   render() {
     const { classes, activities, isAuthenticated } = this.props;
-
+    //console.log(typeof activities[0].dateCompleted);
+    const options = {
+      localeMatcher: 'lookup',
+      timeZone: 'UTC',
+    };
     return (
       <div>
         {isAuthenticated && (
@@ -69,7 +73,11 @@ export class UserActivities extends Component {
                   return (
                     <TableRow key={n._id}>
                       <TableCell numeric>
-                        {new Date(n.dateCompleted).toLocaleDateString()}
+                        {new Date(n.dateCompleted)
+                          .toUTCString()
+                          .split(' ')
+                          .slice(1, 3)
+                          .join(' ')}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
