@@ -39,15 +39,13 @@ export class UserActivities extends Component {
     this.props.fetchActivities(this.props.userPage._id);
   };
 
-  adjustForTimezone(date): Date {
-    var timeOffsetInMS: number = date.getTimezoneOffset() * 60000;
-    date.setTime(date.getTime() - timeOffsetInMS);
-    return date;
-  }
-
   render() {
     const { classes, activities, isAuthenticated } = this.props;
-    console.log(typeof activities[0].dateCompleted);
+    //console.log(typeof activities[0].dateCompleted);
+    const options = {
+      localeMatcher: 'lookup',
+      timeZone: 'UTC',
+    };
     return (
       <div>
         {isAuthenticated && (
@@ -75,7 +73,7 @@ export class UserActivities extends Component {
                   return (
                     <TableRow key={n._id}>
                       <TableCell numeric>
-                        {new Date(n.dateCompleted).toLocaleDateString()}
+                        {new Date(n.dateCompleted).toLocaleDateString(options)}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
