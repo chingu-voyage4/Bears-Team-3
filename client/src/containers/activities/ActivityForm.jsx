@@ -29,22 +29,32 @@ class ActivityForm extends Component {
 
       this.setState({ editing: true, id });
 
-      if (url !== 'undefined') {
-        this.props.initialize({
-          id,
-          activity,
-          title,
-          url,
-          dateCompleted,
-        });
-      } else {
-        this.props.initialize({
-          id,
-          activity,
-          title,
-          dateCompleted,
-        });
+      if (dateCompleted !== 'undefined') {
+        if (url !== 'undefined') {
+          this.props.initialize({
+            id,
+            activity,
+            title,
+            url,
+            dateCompleted,
+          });
+        } else {
+          this.props.initialize({
+            id,
+            activity,
+            title,
+            dateCompleted,
+          });
+        }
       }
+    } else {
+      this.props.initialize({
+        id: null,
+        activity: null,
+        title: null,
+        url: undefined,
+        dateCompleted: Date.now(),
+      });
     }
   }
 
