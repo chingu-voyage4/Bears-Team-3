@@ -17,8 +17,7 @@ class DateSelector extends Component {
   };
 
   render() {
-    const { props: { classes, input, label }, state: { dateCompleted } } = this;
-
+    const { classes, input, label } = this.props;
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>

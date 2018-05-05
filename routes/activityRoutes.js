@@ -37,7 +37,9 @@ module.exports = app => {
     if (!isValidId(id)) return res.status(404).send('Invalid Id');
 
     try {
-      const activities = await Activity.find({ _user: id });
+      const activities = await Activity.find({ _user: id }).sort({
+        dateCompleted: 1,
+      });
       res.send(activities);
     } catch (err) {
       res.status(400).send(err);
