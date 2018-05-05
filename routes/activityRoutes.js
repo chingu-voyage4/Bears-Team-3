@@ -45,21 +45,18 @@ module.exports = app => {
 
   //adds activity and updates users totalPoints
   app.post('/api/activity/new', checkAuthentication, async (req, res) => {
-    const body = _.pick(req.body, [
-      'activity',
-      'url',
-      'title',
-      'dateCompleted',
-    ]);
-    const activity = new Activity({
+    const { activity, url, title, dateCompleted } = req.body;
+    const body = { activity, url, title, dateCompleted };
+
+    const activityItem = new Activity({
       ...body,
       _user: req.user.id,
     });
 
     try {
-      await activity.save();
+      await activityItem.save();
 
-      req.user.totalPoints += activity.points;
+      req.user.totalPoints += activityItem.points;
       const user = await req.user.save();
 
       res.send(user);
@@ -99,12 +96,8 @@ module.exports = app => {
   //Updates activity name and users points
   app.patch('/api/activity/:id', checkAuthentication, async (req, res) => {
     const { id } = req.params;
-    const body = _.pick(req.body, [
-      'activity',
-      'url',
-      'title',
-      'dateCompleted',
-    ]);
+    const { activity, url, title, dateCompleted } = req.body;
+    const body = { activity, url, title, dateCompleted };
 
     if (!isValidId(id)) return res.status(404).send('Invalid Id');
 

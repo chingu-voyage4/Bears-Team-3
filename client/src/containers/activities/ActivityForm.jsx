@@ -31,18 +31,18 @@ class ActivityForm extends Component {
 
       if (url !== 'undefined') {
         this.props.initialize({
-          id: id,
-          activity: activity,
-          title: title,
-          dateCompleted: dateCompleted,
-          url: url,
+          id,
+          activity,
+          title,
+          url,
+          dateCompleted,
         });
       } else {
         this.props.initialize({
-          id: id,
-          activity: activity,
-          title: title,
-          dateCompleted: dateCompleted,
+          id,
+          activity,
+          title,
+          dateCompleted,
         });
       }
     }
@@ -83,7 +83,7 @@ class ActivityForm extends Component {
   updateHistory = () => {
     const { history, userName } = this.props;
     history.push(`/users/${userName}`);
-  }
+  };
 
   /* onSubmit = () => {
     const { history, handleSubmit, userName } = this.props;
