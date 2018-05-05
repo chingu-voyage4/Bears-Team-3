@@ -73,7 +73,7 @@ export class UserActivities extends Component {
                   return (
                     <TableRow key={n._id}>
                       <TableCell numeric>
-                        {new Date(n.dateCompleted).toLocaleDateString(options)}
+                        {new Date(n.dateCompleted).toUTCString()}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
