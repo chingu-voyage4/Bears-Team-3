@@ -26,7 +26,7 @@ class DateSelector extends Component {
             animateYearScrolling={false}
             className={classes.textField}
             disableFuture
-            format="MMM DD, YYYY"
+            format="DD MMM YYYY"
             label={label}
             maxDateMessage="You can't add future accomplishments!"
             minDate="2018-01-01"
