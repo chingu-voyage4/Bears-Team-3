@@ -95,6 +95,7 @@ export class UserActivities extends Component {
                                   activity: `${n.activity}`,
                                   title: `${n.title}`,
                                   url: `${n.url}`,
+                                  dateCompleted: `${n.dateCompleted}`,
                                 },
                               }}
                               className={classes.menuButton}

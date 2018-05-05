@@ -19,7 +19,13 @@ class ActivityForm extends Component {
 
   componentDidMount() {
     if (typeof this.props.location.state !== 'undefined') {
-      const { id, activity, title, url } = this.props.location.state;
+      const {
+        id,
+        activity,
+        title,
+        url,
+        dateCompleted,
+      } = this.props.location.state;
 
       this.setState({ editing: true, id });
 
@@ -28,6 +34,7 @@ class ActivityForm extends Component {
           id: id,
           activity: activity,
           title: title,
+          dateCompleted: dateCompleted,
           url: url,
         });
       } else {
@@ -35,6 +42,7 @@ class ActivityForm extends Component {
           id: id,
           activity: activity,
           title: title,
+          dateCompleted: dateCompleted,
         });
       }
     }
@@ -72,23 +80,35 @@ class ActivityForm extends Component {
     return this.props.addActivity(values, history, userName);
   };
 
+  updateHistory = () => {
+    const { history, userName } = this.props;
+    history.push(`/users/${userName}`);
+  }
+
+  /* onSubmit = () => {
+    const { history, handleSubmit, userName } = this.props;
+    handleSubmit(values => {
+      this.handleSubmitAction(this.state.id, values, history, userName);
+    });
+  } */
+
   render() {
     const { history, handleSubmit, userName } = this.props;
-    const { editing, id } = this.state;
+    const { editing } = this.state;
 
     return (
       <div>
         <h2>{editing ? 'Edit' : 'Add'} an Activity</h2>
         <form
           onSubmit={handleSubmit(values => {
-            this.handleSubmitAction(id, values, history, userName);
+            this.handleSubmitAction(this.state.id, values, history, userName);
           })}
         >
           {this.renderFields()}
           <Button
             variant="raised"
             color="secondary"
-            onClick={() => history.push(`/users/${userName}`)}
+            onClick={this.updateHistory}
           >
             Cancel
             <Cancel />
