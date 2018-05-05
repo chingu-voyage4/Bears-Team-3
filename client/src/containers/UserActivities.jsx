@@ -39,9 +39,15 @@ export class UserActivities extends Component {
     this.props.fetchActivities(this.props.userPage._id);
   };
 
+  adjustForTimezone(date): Date {
+    var timeOffsetInMS: number = date.getTimezoneOffset() * 60000;
+    date.setTime(date.getTime() - timeOffsetInMS);
+    return date;
+  }
+
   render() {
     const { classes, activities, isAuthenticated } = this.props;
-
+    console.log(typeof activities[0].dateCompleted);
     return (
       <div>
         {isAuthenticated && (
