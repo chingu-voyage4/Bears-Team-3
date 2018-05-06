@@ -34,18 +34,17 @@ const styles = theme => ({
 });
 
 export class UserActivities extends Component {
-  state = {
-    lang: null,
-  };
-  handleDelete = id => {
-    this.props.deleteActivity(id);
-    this.props.fetchActivities(this.props.userPage._id);
-  };
+  state = {};
 
   componentDidMount() {
     const language = window.navigator.language;
     this.setState({ lang: language });
   }
+
+  handleDelete = id => {
+    this.props.deleteActivity(id);
+    this.props.fetchActivities(this.props.userPage._id);
+  };
 
   americanize = dateCompleted => {
     let date = new Date(dateCompleted)
