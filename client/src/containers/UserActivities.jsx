@@ -48,15 +48,17 @@ export class UserActivities extends Component {
   }
 
   americanize = dateCompleted => {
-    let date = new Date(dateCompleted);
-    date = date.toUTCString();
-    date = date.split(' ');
-    date = date.slice(1, 4);
+    let date = new Date(dateCompleted)
+      .toUTCString()
+      .split(' ')
+      .slice(1, 4);
+
     if (this.state.lang === 'en-US') {
       let b = date[1];
       date[1] = date[0];
       date[0] = b;
     }
+
     date = date.join(' ');
     return date;
   };
