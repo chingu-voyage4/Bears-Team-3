@@ -3,7 +3,6 @@ import { withStyles } from 'material-ui/styles';
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import DatePicker from 'material-ui-pickers/DatePicker';
-import enLocale from 'date-fns/locale/en-GB';
 
 import { styles } from './exports';
 
@@ -25,7 +24,7 @@ class DateSelector extends Component {
   render() {
     const { classes, input, label } = this.props;
     return (
-      <MuiPickersUtilsProvider utils={DateFnsUtils} locale={enLocale}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <div>
           <DatePicker
             autoOk={true}
@@ -38,9 +37,7 @@ class DateSelector extends Component {
             minDate="2018-01-01"
             onChange={this.handleChange}
             showTodayButton
-            value={
-              this.state[input.name] && this.state[input.name].toUTCString()
-            }
+            value={this.state[input.name]}
             {...input}
           />
         </div>
