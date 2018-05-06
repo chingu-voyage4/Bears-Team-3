@@ -91,23 +91,7 @@ export class UserActivities extends Component {
                   return (
                     <TableRow key={n._id}>
                       <TableCell numeric>
-                        {/* {lang === 'en-US'
-                          ? new Date(n.dateCompleted)
-                              .toUTCString()
-                              .split(' ')
-                              .slice(1, 4)
-                              .americanize = () => {
-                                let a = 1,
-                                  b = 2;
-                                [a, b] = [b, a];
-                              }
-                              .join(' ')
-                          : new Date(n.dateCompleted)
-                              .toUTCString()
-                              .split(' ')
-                              .slice(1, 4)
-                              .join(' ')} */
-                        this.americanize(n.dateCompleted)}
+                        {this.americanize(n.dateCompleted)}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
