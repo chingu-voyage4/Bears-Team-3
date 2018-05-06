@@ -37,7 +37,9 @@ class DateSelector extends Component {
             minDate="2018-01-01"
             onChange={this.handleChange}
             showTodayButton
-            value={this.state[input.name]}
+            value={
+              this.state[input.name] && this.state[input.name].toUTCString()
+            }
             {...input}
           />
         </div>
