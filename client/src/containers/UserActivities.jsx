@@ -34,18 +34,36 @@ const styles = theme => ({
 });
 
 export class UserActivities extends Component {
+  state = {
+    lang: null,
+  };
   handleDelete = id => {
     this.props.deleteActivity(id);
     this.props.fetchActivities(this.props.userPage._id);
   };
 
+  componentDidMount() {
+    const language = window.navigator.language;
+    this.setState({ lang: language });
+  }
+
+  americanize = dateCompleted => {
+    let date = new Date(dateCompleted);
+    date = date.toUTCString();
+    date = date.split(' ');
+    date = date.slice(1, 4);
+    if (this.state.lang === 'en-US') {
+      let b = date[1];
+      date[1] = date[0];
+      date[0] = b;
+    }
+    date = date.join(' ');
+    return date;
+  };
+
   render() {
     const { classes, activities, isAuthenticated } = this.props;
-    //console.log(typeof activities[0].dateCompleted);
-    const options = {
-      localeMatcher: 'lookup',
-      timeZone: 'UTC',
-    };
+
     return (
       <div>
         {isAuthenticated && (
@@ -73,11 +91,23 @@ export class UserActivities extends Component {
                   return (
                     <TableRow key={n._id}>
                       <TableCell numeric>
-                        {new Date(n.dateCompleted)
-                          .toUTCString()
-                          .split(' ')
-                          .slice(1, 4)
-                          .join(' ')}
+                        {/* {lang === 'en-US'
+                          ? new Date(n.dateCompleted)
+                              .toUTCString()
+                              .split(' ')
+                              .slice(1, 4)
+                              .americanize = () => {
+                                let a = 1,
+                                  b = 2;
+                                [a, b] = [b, a];
+                              }
+                              .join(' ')
+                          : new Date(n.dateCompleted)
+                              .toUTCString()
+                              .split(' ')
+                              .slice(1, 4)
+                              .join(' ')} */
+                        this.americanize(n.dateCompleted)}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
