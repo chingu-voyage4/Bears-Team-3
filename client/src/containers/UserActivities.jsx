@@ -48,15 +48,17 @@ export class UserActivities extends Component {
   }
 
   americanize = dateCompleted => {
-    let date = new Date(dateCompleted);
-    date = date.toUTCString();
-    date = date.split(' ');
-    date = date.slice(1, 4);
+    let date = new Date(dateCompleted)
+      .toUTCString()
+      .split(' ')
+      .slice(1, 4);
+
     if (this.state.lang === 'en-US') {
       let b = date[1];
       date[1] = date[0];
       date[0] = b;
     }
+
     date = date.join(' ');
     return date;
   };
@@ -91,23 +93,7 @@ export class UserActivities extends Component {
                   return (
                     <TableRow key={n._id}>
                       <TableCell numeric>
-                        {/* {lang === 'en-US'
-                          ? new Date(n.dateCompleted)
-                              .toUTCString()
-                              .split(' ')
-                              .slice(1, 4)
-                              .americanize = () => {
-                                let a = 1,
-                                  b = 2;
-                                [a, b] = [b, a];
-                              }
-                              .join(' ')
-                          : new Date(n.dateCompleted)
-                              .toUTCString()
-                              .split(' ')
-                              .slice(1, 4)
-                              .join(' ')} */
-                        this.americanize(n.dateCompleted)}
+                        {this.americanize(n.dateCompleted)}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
