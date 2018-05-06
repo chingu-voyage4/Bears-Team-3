@@ -34,9 +34,32 @@ const styles = theme => ({
 });
 
 export class UserActivities extends Component {
+  state = {};
+
+  componentDidMount() {
+    const language = window.navigator.language;
+    this.setState({ lang: language });
+  }
+
   handleDelete = id => {
     this.props.deleteActivity(id);
     this.props.fetchActivities(this.props.userPage._id);
+  };
+
+  americanize = dateCompleted => {
+    let date = new Date(dateCompleted)
+      .toUTCString()
+      .split(' ')
+      .slice(1, 4);
+
+    if (this.state.lang === 'en-US') {
+      let b = date[1];
+      date[1] = date[0];
+      date[0] = b;
+    }
+
+    date = date.join(' ');
+    return date;
   };
 
   render() {
@@ -69,7 +92,7 @@ export class UserActivities extends Component {
                   return (
                     <TableRow key={n._id}>
                       <TableCell numeric>
-                        {new Date(n.dateCompleted).toLocaleDateString()}
+                        {this.americanize(n.dateCompleted)}
                       </TableCell>
                       <TableCell>{n.activity}</TableCell>
                       <TableCell numeric>{n.points}</TableCell>
